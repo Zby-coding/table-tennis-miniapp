@@ -106,25 +106,27 @@ export default function IndexPage() {
 
   useReady(() => { mapCtx.current = Taro.createMapContext(mapId); });
 
-  // ── marker 点击去重: WeChat Map 的 onMarkerTap 和 onTap 会同时触发 ──
-  const markerTapTsRef = useRef(0);
+  // ── marker 点击去重: WeChat Map 的 onMarkerTap 和 onTap 同步触发 ──
+  //     用 flag 代替时间戳，因为 WeChat 事件 dispatch 在同一 sync tick 内完成
+  const markerTapFlagRef = useRef(false);
 
-  // ── handleMarkerTap: 设置 selectedCourt + showPreview，记录时间戳用于去重 ──
   const handleMarkerTap = useCallback((e:any) => {
     const markerId = e?.detail?.markerId;
     console.log('[markerTap] markerId:', markerId);
     let court = courts.find(c => Number(c.id) === Number(markerId));
     if(!court) court = courts.find(c => String(c.id) === String(markerId));
     if(!court) { Taro.showToast({title:'未找到场地',icon:'none'}); return; }
-    markerTapTsRef.current = Date.now();
+    markerTapFlagRef.current = true;
     setSelectedCourt(court);
     setShowPreview(true);
   }, [courts]);
 
-  // ── 点击地图: 非marker区域关闭卡片，marker区域已被 onMarkerTap 处理所以跳过 ──
   const handleMapTap = useCallback(() => {
-    // 如果 300ms 内刚触发了 marker 点击，说明是同一个事件，不关闭卡片
-    if (Date.now() - markerTapTsRef.current < 300) return;
+    // onMarkerTap 先于 onTap 触发且在同一个 sync tick，用 flag 去重
+    if (markerTapFlagRef.current) {
+      markerTapFlagRef.current = false;
+      return;
+    }
     setShowPreview(false);
   }, []);
 
@@ -199,6 +201,7 @@ export default function IndexPage() {
               onClick={() => {
                 const nf = chip === '全部' ? '全部' : chip;
                 setActiveFilter(nf);
+                setShowPreview(false);
                 loadCourts(undefined, nf, undefined);
               }}>
               <Text className="filter-chip-text">{chip}</Text>
