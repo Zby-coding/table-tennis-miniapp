@@ -86,6 +86,15 @@ export default function IndexPage() {
   useEffect(() => {
     if (loadedRef.current) return;
     loadedRef.current = true;
+    // 自动登录 (放在首页, 而不是 app.tsx, 避免阻塞页面渲染)
+    import('@/services/api').then(({ login, setToken, getToken }) => {
+      const t = getToken();
+      if (!t) {
+        login('miniapp_auto', '球友').then(r => {
+          if (r.code === 0 && r.data?.token) setToken(r.data.token);
+        }).catch(() => {});
+      }
+    });
     getLocation().then(loc => { if(loc) loadCourts(loc); else loadCourts(); });
     getFavorites().then(r => { if(r.code===0) setFavorites(new Set((r.data||[]).map((c:any)=>Number(c.id)))); }).catch(()=>{});
   }, []);
