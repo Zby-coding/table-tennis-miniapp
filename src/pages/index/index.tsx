@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef, useEffect } from 'react';
+import React, { useState, useCallback, useRef } from 'react';
 import { View, Map, Input, ScrollView, Text } from '@tarojs/components';
 import Taro, { useReady } from '@tarojs/taro';
 import { Court } from '@/types';
@@ -83,23 +83,26 @@ export default function IndexPage() {
     } finally { setLoading(false); }
   }, [activeFilter, searchQuery, userLocation, getLocation]);
 
-  // ── 初始加载: 只在首次 mount 时调用, 不重复触发 ──
+  // ── 初始加载: 用 useDidShow 代替 useEffect，避免阻塞页面生命周期导致框架超时 ──
   const loadedRef = useRef(false);
-  useEffect(() => {
+  useReady(() => {
+    mapCtx.current = Taro.createMapContext(mapId);
     if (loadedRef.current) return;
     loadedRef.current = true;
-    // 自动登录 (放在首页, 而不是 app.tsx, 避免阻塞页面渲染)
-    import('@/services/api').then(({ login, setToken, getToken }) => {
-      const t = getToken();
-      if (!t) {
-        login('miniapp_auto', '球友').then(r => {
-          if (r.code === 0 && r.data?.token) setToken(r.data.token);
-        }).catch(err => console.error('[Auth] Login failed:', err));
-      }
-    }).catch(err => console.error('[Auth] Failed to load API module:', err));
-    getLocation().then(loc => { if(loc) loadCourts(loc); else loadCourts(); }).catch(err => console.error('[Location] Failed:', err));
-    getFavorites().then(r => { if(r.code===0) setFavorites(new Set((r.data||[]).map((c:any)=>Number(c.id)))); }).catch(err => console.warn('[Favorites] Load failed:', err));
-  }, []);
+    // 将 I/O 操作延迟到页面完全就绪后，避免 WeChat 框架 timeout
+    setTimeout(() => {
+      import('@/services/api').then(({ login, setToken, getToken }) => {
+        const t = getToken();
+        if (!t) {
+          login('miniapp_auto', '球友').then(r => {
+            if (r.code === 0 && r.data?.token) setToken(r.data.token);
+          }).catch(err => console.error('[Auth] Login failed:', err));
+        }
+      }).catch(err => console.error('[Auth] Failed to load API module:', err));
+      getLocation().then(loc => { if(loc) loadCourts(loc); else loadCourts(); }).catch(err => console.error('[Location] Failed:', err));
+      getFavorites().then(r => { if(r.code===0) setFavorites(new Set((r.data||[]).map((c:any)=>Number(c.id)))); }).catch(err => console.warn('[Favorites] Load failed:', err));
+    }, 200);
+  });
 
   useReady(() => { mapCtx.current = Taro.createMapContext(mapId); });
 
