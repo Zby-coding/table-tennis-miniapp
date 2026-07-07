@@ -1,7 +1,28 @@
+/**
+ * TableTennisPro API Service
+ *
+ * 小程序网络请求域名白名单:
+ *   在微信公众平台 → 开发管理 → 开发设置 → 服务器域名
+ *   将以下域名添加到 request 合法域名:
+ *     https://your-domain.com
+ *     http://192.168.x.x (仅开发环境)
+ *
+ * 当前开发环境使用局域网IP直连后端:
+ *   1. 确保手机和电脑在同一WiFi
+ *   2. ipconfig 查询本机IPv4地址
+ *   3. 替换下面的 BASE_URL
+ */
+
 import Taro from '@tarojs/taro';
 
-// 你的局域网IP — 手机和电脑必须在同一 WiFi
-const BASE_URL = 'http://192.168.0.101:3010/api';
+// 开发环境: 局域网IP (仅开发时用)
+const LAN_IP = '192.168.0.101';
+const PORT = '3017';
+// Taro 默认 NODE_ENV=development, process.env.NODE_ENV 在小程序中总是 undefined
+// 所以直接用三元判断 process.env.NODE_ENV 不生效
+// 方案: 硬编码开发地址, 发布时手动改成生产域名
+const BASE_URL = `http://${LAN_IP}:${PORT}/api`;
+// 上线时替换为: const BASE_URL = 'https://api.tabletennis.cn/api';
 
 // ── Token 管理 ──
 let _token = '';
@@ -18,12 +39,11 @@ export function getToken(): string {
   return _token;
 }
 
-// ── 通用请求 ──
-async function request<T = any>(path: string, options: {
-  method?: 'GET' | 'POST' | 'PATCH' | 'DELETE';
-  data?: any;
-  auth?: boolean;
-} = {}): Promise<{ code: number; data: T; message: string }> {
+// ── 通用请求 (错误处理 + 401 自动重登录) ──
+async function request<T = any>(
+  path: string,
+  options: { method?: 'GET' | 'POST' | 'PATCH' | 'DELETE'; data?: any; auth?: boolean } = {},
+): Promise<{ code: number; data: T; message: string }> {
   const { method = 'GET', data, auth = true } = options;
 
   const headers: Record<string, string> = { 'Content-Type': 'application/json' };
@@ -44,23 +64,34 @@ async function request<T = any>(path: string, options: {
     if (res.statusCode === 401) {
       Taro.removeStorageSync('token');
       _token = '';
-      Taro.showToast({ title: '登录已过期，请重新登录', icon: 'none' });
+      Taro.showToast({ title: '请重新登录', icon: 'none' });
     }
 
     return res.data as any;
-  } catch (err) {
-    console.error(`[API] ${method} ${path} error:`, err);
+  } catch (err: any) {
+    const msg = err?.errMsg || '网络异常';
+    console.warn(`[API] ${method} ${path}`, msg);
+
+    // 域名不在白名单时给出明确提示
+    if (msg.includes('url not in domain list')) {
+      Taro.showModal({
+        title: '开发环境域名提示',
+        content: `请将 ${LAN_IP}:${PORT} 添加到微信小程序 request 合法域名白名单\n或在开发者工具中关闭"不校验合法域名"`,
+        showCancel: false,
+      });
+    }
+
     throw err;
   }
 }
 
 // ── 认证 ──
 export function login(code: string, nickname?: string, avatarUrl?: string) {
-  return request<any>('/auth/login', {
-    method: 'POST',
-    data: { code, nickname, avatarUrl },
-    auth: false,
-  });
+  return request<any>('/auth/login', { method: 'POST', data: { code, nickname, avatarUrl }, auth: false });
+}
+
+export function wechatLogin() {
+  return Taro.login().then((res) => login(res.code));
 }
 
 // ── 用户 ──
@@ -68,12 +99,13 @@ export function getUserProfile() {
   return request<any>('/user/profile');
 }
 
+export function updateUserProfile(data: { nickname?: string; avatarUrl?: string; style?: string; city?: string }) {
+  return request('/user/profile', { method: 'PATCH', data });
+}
+
 // ── 场地 ──
 export function getNearbyCourts(lat: number, lng: number, filters?: {
-  isFree?: boolean;
-  isIndoor?: boolean;
-  hasLighting?: boolean;
-  keyword?: string;
+  isFree?: boolean; isIndoor?: boolean; hasLighting?: boolean; keyword?: string;
 }) {
   const params = new URLSearchParams({ lat: String(lat), lng: String(lng), radius: '10000' });
   if (filters?.isFree !== undefined) params.set('isFree', String(filters.isFree));
@@ -95,6 +127,14 @@ export function toggleFavorite(courtId: number) {
   return request(`/courts/${courtId}/favorite`, { method: 'POST' });
 }
 
+export function getFavorites() {
+  return request<any[]>('/courts/user/favorites');
+}
+
+export function createCustomCourt(data: { name: string; lat: number; lng: number }) {
+  return request('/courts/custom', { method: 'POST', data });
+}
+
 // ── 签到 ──
 export function checkin(courtId: number, lat: number, lng: number) {
   return request('/checkin/in', { method: 'POST', data: { courtId, lat, lng } });
@@ -114,8 +154,7 @@ export function getCourtActiveCount(courtId: number) {
 
 // ── 约球 ──
 export function getPosts(keyword?: string) {
-  const params = keyword ? `?keyword=${encodeURIComponent(keyword)}` : '';
-  return request<any[]>(`/posts${params}`);
+  return request<any[]>(`/posts${keyword ? `?keyword=${encodeURIComponent(keyword)}` : ''}`);
 }
 
 export function createPost(data: {
@@ -141,6 +180,7 @@ export function addMatchRecord(data: {
   return request('/matches/records', { method: 'POST', data });
 }
 
+// ── 附近球友 ──
 export function getNearbyPlayers(lat: number, lng: number, radius?: number) {
   const params = new URLSearchParams({ lat: String(lat), lng: String(lng) });
   if (radius) params.set('radius', String(radius));
@@ -158,6 +198,6 @@ export function uploadFile(filePath: string) {
     url: `${BASE_URL}/upload`,
     filePath,
     name: 'file',
-    header: { 'Authorization': `Bearer ${getToken()}` },
+    header: { Authorization: `Bearer ${getToken()}` },
   });
 }

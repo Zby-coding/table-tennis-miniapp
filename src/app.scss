@@ -1,8 +1,7 @@
-/* ============================================
-   TableTennisPro 设计系统 (移植自 table-tennis-pro)
-   ============================================ */
-
-/* ── 页面级 CSS 变量 ── */
+/**
+ * TableTennisPro 小程序基础样式
+ * 设计token + 全局重置 + 工具类
+ */
 page {
   --color-primary: #FF6B35;
   --color-primary-light: #FF8C5E;
@@ -63,23 +62,5 @@ page {
   -webkit-font-smoothing: antialiased;
 }
 
-view, text, image, input, button, scroll-view {
-  box-sizing: border-box;
-}
-
-/* ── 全局工具类 ── */
-.gradient-primary {
-  background: linear-gradient(135deg, #FF6B35, #FF8C5E);
-}
-.gradient-cool {
-  background: linear-gradient(135deg, #1A73E8, #4D94F0);
-}
-.gradient-energy {
-  background: linear-gradient(135deg, #FF6B35, #F59E0B);
-}
-.score-number {
-  font-weight: 800;
-  font-variant-numeric: tabular-nums;
-}
-
+view, text, image, input, button, scroll-view { box-sizing: border-box; }
 ::-webkit-scrollbar { display: none; width: 0; height: 0; }
