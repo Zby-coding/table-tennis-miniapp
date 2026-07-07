@@ -208,10 +208,10 @@ export const INITIAL_USER_PROFILE: UserProfile = {
   winRate: 65,
   points: 1250,
   achievements: [
-    { id: 'ach_1', name: '百日球王', desc: '累计打球达到100小时', icon: 'military_tech', color: 'bg-secondary-fixed text-secondary', unlocked: true },
-    { id: 'ach_2', name: '早起达人', desc: '在早上8点前签到10次', icon: 'wb_sunny', color: 'bg-primary-fixed text-primary', unlocked: true },
-    { id: 'ach_3', name: '迅捷如风', desc: '连续赢得5场比赛', icon: 'bolt', color: 'bg-tertiary-fixed text-tertiary', unlocked: true },
-    { id: 'ach_4', name: '广交球友', desc: '与20名不同的球友切磋', icon: 'groups', color: 'bg-surface-variant text-on-surface-variant', unlocked: false }
+    { id: 'ach_1', name: '百日球王', desc: '累计打球达到100小时', icon: '🏆', color: 'bg-secondary-fixed text-secondary', unlocked: true },
+    { id: 'ach_2', name: '早起达人', desc: '在早上8点前签到10次', icon: '☀️', color: 'bg-primary-fixed text-primary', unlocked: true },
+    { id: 'ach_3', name: '迅捷如风', desc: '连续赢得5场比赛', icon: '⚡', color: 'bg-tertiary-fixed text-tertiary', unlocked: true },
+    { id: 'ach_4', name: '广交球友', desc: '与20名不同的球友切磋', icon: '🤝', color: 'bg-surface-variant text-on-surface-variant', unlocked: false }
   ]
 };
 
