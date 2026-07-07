@@ -117,8 +117,10 @@ export default function IndexPage() {
     setShowPreview(true);
   }, [courts]);
 
-  // ── onTap: 不做任何操作 (避免与 onMarkerTap 冲突) ──
-  const handleMapTap = useCallback(() => {}, []);
+  // ── 点击地图空白处: 关闭场地预览卡片 ──
+  const handleMapTap = useCallback(() => {
+    setShowPreview(false);
+  }, []);
 
   const handleNavigate = useCallback((court:Court) => {
     Taro.openLocation({latitude:court.lat,longitude:court.lng,name:court.name,address:court.address,scale:16})
