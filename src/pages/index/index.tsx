@@ -7,20 +7,21 @@ import './index.scss';
 
 // 默认场地 — 后端不可用时的 fallback (与seed数据保持一致确保id匹配)
 const FALLBACK_COURTS: Court[] = [
-  { id: 1, name: '白河湿地公园乒乓球区', address: '南阳市卧龙区白河大道', isFree: true, activePlayers: 15, distanceStr: '0.8km', tableCount: 10, material: '户外地砖', hasLighting: false, openHours: '全天', photo: '', galleryImages: [], lat: 32.9864, lng: 112.5349, rating: 4.5, features: ['免费开放','河边风景','空气好','本市最热门'] },
-  { id: 2, name: '南阳市体育中心乒乓球场', address: '南阳市卧龙区滨河路', isFree: true, activePlayers: 8, distanceStr: '1.5km', tableCount: 6, material: '塑胶', hasLighting: true, openHours: '06:00-21:00', photo: '', galleryImages: [], lat: 32.9906, lng: 112.5284, rating: 4.3, features: ['免费开放','塑胶地面','夜间灯光'] },
-  { id: 3, name: '南阳理工学院乒乓球区', address: '南阳市宛城区长江路80号', isFree: true, activePlayers: 12, distanceStr: '2.1km', tableCount: 8, material: '水泥防滑', hasLighting: false, openHours: '06:00-20:00', photo: '', galleryImages: [], lat: 32.9788, lng: 112.5412, rating: 4.0, features: ['校园场地','免费开放','学生多'] },
-  { id: 4, name: '解放广场乒乓球角', address: '南阳市卧龙区中州路', isFree: true, activePlayers: 6, distanceStr: '3.0km', tableCount: 4, material: '水泥', hasLighting: false, openHours: '06:00-20:00', photo: '', galleryImages: [], lat: 32.9951, lng: 112.5219, rating: 3.8, features: ['市中心','免费开放','便民设施'] },
-  { id: 5, name: '汉冶路社区活动中心', address: '南阳市宛城区汉冶路', isFree: true, activePlayers: 3, distanceStr: '4.2km', tableCount: 2, material: '塑胶', hasLighting: true, openHours: '08:00-21:00', photo: '', galleryImages: [], lat: 33.0012, lng: 112.5498, rating: 3.5, features: ['室内','社区免费','灯光好'] },
-  { id: 6, name: '仲景养生小镇乒乓球区', address: '南阳市卧龙区仲景路', isFree: false, activePlayers: 4, distanceStr: '5.1km', tableCount: 3, material: '专业运动地板', hasLighting: true, openHours: '09:00-22:00', photo: '', galleryImages: [], lat: 32.9715, lng: 112.5103, rating: 4.2, features: ['付费15元/时','室内空调','专业级'] },
-  { id: 7, name: '南阳师范学院乒乓球场', address: '南阳市卧龙区卧龙路1638号', isFree: true, activePlayers: 20, distanceStr: '3.8km', tableCount: 12, material: '塑胶', hasLighting: true, openHours: '06:00-22:00', photo: '', galleryImages: [], lat: 32.9756, lng: 112.5034, rating: 4.7, features: ['免费开放','球台多','高手聚集'] },
-  { id: 8, name: '独山大道体育公园', address: '南阳市宛城区独山大道', isFree: true, activePlayers: 10, distanceStr: '2.5km', tableCount: 6, material: '户外硅PU', hasLighting: false, openHours: '06:00-19:00', photo: '', galleryImages: [], lat: 33.0089, lng: 112.5523, rating: 4.1, features: ['免费开放','公园环境','停车方便'] },
+  { id: 1, name: '白河湿地公园乒乓球区', address: '南阳市卧龙区白河大道', isFree: true, isIndoor: false, activePlayers: 15, distanceStr: '0.8km', tableCount: 10, material: '户外地砖', hasLighting: false, openHours: '全天', photo: '', galleryImages: [], lat: 32.9864, lng: 112.5349, rating: 4.5, features: ['免费开放','河边风景','空气好','本市最热门'] },
+  { id: 2, name: '南阳市体育中心乒乓球场', address: '南阳市卧龙区滨河路', isFree: true, isIndoor: false, activePlayers: 8, distanceStr: '1.5km', tableCount: 6, material: '塑胶', hasLighting: true, openHours: '06:00-21:00', photo: '', galleryImages: [], lat: 32.9906, lng: 112.5284, rating: 4.3, features: ['免费开放','塑胶地面','夜间灯光'] },
+  { id: 3, name: '南阳理工学院乒乓球区', address: '南阳市宛城区长江路80号', isFree: true, isIndoor: false, activePlayers: 12, distanceStr: '2.1km', tableCount: 8, material: '水泥防滑', hasLighting: false, openHours: '06:00-20:00', photo: '', galleryImages: [], lat: 32.9788, lng: 112.5412, rating: 4.0, features: ['校园场地','免费开放','学生多'] },
+  { id: 4, name: '解放广场乒乓球角', address: '南阳市卧龙区中州路', isFree: true, isIndoor: false, activePlayers: 6, distanceStr: '3.0km', tableCount: 4, material: '水泥', hasLighting: false, openHours: '06:00-20:00', photo: '', galleryImages: [], lat: 32.9951, lng: 112.5219, rating: 3.8, features: ['市中心','免费开放','便民设施'] },
+  { id: 5, name: '汉冶路社区活动中心', address: '南阳市宛城区汉冶路', isFree: true, isIndoor: true, activePlayers: 3, distanceStr: '4.2km', tableCount: 2, material: '塑胶', hasLighting: true, openHours: '08:00-21:00', photo: '', galleryImages: [], lat: 33.0012, lng: 112.5498, rating: 3.5, features: ['室内','社区免费','灯光好'] },
+  { id: 6, name: '仲景养生小镇乒乓球区', address: '南阳市卧龙区仲景路', isFree: false, isIndoor: true, activePlayers: 4, distanceStr: '5.1km', tableCount: 3, material: '专业运动地板', hasLighting: true, openHours: '09:00-22:00', photo: '', galleryImages: [], lat: 32.9715, lng: 112.5103, rating: 4.2, features: ['付费15元/时','室内空调','专业级'] },
+  { id: 7, name: '南阳师范学院乒乓球场', address: '南阳市卧龙区卧龙路1638号', isFree: true, isIndoor: false, activePlayers: 20, distanceStr: '3.8km', tableCount: 12, material: '塑胶', hasLighting: true, openHours: '06:00-22:00', photo: '', galleryImages: [], lat: 32.9756, lng: 112.5034, rating: 4.7, features: ['免费开放','球台多','高手聚集'] },
+  { id: 8, name: '独山大道体育公园', address: '南阳市宛城区独山大道', isFree: true, isIndoor: false, activePlayers: 10, distanceStr: '2.5km', tableCount: 6, material: '户外硅PU', hasLighting: false, openHours: '06:00-19:00', photo: '', galleryImages: [], lat: 33.0089, lng: 112.5523, rating: 4.1, features: ['免费开放','公园环境','停车方便'] },
 ];
 
 const FILTERS = ['全部','免费','室内','有灯光'] as const;
 
 export default function IndexPage() {
   const [courts, setCourts] = useState<Court[]>(FALLBACK_COURTS);
+  const courtsRef = useRef<Court[]>(FALLBACK_COURTS);
   const [userLocation, setUserLocation] = useState<{lat:number;lng:number}>({lat:32.9864,lng:112.5349});
   const [selectedCourt, setSelectedCourt] = useState<Court|null>(null);
   const [searchQuery, setSearchQuery] = useState('');
@@ -65,17 +66,18 @@ export default function IndexPage() {
           c.lat && c.lng && Number(c.lat) > 10 && Number(c.lat) < 60 &&
           Number(c.lng) > 50 && Number(c.lng) < 180
         );
-        if (valid.length > 0) { setCourts(valid); return; }
+        if (valid.length > 0) { setCourts(valid); courtsRef.current = valid; return; }
       }
       // API 失败或无数据: fallback
       console.log('API 不可用,使用本地数据');
       // 前端本地过滤 fallback
       let filtered = [...FALLBACK_COURTS];
       if(filter === '免费') filtered = filtered.filter(c => c.isFree);
-      else if(filter === '室内') filtered = filtered.filter(c => !c.isFree && c.hasLighting);
+      else if(filter === '室内') filtered = filtered.filter(c => c.isIndoor);
       else if(filter === '有灯光') filtered = filtered.filter(c => c.hasLighting);
       if(query) { const q = query.toLowerCase(); filtered = filtered.filter(c => c.name.toLowerCase().includes(q)); }
       setCourts(filtered);
+      courtsRef.current = filtered;
     } catch {
       setCourts(FALLBACK_COURTS);
     } finally { setLoading(false); }
@@ -92,11 +94,11 @@ export default function IndexPage() {
       if (!t) {
         login('miniapp_auto', '球友').then(r => {
           if (r.code === 0 && r.data?.token) setToken(r.data.token);
-        }).catch(() => {});
+        }).catch(err => console.error('[Auth] Login failed:', err));
       }
-    });
-    getLocation().then(loc => { if(loc) loadCourts(loc); else loadCourts(); });
-    getFavorites().then(r => { if(r.code===0) setFavorites(new Set((r.data||[]).map((c:any)=>Number(c.id)))); }).catch(()=>{});
+    }).catch(err => console.error('[Auth] Failed to load API module:', err));
+    getLocation().then(loc => { if(loc) loadCourts(loc); else loadCourts(); }).catch(err => console.error('[Location] Failed:', err));
+    getFavorites().then(r => { if(r.code===0) setFavorites(new Set((r.data||[]).map((c:any)=>Number(c.id)))); }).catch(err => console.warn('[Favorites] Load failed:', err));
   }, []);
 
   useReady(() => { mapCtx.current = Taro.createMapContext(mapId); });
@@ -173,6 +175,7 @@ export default function IndexPage() {
         <Input className="search-input" type="text" placeholder="搜索场地" value={searchQuery}
           onInput={e => setSearchQuery(e.detail.value)}
           onConfirm={() => { loadCourts(undefined, undefined, searchQuery); }} confirmType="search" />
+        {loading && <Text className="search-loading">加载中</Text>}
       </View></View>
 
       <ScrollView className="filter-row" scrollX enableFlex>
@@ -191,8 +194,6 @@ export default function IndexPage() {
         })}
       </ScrollView>
 
-      {loading && <View className="loading-indicator"><Text>加载中...</Text></View>}
-
       {showPreview && selectedCourt && (
         <View className="court-preview">
           <View className="preview-header">
@@ -209,6 +210,7 @@ export default function IndexPage() {
             <View className="meta-item"><Text className="meta-label">球台</Text><Text className="meta-value">{selectedCourt.tableCount}张</Text></View>
             <View className="meta-item"><Text className="meta-label">材质</Text><Text className="meta-value">{selectedCourt.material}</Text></View>
             <View className="meta-item"><Text className="meta-label">灯光</Text><Text className="meta-value">{selectedCourt.hasLighting?'有':'无'}</Text></View>
+            <View className="meta-item"><Text className="meta-label">场地</Text><Text className="meta-value">{selectedCourt.isIndoor?'室内':'户外'}</Text></View>
           </View>
           <View className="preview-features">
             {selectedCourt.features?.map((f,i) => <View key={i} className="feature-tag"><Text>{f}</Text></View>)}

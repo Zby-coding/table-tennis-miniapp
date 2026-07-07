@@ -5,14 +5,14 @@
 .search-box { display: flex; align-items: center; height: 44px; padding: 0 12px; background: rgba(255,255,255,.95); border-radius:12px; box-shadow: 0 2px 12px rgba(0,0,0,.08); }
 .icon-search { font-size:16px; margin-right:8px; color:#999; }
 .search-input { flex:1; height:100%; font-size:14px; color:#1A1A2E; background:transparent; }
+.search-loading { font-size: 11px; color: #FF6B35; margin-left: 6px; white-space: nowrap; flex-shrink: 0; }
 
 .filter-row { position: absolute; top:72px; left:16px; right:16px; z-index:10; white-space:nowrap; height:36px; }
 .filter-chip { display: inline-flex; align-items: center; height: 32px; padding: 0 14px; margin-right: 8px; border-radius: 16px; background: rgba(255,255,255,.85); border: 1px solid rgba(0,0,0,.08);
   &.active { background: #FF6B35; border-color: #FF6B35; } }
 .filter-chip-text { font-size:12px; color:#666; font-weight:500; .active & { color:#fff; font-weight:600; } }
 
-.loading-indicator { position: absolute; top:50%; left:50%; transform:translate(-50%,-50%); z-index:30; padding:10px 20px; border-radius:10px; background:rgba(0,0,0,.6); pointer-events: none;
-  text { color:#fff; font-size:13px; } }
+/* loading 已移入搜索栏内，不再使用全屏遮罩 */
 
 .court-preview { position: absolute; bottom: 16px; left: 16px; right: 16px; z-index: 20; background: #fff; border-radius: 20px; padding: 16px; box-shadow: 0 -4px 24px rgba(0,0,0,.12); }
 .preview-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 4px; }
