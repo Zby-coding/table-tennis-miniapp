@@ -11,7 +11,7 @@
   &.active { background: #FF6B35; border-color: #FF6B35; } }
 .filter-chip-text { font-size:12px; color:#666; font-weight:500; .active & { color:#fff; font-weight:600; } }
 
-.loading-indicator { position: absolute; top:50%; left:50%; transform:translate(-50%,-50%); z-index:30; padding:10px 20px; border-radius:10px; background:rgba(0,0,0,.6);
+.loading-indicator { position: absolute; top:50%; left:50%; transform:translate(-50%,-50%); z-index:30; padding:10px 20px; border-radius:10px; background:rgba(0,0,0,.6); pointer-events: none;
   text { color:#fff; font-size:13px; } }
 
 .court-preview { position: absolute; bottom: 16px; left: 16px; right: 16px; z-index: 20; background: #fff; border-radius: 20px; padding: 16px; box-shadow: 0 -4px 24px rgba(0,0,0,.12); }

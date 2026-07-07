@@ -26,7 +26,7 @@ export default function IndexPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeFilter, setActiveFilter] = useState<string>('全部');
   const [showPreview, setShowPreview] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false); // 改为 false, 避免覆盖层阻挡
   const [checkingIn, setCheckingIn] = useState(false);
   const [checkedInId, setCheckedInId] = useState<number|null>(null);
   const [favorites, setFavorites] = useState<Set<number>>(new Set());
