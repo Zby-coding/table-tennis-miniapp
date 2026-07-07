@@ -106,19 +106,25 @@ export default function IndexPage() {
 
   useReady(() => { mapCtx.current = Taro.createMapContext(mapId); });
 
-  // ── handleMarkerTap: 只设置 selectedCourt + showPreview, 不触发 setCourts ──
+  // ── marker 点击去重: WeChat Map 的 onMarkerTap 和 onTap 会同时触发 ──
+  const markerTapTsRef = useRef(0);
+
+  // ── handleMarkerTap: 设置 selectedCourt + showPreview，记录时间戳用于去重 ──
   const handleMarkerTap = useCallback((e:any) => {
     const markerId = e?.detail?.markerId;
     console.log('[markerTap] markerId:', markerId);
     let court = courts.find(c => Number(c.id) === Number(markerId));
     if(!court) court = courts.find(c => String(c.id) === String(markerId));
     if(!court) { Taro.showToast({title:'未找到场地',icon:'none'}); return; }
+    markerTapTsRef.current = Date.now();
     setSelectedCourt(court);
     setShowPreview(true);
   }, [courts]);
 
-  // ── 点击地图空白处: 关闭场地预览卡片 ──
+  // ── 点击地图: 非marker区域关闭卡片，marker区域已被 onMarkerTap 处理所以跳过 ──
   const handleMapTap = useCallback(() => {
+    // 如果 300ms 内刚触发了 marker 点击，说明是同一个事件，不关闭卡片
+    if (Date.now() - markerTapTsRef.current < 300) return;
     setShowPreview(false);
   }, []);
 
