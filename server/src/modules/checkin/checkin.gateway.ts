@@ -19,7 +19,7 @@ export class CheckinGateway implements OnGatewayConnection, OnGatewayDisconnect 
 
   private readonly logger = new Logger(CheckinGateway.name);
 
-  constructor(@Inject('REDIS_CLIENT') private redis: Redis) {}
+  constructor(@Inject('REDIS_CLIENT') private redis: Redis | null) {}
 
   handleConnection(client: Socket) {
     this.logger.log(`Client connected: ${client.id}`);
@@ -33,6 +33,10 @@ export class CheckinGateway implements OnGatewayConnection, OnGatewayDisconnect 
   async handleSubscribeCourt(client: Socket, courtId: number) {
     if (!Number.isInteger(courtId) || courtId <= 0) {
       client.emit('error', { message: 'Invalid courtId' });
+      return;
+    }
+    if (!this.redis) {
+      client.emit('error', { message: 'Redis unavailable' });
       return;
     }
     const room = `court:${courtId}`;

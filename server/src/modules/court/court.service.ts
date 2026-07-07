@@ -28,8 +28,19 @@ export class CourtService {
     hasLighting?: boolean;
     keyword?: string;
   }) {
+    const deltaLat = radius / 111320;
+    const deltaLng = radius / (111320 * Math.cos((lat * Math.PI) / 180));
+
     const qb = this.courtRepo.createQueryBuilder('court')
-      .where('court.status = :status', { status: 1 });
+      .where('court.status = :status', { status: 1 })
+      .andWhere('court.lat BETWEEN :minLat AND :maxLat', {
+        minLat: lat - deltaLat,
+        maxLat: lat + deltaLat,
+      })
+      .andWhere('court.lng BETWEEN :minLng AND :maxLng', {
+        minLng: lng - deltaLng,
+        maxLng: lng + deltaLng,
+      });
 
     if (filters?.isFree !== undefined) {
       qb.andWhere('court.isFree = :isFree', { isFree: filters.isFree });
@@ -46,7 +57,7 @@ export class CourtService {
       });
     }
 
-    const courts = await qb.getMany();
+    const courts = await qb.limit(500).getMany();
 
     // Enrich distance + filter by radius in JS (SQLite-compatible)
     const enriched = courts
@@ -56,22 +67,20 @@ export class CourtService {
       })
       .filter(({ distance }) => distance <= radius)
       .sort((a, b) => a.distance - b.distance)
-      .slice(0, 30)
-      .map(async ({ court, distance }) => {
-        const activePlayers = parseInt(
-          (this.redis ? await this.redis.get(`court:${court.id}:active_count`) : '0') || '0',
-          10,
-        );
-        return {
-          ...court,
-          activePlayers,
-          distanceStr: distance < 1000 ? `${Math.round(distance)}m` : `${(distance / 1000).toFixed(1)}km`,
-          lat: Number(court.lat),
-          lng: Number(court.lng),
-        };
-      });
+      .slice(0, 30);
+    // Single MGET for all active counts
+    const keys = enriched.map(({ court }) => `court:${court.id}:active_count`);
+    const counts = this.redis
+      ? (await this.redis.mget(...keys)).map((v) => parseInt(v || '0', 10))
+      : enriched.map(() => 0);
 
-    return Promise.all(enriched);
+    return enriched.map(({ court, distance }, i) => ({
+      ...court,
+      activePlayers: counts[i],
+      distanceStr: distance < 1000 ? `${Math.round(distance)}m` : `${(distance / 1000).toFixed(1)}km`,
+      lat: Number(court.lat),
+      lng: Number(court.lng),
+    }));
   }
 
   /**
@@ -89,7 +98,7 @@ export class CourtService {
     });
 
     const activePlayers = parseInt(
-      (await this.redis.get(`court:${court.id}:active_count`)) || '0',
+      (this.redis ? await this.redis.get(`court:${court.id}:active_count`) : '0') || '0',
       10,
     );
 

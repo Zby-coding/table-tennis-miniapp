@@ -34,6 +34,7 @@ export interface Court {
   id: number;
   name: string;
   isFree: boolean;
+  isIndoor: boolean;
   activePlayers: number;
   distanceStr: string;
   tableCount: number;

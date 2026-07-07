@@ -1,6 +1,8 @@
 import { Controller, Get, Post, Param, Query, Body } from '@nestjs/common';
 import { PostService } from './post.service';
 import { CurrentUser } from '../../common/decorators/current-user.decorator';
+import { PostListDto } from './dto/post-list.dto';
+import { CreatePostDto } from './dto/create-post.dto';
 
 @Controller('api/posts')
 export class PostController {
@@ -9,10 +11,9 @@ export class PostController {
   @Get()
   async list(
     @CurrentUser('sub') userId: number,
-    @Query('keyword') keyword?: string,
-    @Query('status') status?: string,
+    @Query() dto: PostListDto,
   ) {
-    return this.postService.findPosts({ keyword, status, userId });
+    return this.postService.findPosts({ keyword: dto.keyword, status: dto.status, userId });
   }
 
   @Get('mine')
@@ -23,15 +24,7 @@ export class PostController {
   @Post()
   async create(
     @CurrentUser('sub') userId: number,
-    @Body() body: {
-      title: string;
-      courtId: number;
-      startTime: string;
-      totalCapacity: number;
-      feeType: string;
-      feeValue: number;
-      description?: string;
-    },
+    @Body() body: CreatePostDto,
   ) {
     return this.postService.createPost(userId, body);
   }

@@ -1,6 +1,7 @@
 import { Controller, Get, Patch, Body } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CurrentUser } from '../../common/decorators/current-user.decorator';
+import { UpdateProfileDto } from './dto/update-profile.dto';
 
 @Controller('api/user')
 export class UserController {
@@ -14,7 +15,7 @@ export class UserController {
   @Patch('profile')
   async updateProfile(
     @CurrentUser('sub') userId: number,
-    @Body() body: { nickname?: string; avatarUrl?: string; style?: string; city?: string },
+    @Body() body: UpdateProfileDto,
   ) {
     return this.userService.updateProfile(userId, body);
   }

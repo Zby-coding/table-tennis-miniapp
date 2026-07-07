@@ -107,12 +107,14 @@ export class PostService {
       description?: string;
     },
   ) {
+    if (!data.totalCapacity || data.totalCapacity < 2)
+      throw new BadRequestException('totalCapacity 至少为 2');
     const post = this.postRepo.create({
       userId,
       title: data.title,
       courtId: data.courtId,
       startTime: data.startTime,
-      totalCapacity: data.totalCapacity || 4,
+      totalCapacity: data.totalCapacity,
       joinedCount: 1,
       feeType: data.feeType || 'AA制',
       feeValue: data.feeValue || 0,
@@ -125,29 +127,28 @@ export class PostService {
   }
 
   async joinPost(userId: number, postId: number) {
-    // Check if already joined
     const existing = await this.joinRepo.findOne({ where: { postId, userId } });
     if (existing) throw new BadRequestException('您已加入该约球');
 
-    // Atomic capacity check: increment only if below capacity
-    const result = await this.postRepo
-      .createQueryBuilder()
-      .update(MatchPost)
-      .set({
-        joinedCount: () => 'joinedCount + 1',
-        status: () => `CASE WHEN joinedCount + 1 >= totalCapacity THEN '${PostStatus.FULL}' ELSE '${PostStatus.RECRUITING}' END`,
-      })
-      .where('id = :postId', { postId })
-      .andWhere('joinedCount < totalCapacity')
-      .andWhere('status = :recruitingStatus', { recruitingStatus: PostStatus.RECRUITING })
-      .execute();
+    await this.joinRepo.manager.transaction(async (manager) => {
+      const result = await manager
+        .createQueryBuilder()
+        .update(MatchPost)
+        .set({
+          joinedCount: () => 'joinedCount + 1',
+          status: () => `CASE WHEN joinedCount + 1 >= totalCapacity THEN '${PostStatus.FULL}' ELSE '${PostStatus.RECRUITING}' END`,
+        })
+        .where('id = :postId', { postId })
+        .andWhere('joinedCount < totalCapacity')
+        .andWhere('status = :recruitingStatus', { recruitingStatus: PostStatus.RECRUITING })
+        .execute();
 
-    if (result.affected === 0) {
-      throw new BadRequestException('该约球已满员或已结束');
-    }
+      if (result.affected === 0) {
+        throw new BadRequestException('该约球已满员或已结束');
+      }
 
-    // Insert join record
-    await this.joinRepo.save({ postId, userId, status: 'approved' });
+      await manager.save(PostJoin, { postId, userId, status: 'approved' });
+    });
 
     return { success: true };
   }

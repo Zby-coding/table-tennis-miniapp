@@ -1,5 +1,5 @@
 import {
-  Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn,
+  Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, Index,
   OneToMany,
 } from 'typeorm';
 import { CheckIn } from './checkin.entity';
@@ -50,9 +50,11 @@ export class User {
   @Column({ type: 'varchar', length: 64, nullable: true })
   city: string;
 
+  @Index()
   @Column({ type: 'decimal', precision: 10, scale: 7, nullable: true })
   homeLat: number;
 
+  @Index()
   @Column({ type: 'decimal', precision: 10, scale: 7, nullable: true })
   homeLng: number;
 

@@ -11,11 +11,13 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     private authService: AuthService,
   ) {
     const secret = configService.get<string>('jwt.secret');
-    console.log('[JwtStrategy] JWT secret configured:', secret ? 'yes' : 'no');
+    if (!secret) {
+      throw new Error('JWT secret is not configured. Set JWT_SECRET environment variable.');
+    }
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: false,
-      secretOrKey: secret || 'tt-pro-jwt-dev-fallback',
+      secretOrKey: secret,
     });
   }
 

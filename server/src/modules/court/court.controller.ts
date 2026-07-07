@@ -1,30 +1,25 @@
 import { Controller, Get, Post, Param, Query, Body } from '@nestjs/common';
 import { CourtService } from './court.service';
 import { CurrentUser } from '../../common/decorators/current-user.decorator';
+import { NearbyCourtsDto } from './dto/nearby-courts.dto';
+import { ReviewCourtDto } from './dto/review-court.dto';
+import { CreateCourtDto } from './dto/create-court.dto';
 
 @Controller('api/courts')
 export class CourtController {
   constructor(private courtService: CourtService) {}
 
   @Get('nearby')
-  async nearby(
-    @Query('lat') lat: string,
-    @Query('lng') lng: string,
-    @Query('radius') radius?: string,
-    @Query('isFree') isFree?: string,
-    @Query('isIndoor') isIndoor?: string,
-    @Query('hasLighting') hasLighting?: string,
-    @Query('keyword') keyword?: string,
-  ) {
+  async nearby(@Query() dto: NearbyCourtsDto) {
     return this.courtService.findNearby(
-      parseFloat(lat || '0'),
-      parseFloat(lng || '0'),
-      radius ? parseInt(radius) : 5000,
+      dto.lat,
+      dto.lng,
+      dto.radius ?? 5000,
       {
-        isFree: isFree !== undefined ? isFree === 'true' : undefined,
-        isIndoor: isIndoor !== undefined ? isIndoor === 'true' : undefined,
-        hasLighting: hasLighting !== undefined ? hasLighting === 'true' : undefined,
-        keyword,
+        isFree: dto.isFree !== undefined ? dto.isFree === 'true' : undefined,
+        isIndoor: dto.isIndoor !== undefined ? dto.isIndoor === 'true' : undefined,
+        hasLighting: dto.hasLighting !== undefined ? dto.hasLighting === 'true' : undefined,
+        keyword: dto.keyword,
       },
     );
   }
@@ -38,7 +33,7 @@ export class CourtController {
   async review(
     @Param('id') id: string,
     @CurrentUser('sub') userId: number,
-    @Body() body: { rating: number; content: string; images?: string[] },
+    @Body() body: ReviewCourtDto,
   ) {
     return this.courtService.review(userId, parseInt(id), body.rating, body.content, body.images);
   }
@@ -59,7 +54,7 @@ export class CourtController {
   @Post('custom')
   async createCustom(
     @CurrentUser('sub') userId: number,
-    @Body() body: { name: string; lat: number; lng: number; isFree?: boolean; tableCount?: number },
+    @Body() body: CreateCourtDto,
   ) {
     return this.courtService.create({ ...body, userId });
   }

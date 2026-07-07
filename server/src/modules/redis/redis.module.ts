@@ -10,10 +10,6 @@ import Redis from 'ioredis';
       inject: [ConfigService],
       useFactory: (config: ConfigService) => {
         const redisHost = config.get<string>('redis.host');
-        if (!redisHost || redisHost === 'localhost') {
-          // Return null-inmemory fallback when no Redis
-          return null;
-        }
         return new Redis({
           host: redisHost,
           port: config.get<number>('redis.port', 6379),

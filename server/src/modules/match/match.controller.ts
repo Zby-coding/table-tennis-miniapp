@@ -1,6 +1,8 @@
 import { Controller, Get, Post, Query, Body } from '@nestjs/common';
 import { MatchService } from './match.service';
 import { CurrentUser } from '../../common/decorators/current-user.decorator';
+import { AddRecordDto } from './dto/add-record.dto';
+import { NearbyPlayersDto } from './dto/nearby-players.dto';
 
 @Controller('api/matches')
 export class MatchController {
@@ -13,13 +15,7 @@ export class MatchController {
 
   @Post('records')
   async addRecord(
-    @Body() body: {
-      loserId: number;
-      winnerScore: number;
-      loserScore: number;
-      locationName?: string;
-      courtId?: number;
-    },
+    @Body() body: AddRecordDto,
     @CurrentUser('sub') winnerId: number,
   ) {
     return this.matchService.addRecord({
@@ -36,15 +32,13 @@ export class MatchController {
   @Get('nearby-players')
   async nearbyPlayers(
     @CurrentUser('sub') userId: number,
-    @Query('lat') lat: string,
-    @Query('lng') lng: string,
-    @Query('radius') radius?: string,
+    @Query() dto: NearbyPlayersDto,
   ) {
     return this.matchService.findNearbyPlayers(
       userId,
-      parseFloat(lat || '0'),
-      parseFloat(lng || '0'),
-      radius ? parseInt(radius) : 10000,
+      dto.lat,
+      dto.lng,
+      dto.radius ?? 10000,
     );
   }
 }

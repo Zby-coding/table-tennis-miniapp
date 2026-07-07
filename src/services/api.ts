@@ -65,6 +65,8 @@ async function request<T = any>(
       Taro.removeStorageSync('token');
       _token = '';
       Taro.showToast({ title: '请重新登录', icon: 'none' });
+      Taro.reLaunch({ url: '/pages/index/index' });
+      throw new Error('Unauthorized');
     }
 
     return res.data as any;

@@ -2,6 +2,7 @@ import { Controller, Post, Get, Param, Body } from '@nestjs/common';
 import { CheckinService } from './checkin.service';
 import { CurrentUser } from '../../common/decorators/current-user.decorator';
 import { Public } from '../../common/decorators/public.decorator';
+import { CheckinDto } from './dto/checkin.dto';
 
 @Controller('api/checkin')
 export class CheckinController {
@@ -10,7 +11,7 @@ export class CheckinController {
   @Post('in')
   async checkin(
     @CurrentUser('sub') userId: number,
-    @Body() body: { courtId: number; lat: number; lng: number },
+    @Body() body: CheckinDto,
   ) {
     return this.checkinService.checkin(userId, body.courtId, body.lat, body.lng);
   }

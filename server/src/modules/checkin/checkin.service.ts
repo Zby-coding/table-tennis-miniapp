@@ -1,4 +1,4 @@
-import { Injectable, BadRequestException, Inject, Logger } from '@nestjs/common';
+import { Injectable, BadRequestException, ServiceUnavailableException, Inject, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, In } from 'typeorm';
 import { ConfigService } from '@nestjs/config';
@@ -25,6 +25,7 @@ export class CheckinService {
   ) {}
 
   async checkin(userId: number, courtId: number, userLat: number, userLng: number) {
+    if (!this.redis) throw new ServiceUnavailableException('服务暂不可用');
     // 1. Fetch court coordinates and validate GPS
     const court = await this.courtRepo.findOne({ where: { id: courtId } });
     if (!court) throw new BadRequestException('场地不存在');
@@ -80,13 +81,30 @@ export class CheckinService {
         activePlayers: await this.redis.get(courtCountKey),
       };
     } catch (err) {
-      // Rollback Redis guard on DB failure
+      // Best-effort rollback: DB record
+      try {
+        await this.checkinRepo.delete({ userId, courtId, status: 1 });
+      } catch (dbErr) {
+        this.logger.error(`Failed to rollback DB checkin for user ${userId}`, dbErr);
+      }
+      // Best-effort rollback: Redis counters
+      try {
+        await this.redis.pipeline()
+          .decr(`court:${courtId}:active_count`)
+          .srem(`court:${courtId}:active_users`, String(userId))
+          .del(`user:${userId}:checkin_time`)
+          .exec();
+      } catch (redisErr) {
+        this.logger.error(`Failed to rollback Redis state for user ${userId}`, redisErr);
+      }
+      // Always delete the guard key (this is the most critical rollback)
       await this.redis.del(activeKey);
       throw err;
     }
   }
 
   async checkout(userId: number) {
+    if (!this.redis) throw new ServiceUnavailableException('服务暂不可用');
     const activeKey = `user:${userId}:checkin`;
     const courtId = await this.redis.get(activeKey);
 

@@ -1,6 +1,6 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, BadRequestException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Repository, DataSource } from 'typeorm';
 import { MatchRecord } from '../../entities/match-record.entity';
 import { User } from '../../entities/user.entity';
 import { AchievementService } from '../achievement/achievement.service';
@@ -13,6 +13,7 @@ export class MatchService {
     @InjectRepository(User)
     private userRepo: Repository<User>,
     private achievementService: AchievementService,
+    private dataSource: DataSource,
   ) {}
 
   async getRecords(userId: number, page: number = 1, limit: number = 20) {
@@ -51,37 +52,63 @@ export class MatchService {
     courtId?: number;
     playedAt?: Date;
   }) {
-    const record = this.matchRepo.create(data);
-    await this.matchRepo.save(record);
-
-    // Batch update: increment totalMatches for both, wins for winner only
-    await Promise.all([
-      this.userRepo.increment({ id: data.winnerId }, 'totalMatches', 1),
-      this.userRepo.increment({ id: data.winnerId }, 'wins', 1),
-      this.userRepo.increment({ id: data.loserId }, 'totalMatches', 1),
-    ]);
-
-    // Check consecutive wins (not total wins)
-    const recentMatches = await this.matchRepo.find({
-      where: [{ winnerId: data.winnerId }, { loserId: data.winnerId }],
-      order: { createdAt: 'DESC' },
-      take: 5,
-    });
-    const consecutiveWins = recentMatches.every((m) => m.winnerId === data.winnerId);
-    if (recentMatches.length >= 5 && consecutiveWins) {
-      await this.achievementService.checkAndAward(data.winnerId, 'swift_wins');
+    if (data.winnerId === data.loserId) {
+      throw new BadRequestException('不能和自己比赛');
     }
+    const record = this.matchRepo.create(data);
+
+    await this.dataSource.transaction(async (manager) => {
+      // Save the match record
+      await manager.save(record);
+
+      // Lock both user rows to prevent concurrent lost-updates, then increment atomically
+      await manager
+        .createQueryBuilder(User, 'user')
+        .setLock('pessimistic_write')
+        .where('user.id IN (:...ids)', { ids: [data.winnerId, data.loserId] })
+        .getMany();
+
+      // Batch update: increment totalMatches for both, wins for winner only
+      await Promise.all([
+        manager.increment(User, { id: data.winnerId }, 'totalMatches', 1),
+        manager.increment(User, { id: data.winnerId }, 'wins', 1),
+        manager.increment(User, { id: data.loserId }, 'totalMatches', 1),
+      ]);
+
+      // Check consecutive wins inside transaction for consistency
+      const recentMatches = await manager.find(MatchRecord, {
+        where: [{ winnerId: data.winnerId }, { loserId: data.winnerId }],
+        order: { createdAt: 'DESC' },
+        take: 5,
+      });
+      const consecutiveWins = recentMatches.every((m) => m.winnerId === data.winnerId);
+      if (recentMatches.length >= 5 && consecutiveWins) {
+        // Delegate to achievement service's own transaction-aware logic
+        await this.achievementService.checkAndAward(data.winnerId, 'swift_wins');
+      }
+    });
 
     return record;
   }
 
   async findNearbyPlayers(userId: number, lat: number, lng: number, radius: number = 10000) {
+    // Pre-compute bounding box to filter geographically in the database
+    const latDelta = radius / 111320;
+    const lngDelta = radius / (111320 * Math.cos(lat * Math.PI / 180));
+    const latMin = lat - latDelta;
+    const latMax = lat + latDelta;
+    const lngMin = lng - lngDelta;
+    const lngMax = lng + lngDelta;
+
     const players = await this.userRepo
       .createQueryBuilder('user')
       .where('user.id != :userId', { userId })
       .andWhere('user.homeLat IS NOT NULL')
       .andWhere('user.homeLng IS NOT NULL')
-      .limit(50)
+      .andWhere('user.homeLat BETWEEN :latMin AND :latMax', { latMin, latMax })
+      .andWhere('user.homeLng BETWEEN :lngMin AND :lngMax', { lngMin, lngMax })
+      .orderBy('(ABS(user.homeLat - :lat) + ABS(user.homeLng - :lng))', 'ASC')
+      .setParameters({ lat, lng })
       .getMany();
 
     // Calculate distances in JS (SQLite-compatible)

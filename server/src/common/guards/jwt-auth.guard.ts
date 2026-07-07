@@ -1,4 +1,4 @@
-import { Injectable, CanActivate, ExecutionContext, UnauthorizedException } from '@nestjs/common';
+import { Injectable, CanActivate, ExecutionContext, UnauthorizedException, Logger } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
@@ -10,6 +10,8 @@ import { IS_PUBLIC_KEY } from '../decorators/public.decorator';
  */
 @Injectable()
 export class JwtAuthGuard implements CanActivate {
+  private readonly logger = new Logger(JwtAuthGuard.name);
+
   constructor(
     private jwtService: JwtService,
     private configService: ConfigService,
@@ -31,12 +33,11 @@ export class JwtAuthGuard implements CanActivate {
     }
 
     try {
-      const payload = this.jwtService.verify(token, {
-        secret: this.configService.get<string>('jwt.secret'),
-      });
+      const payload = this.jwtService.verify(token);
       request.user = payload;
       return true;
-    } catch {
+    } catch (err) {
+      this.logger.warn('JWT verify failed:', (err as Error).message);
       throw new UnauthorizedException('登录已过期，请重新登录');
     }
   }

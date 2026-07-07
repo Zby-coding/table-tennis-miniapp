@@ -47,8 +47,12 @@ export default function SquarePage() {
   }, [searchQuery]);
 
   const handleJoin = useCallback(async (postId: string) => {
+    const numId = parseInt(postId.replace('post_', ''));
+    if (isNaN(numId)) {
+      Taro.showToast({ title: '无效的约球ID', icon: 'none' });
+      return;
+    }
     try {
-      const numId = parseInt(postId.replace('post_', ''));
       const res = await joinPost(numId);
       if (res.code === 0) {
         Taro.showToast({ title: '加入成功!', icon: 'success' });
@@ -57,19 +61,7 @@ export default function SquarePage() {
         Taro.showToast({ title: res.message || '加入失败', icon: 'none' });
       }
     } catch (err) {
-      // 本地 fallback：直接修改列表
-      setPosts(prev => prev.map(p => {
-        if (p.id === postId && p.joinedCount < p.totalCapacity) {
-          const newCount = p.joinedCount + 1;
-          return {
-            ...p, joinedCount: newCount,
-            status: newCount >= p.totalCapacity ? '已满员' : p.status,
-            isJoinedByMe: true,
-          };
-        }
-        return p;
-      }));
-      Taro.showToast({ title: '已加入(本地)', icon: 'success' });
+      Taro.showToast({ title: '网络错误，请重试', icon: 'none' });
     }
   }, [loadPosts]);
 
