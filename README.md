@@ -158,16 +158,18 @@ table-tennis-miniapp/
 
 ```bash
 cd server
-npm install
+npm install --legacy-peer-deps
 npx nest build
-npm start
+# 插入 8 个南阳乒乓球场地数据
+PORT=3017 node dist/seed.js
+PORT=3017 node dist/main.js
 # 后端运行在 http://localhost:3017
 ```
 
 ### 编译小程序
 
 ```bash
-npm install
+npm install --legacy-peer-deps
 npx taro build --type weapp
 # 产物在 dist/ 目录
 ```
@@ -193,9 +195,9 @@ npx taro build --type weapp --watch
 ### 种子数据
 
 ```bash
-cd server && npm install && npm run build
+cd server && npm install --legacy-peer-deps && npx nest build
 # 插入 8 个南阳乒乓球场地数据
-node dist/seed.js
+PORT=3017 node dist/seed.js
 ```
 
 ---
@@ -222,7 +224,7 @@ MIT
 
 ## 🔗 相关链接
 
-- [微信小程序前端仓库](https://github.com/Zby-coding/table-tennis-miniapp)
-- [Web 模拟器版本](https://github.com/Zby-coding/table-tennis-pro)
+- [微信小程序仓库](https://github.com/Zby-coding/table-tennis-miniapp)
+- [Web 模拟器版本 (React)](https://github.com/Zby-coding/table-tennis-pro)
 - [Taro 官方文档](https://taro-docs.jd.com/)
 - [NestJS 官方文档](https://docs.nestjs.com/)
