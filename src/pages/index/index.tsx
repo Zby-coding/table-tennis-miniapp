@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { View, Map, Input, ScrollView, Text } from '@tarojs/components';
-import Taro, { useDidShow, useReady } from '@tarojs/taro';
+import Taro, { useReady } from '@tarojs/taro';
 import { Court } from '@/types';
 import { getNearbyCourts, checkin as apiCheckin, toggleFavorite, getFavorites } from '@/services/api';
 import './index.scss';
@@ -81,11 +81,14 @@ export default function IndexPage() {
     } finally { setLoading(false); }
   }, [activeFilter, searchQuery, userLocation, getLocation]);
 
-  // ── 初始加载 ──
-  useDidShow(() => {
+  // ── 初始加载: 只在首次 mount 时调用, 不重复触发 ──
+  const loadedRef = useRef(false);
+  useEffect(() => {
+    if (loadedRef.current) return;
+    loadedRef.current = true;
     getLocation().then(loc => { if(loc) loadCourts(loc); else loadCourts(); });
     getFavorites().then(r => { if(r.code===0) setFavorites(new Set((r.data||[]).map((c:any)=>Number(c.id)))); }).catch(()=>{});
-  });
+  }, []);
 
   useReady(() => { mapCtx.current = Taro.createMapContext(mapId); });
 
