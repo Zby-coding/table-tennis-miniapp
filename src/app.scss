@@ -1,0 +1,85 @@
+/* ============================================
+   TableTennisPro 设计系统 (移植自 table-tennis-pro)
+   ============================================ */
+
+/* ── 页面级 CSS 变量 ── */
+page {
+  --color-primary: #FF6B35;
+  --color-primary-light: #FF8C5E;
+  --color-primary-dark: #E0552B;
+  --color-on-primary: #FFFFFF;
+  --color-primary-container: #FFF0E8;
+
+  --color-secondary: #1A73E8;
+  --color-secondary-light: #4D94F0;
+  --color-secondary-dark: #1557B0;
+  --color-secondary-container: #E8F0FE;
+
+  --color-tertiary: #F59E0B;
+  --color-tertiary-container: #FFF7E0;
+
+  --color-surface: #FAFAFA;
+  --color-surface-container: #EEEEEE;
+  --color-surface-container-low: #F5F5F5;
+  --color-surface-container-lowest: #FFFFFF;
+  --color-surface-container-high: #E8E8E8;
+
+  --color-success: #0F9D58;
+  --color-success-container: #E8F5E9;
+  --color-warning: #F59E0B;
+  --color-error: #D93025;
+  --color-error-container: #FCE8E6;
+
+  --color-wechat-green: #07C160;
+  --color-ball-orange: #FF6B35;
+  --color-court-blue: #1A73E8;
+  --color-energy-yellow: #FBBC04;
+
+  --color-on-surface: #1A1A2E;
+  --color-on-surface-variant: #5F6368;
+  --color-on-surface-muted: #9AA0A6;
+  --color-outline: #DADCE0;
+  --color-outline-variant: #E8EAED;
+  --color-background: #F8F9FA;
+
+  --shadow-soft: 0 1px 3px rgba(0,0,0,0.04);
+  --shadow-card: 0 2px 8px rgba(0,0,0,0.06);
+  --shadow-elevated: 0 4px 16px rgba(0,0,0,0.08);
+  --shadow-floating: 0 8px 32px rgba(0,0,0,0.12);
+  --shadow-primary: 0 4px 12px rgba(255,107,53,0.3);
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 24px;
+
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'PingFang SC', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #1A1A2E;
+  background-color: #F8F9FA;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+view, text, image, input, button, scroll-view {
+  box-sizing: border-box;
+}
+
+/* ── 全局工具类 ── */
+.gradient-primary {
+  background: linear-gradient(135deg, #FF6B35, #FF8C5E);
+}
+.gradient-cool {
+  background: linear-gradient(135deg, #1A73E8, #4D94F0);
+}
+.gradient-energy {
+  background: linear-gradient(135deg, #FF6B35, #F59E0B);
+}
+.score-number {
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+::-webkit-scrollbar { display: none; width: 0; height: 0; }

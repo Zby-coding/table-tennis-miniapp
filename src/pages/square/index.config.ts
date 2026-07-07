@@ -1,0 +1,1 @@
+export default { navigationBarTitleText: '约球广场' };

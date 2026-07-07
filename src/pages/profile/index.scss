@@ -1,0 +1,52 @@
+.profile-page { width: 100%; min-height: 100vh; background: #F8F9FA; }
+
+.pf-card {
+  margin: 0 0 16px;
+  background: linear-gradient(135deg, #FF6B35, #E0552B);
+  border-radius: 0 0 24px 24px;
+  padding: 24px 20px 20px;
+  position: relative;
+  overflow: hidden;
+}
+.pf-card-bg {
+  position: absolute; top: -30px; right: -20px;
+  width: 120px; height: 120px; border-radius: 60px;
+  background: rgba(255,255,255,.1);
+}
+.pf-avatar-wrap { display: flex; justify-content: center; margin-bottom: 10px; position: relative; z-index: 1; }
+.pf-avatar {
+  width: 64px; height: 64px; border-radius: 32px;
+  background: rgba(255,255,255,.2); border: 3px solid rgba(255,255,255,.4);
+  display: flex; align-items: center; justify-content: center;
+}
+.pf-avatar-text { font-size: 28px; }
+.pf-name-row { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 16px; position: relative; z-index: 1; }
+.pf-name { font-size: 20px; font-weight: 700; color: #fff; }
+.pf-level { background: rgba(255,255,255,.15); padding: 4px 12px; border-radius: 10px; }
+.pf-level-text { font-size: 11px; color: #fff; font-weight: 600; }
+
+.pf-stats { display: flex; position: relative; z-index: 1; border-top: 1px solid rgba(255,255,255,.15); padding-top: 14px; }
+.pf-stat { flex: 1; text-align: center; }
+.pf-stat-val { font-size: 18px; font-weight: 800; color: #fff; }
+.pf-stat-label { font-size: 11px; color: rgba(255,255,255,.6); margin-top: 2px; }
+
+.pf-section-title { padding: 0 16px; margin-bottom: 10px; font-size: 15px; font-weight: 700; color: #333; }
+.pf-achs { padding: 0 16px; white-space: nowrap; margin-bottom: 16px; }
+.pf-ach {
+  display: inline-flex; flex-direction: column; align-items: center;
+  width: 72px; padding: 10px 0; border-radius: 12px;
+  background: #fff; margin-right: 10px; box-shadow: 0 1px 4px rgba(0,0,0,.04);
+  &.locked { opacity: .4; filter: grayscale(1); }
+}
+.pf-ach-icon { font-size: 24px; }
+.pf-ach-name { font-size: 10px; color: #666; margin-top: 4px; font-weight: 600; }
+
+.pf-menu { background: #fff; margin: 0 16px 20px; border-radius: 16px; overflow: hidden; }
+.pf-menu-item {
+  display: flex; align-items: center; gap: 12px; padding: 16px;
+  border-bottom: 1px solid #F5F5F5;
+  &:active { background: #F9F9F9; }
+}
+.pf-menu-icon { font-size: 18px; }
+.pf-menu-label { flex: 1; font-size: 15px; font-weight: 500; color: #333; }
+.pf-menu-arrow { font-size: 18px; color: #ccc; }

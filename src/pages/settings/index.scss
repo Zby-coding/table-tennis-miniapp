@@ -1,0 +1,22 @@
+.set-page { width: 100%; min-height: 100vh; background: #F8F9FA; }
+
+.set-section-title { padding: 16px 16px 8px; font-size: 12px; color: #999; font-weight: 600; }
+.set-card { background: #fff; margin: 0 16px 16px; border-radius: 16px; overflow: hidden; }
+.set-row { display: flex; justify-content: space-between; align-items: center; padding: 16px; }
+.set-row-left { display: flex; flex-direction: column; }
+.set-row-icon { font-size: 18px; margin-right: 8px; }
+.set-row-label { font-size: 15px; font-weight: 600; color: #333; }
+.set-row-desc { font-size: 12px; color: #999; margin-top: 2px; }
+.set-row-right { display: flex; align-items: center; gap: 4px; }
+.set-arrow { font-size: 20px; color: #ccc; }
+.set-divider { height: 1px; background: #F5F5F5; margin: 0 16px; }
+
+.set-logout {
+  margin: 24px 16px; padding: 14px 0; border-radius: 14px;
+  background: #FCE8E6; text-align: center;
+  &:active { opacity: .8; }
+}
+.set-logout-text { font-size: 15px; font-weight: 600; color: #D93025; }
+
+.set-version { text-align: center; padding: 20px 0; }
+.set-version text { font-size: 12px; color: #ccc; }

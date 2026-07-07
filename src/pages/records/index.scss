@@ -1,0 +1,36 @@
+.rec-page { width: 100%; min-height: 100vh; background: #F8F9FA; padding-bottom: 40px; }
+
+.rec-rank-card {
+  margin: 16px; padding: 20px; border-radius: 20px;
+  background: linear-gradient(135deg, #1A73E8, #0D3B78);
+  display: flex; justify-content: space-between; align-items: center;
+  position: relative; overflow: hidden;
+}
+.rec-rank-bg { position:absolute; top:-20px; right:-20px; width:100px; height:100px; border-radius:50px; background:rgba(255,255,255,.1); }
+.rec-rank-content { position: relative; z-index: 1; }
+.rec-rank-title { font-size:22px; font-weight:800; color:#fff; display:block; }
+.rec-rank-sub { font-size:12px; color:rgba(255,255,255,.7); margin-top:4px; }
+.rec-rank-icon { font-size:40px; position:relative; z-index:1; }
+
+.rec-stats { display:flex; margin:0 16px 16px; gap:10px; }
+.rec-stat { flex:1; background:#fff; border-radius:14px; padding:16px; text-align:center; box-shadow:0 1px 4px rgba(0,0,0,.04); }
+.rec-stat-val { font-size:22px; font-weight:800; display:block; }
+.rec-stat-label { font-size:11px; color:#999; margin-top:4px; }
+.rec-stat:nth-child(1) .rec-stat-val { color:#FF6B35; }
+.rec-stat:nth-child(2) .rec-stat-val { color:#0F9D58; }
+
+.rec-section-title { padding:0 16px 10px; font-size:15px; font-weight:700; color:#333; }
+
+.rec-card { display:flex; margin:0 16px 10px; background:#fff; border-radius:14px; overflow:hidden; box-shadow:0 1px 4px rgba(0,0,0,.04); }
+.rec-card-strip { width:4px; &.win { background:#0F9D58; } &.lose { background:#D93025; } }
+.rec-card-body { flex:1; padding:14px; }
+.rec-card-top { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px; }
+.rec-opp-name { font-size:14px; font-weight:600; }
+.rec-time { font-size:10px; color:#999; display:block; margin-top:2px; }
+.rec-score { text-align:right; }
+.rec-score-val { font-size:20px; font-weight:800; &.win { color:#0F9D58; } &.lose { color:#D93025; } }
+.rec-score-badge { display:inline-block; padding:2px 8px; border-radius:6px; font-size:10px; font-weight:700; margin-top:2px;
+  &.win { background:#E8F5E9; color:#0F9D58; } &.lose { background:#FCE8E6; color:#D93025; }
+}
+.rec-loc { border-top:1px solid #F5F5F5; padding-top:8px; }
+.rec-loc-text { font-size:11px; color:#999; }

@@ -1,0 +1,39 @@
+.social-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 32px;
+  text-align: center;
+  background: #F5F5F5;
+}
+
+.social-icon-wrap {
+  width: 80px;
+  height: 80px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(#FF6B35, 0.1), rgba(#FF6B35, 0.05));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.social-icon {
+  font-size: 40px;
+}
+
+.social-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1A1A2E;
+  margin-bottom: 8px;
+}
+
+.social-desc {
+  font-size: 14px;
+  color: #999;
+  line-height: 1.6;
+  max-width: 260px;
+}

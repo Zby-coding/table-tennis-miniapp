@@ -1,0 +1,94 @@
+.square-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #F8F9FA;
+  padding-bottom: 100px;
+}
+
+.sq-search-bar {
+  padding: 12px 16px;
+}
+.sq-search-input {
+  width: 100%;
+  height: 40px;
+  border-radius: 12px;
+  background: #fff;
+  padding: 0 14px;
+  font-size: 14px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.06);
+  border: 1px solid #eee;
+}
+
+.sq-tabs {
+  display: flex;
+  border-bottom: 1px solid #eee;
+}
+.sq-tab {
+  flex: 1;
+  text-align: center;
+  padding: 12px 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #999;
+  &.active { color: #FF6B35; border-bottom: 2px solid #FF6B35; }
+}
+
+.sq-filters {
+  padding: 10px 16px;
+  white-space: nowrap;
+}
+.sq-filter-btn {
+  display: inline-block;
+  padding: 6px 14px;
+  margin-right: 8px;
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid #eee;
+}
+.sq-filter-text { font-size: 12px; color: #666; }
+
+.sq-list { padding: 0 16px; }
+.sq-empty { text-align: center; padding: 60px 0; color: #bbb; }
+
+.sq-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.04);
+  position: relative;
+  overflow: hidden;
+}
+.sq-card-status {
+  position: absolute;
+  top: 0; right: 0;
+  padding: 4px 14px;
+  border-radius: 0 16px 0 12px;
+}
+.sq-status-text { font-size: 11px; color: #fff; font-weight: 700; }
+
+.sq-card-title { font-size: 16px; font-weight: 700; margin: 8px 0 10px; display: block; }
+.sq-card-meta { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+.sq-meta-item { font-size: 12px; color: #666; }
+.sq-card-desc { font-size: 13px; color: #888; margin-bottom: 12px; }
+
+.sq-join-btn {
+  background: linear-gradient(135deg, #FF6B35, #FF8C5E);
+  border-radius: 10px; padding: 10px 0; text-align: center;
+  &:active { opacity: .9; }
+}
+.sq-disabled-btn {
+  background: #E0E0E0; border-radius: 10px; padding: 10px 0; text-align: center;
+}
+.sq-join-text { font-size: 14px; color: #fff; font-weight: 700; }
+.sq-disabled-btn .sq-join-text { color: #999; }
+
+.sq-fab {
+  position: fixed;
+  bottom: 24px; right: 24px;
+  background: linear-gradient(135deg, #FF6B35, #F59E0B);
+  padding: 14px 20px; border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(255,107,53,.3);
+  &:active { transform: scale(.95); }
+}
+.sq-fab-text { font-size: 15px; color: #fff; font-weight: 700; }

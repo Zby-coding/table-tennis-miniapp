@@ -1,0 +1,8 @@
+export default {
+  navigationBarTitleText: '🏓 乒乓球场地',
+  navigationBarBackgroundColor: '#FF6B35',
+  navigationBarTextStyle: 'white',
+  backgroundColor: '#F5F5F5',
+  enablePullDownRefresh: false,
+  disableScroll: true,
+};
