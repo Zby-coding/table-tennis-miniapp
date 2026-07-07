@@ -143,8 +143,10 @@ export default function IndexPage() {
     } catch {}
   }, [selectedCourt]);
 
-  // ── markers 来自 courts 状态 (后端API数据) ──
-  const markers = courts.map(c => ({
+  // ── markers 来自 courts 状态 (后端API数据)，过滤掉无效坐标 ──
+  const markers = courts
+    .filter(c => c.lat != null && c.lng != null)
+    .map(c => ({
     id: Number(c.id),
     latitude: c.lat,
     longitude: c.lng,
