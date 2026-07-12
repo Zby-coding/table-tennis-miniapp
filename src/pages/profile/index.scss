@@ -39,7 +39,7 @@
   &.locked { opacity: .4; filter: grayscale(1); }
 }
 .pf-ach-icon { font-size: 24px; }
-.pf-ach-name { font-size: 10px; color: #666; margin-top: 4px; font-weight: 600; }
+.pf-ach-name { display: block; width: 100%; overflow: hidden; text-align: center; text-overflow: ellipsis; white-space: nowrap; font-size: 10px; color: #666; margin-top: 4px; font-weight: 600; }
 
 .pf-menu { background: #fff; margin: 0 16px 20px; border-radius: 16px; overflow: hidden; }
 .pf-menu-item {

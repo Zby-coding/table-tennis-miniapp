@@ -16,7 +16,7 @@
 import Taro from '@tarojs/taro';
 
 // 开发环境: 局域网IP (仅开发时用)
-const LAN_IP = '192.168.0.101';
+const LAN_IP = '192.168.0.102';
 const PORT = '3017';
 // Taro 默认 NODE_ENV=development, process.env.NODE_ENV 在小程序中总是 undefined
 // 所以直接用三元判断 process.env.NODE_ENV 不生效
@@ -62,10 +62,13 @@ async function request<T = any>(
     });
 
     if (res.statusCode === 401) {
+      const hadToken = Boolean(getToken());
       Taro.removeStorageSync('token');
       _token = '';
+      if (hadToken) {
       Taro.showToast({ title: '请重新登录', icon: 'none' });
       Taro.reLaunch({ url: '/pages/index/index' });
+      }
       throw new Error('Unauthorized');
     }
 
@@ -78,7 +81,7 @@ async function request<T = any>(
     if (msg.includes('url not in domain list')) {
       Taro.showModal({
         title: '开发环境域名提示',
-        content: `请将 ${LAN_IP}:${PORT} 添加到微信小程序 request 合法域名白名单\n或在开发者工具中关闭"不校验合法域名"`,
+        content: `请将 ${BASE_URL} 添加到微信小程序 request 合法域名白名单\n或在开发者工具中关闭"不校验合法域名"`,
         showCancel: false,
       });
     }
@@ -109,7 +112,7 @@ export function updateUserProfile(data: { nickname?: string; avatarUrl?: string;
 export function getNearbyCourts(lat: number, lng: number, filters?: {
   isFree?: boolean; isIndoor?: boolean; hasLighting?: boolean; keyword?: string;
 }) {
-  const params = new URLSearchParams({ lat: String(lat), lng: String(lng), radius: '10000' });
+  const params = new URLSearchParams({ lat: String(lat), lng: String(lng), radius: '150000' });
   if (filters?.isFree !== undefined) params.set('isFree', String(filters.isFree));
   if (filters?.isIndoor !== undefined) params.set('isIndoor', String(filters.isIndoor));
   if (filters?.hasLighting !== undefined) params.set('hasLighting', String(filters.hasLighting));
@@ -203,3 +206,6 @@ export function uploadFile(filePath: string) {
     header: { Authorization: `Bearer ${getToken()}` },
   });
 }
+
+
+

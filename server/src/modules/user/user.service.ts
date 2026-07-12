@@ -84,10 +84,10 @@ export class UserService {
 
   private getAchievementIcon(key: string): string {
     const icons: Record<string, string> = {
-      visit_100_days: 'military_tech', early_riser: 'wb_sunny',
-      swift_wins: 'bolt', social_butterfly: 'groups',
-      first_checkin: 'where_to_vote', reviewer: 'rate_review',
+      visit_100_days: '🏆', early_riser: '☀️',
+      swift_wins: '⚡', social_butterfly: '🤝',
+      first_checkin: '📍', reviewer: '📝',
     };
-    return icons[key] || 'emoji_events';
+    return icons[key] || '🏅';
   }
 }

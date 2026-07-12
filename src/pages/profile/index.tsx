@@ -9,7 +9,16 @@ import { getUserProfile, getAchievements } from '@/services/api';
 import { INITIAL_USER_PROFILE } from '@/data';
 import './index.scss';
 
-const DEFAULT_PROFILE: UserProfile = INITIAL_USER_PROFILE;
+const DEFAULT_PROFILE: UserProfile = INITIAL_USER_PROFILE;const ACHIEVEMENT_ICONS: Record<string, string> = {
+  military_tech: '🏆', wb_sunny: '☀️', bolt: '⚡', groups: '🤝',
+  where_to_vote: '📍', rate_review: '📝', verified: '✅', emoji_events: '🏅',
+};
+
+const normalizeAchievement = (achievement: any) => ({
+  ...achievement,
+  icon: ACHIEVEMENT_ICONS[achievement?.icon] || (String(achievement?.icon || '').length <= 2 ? achievement.icon : '🏅'),
+});
+
 
 export default function ProfilePage() {
   const [profile, setProfile] = useState<UserProfile>(DEFAULT_PROFILE);
@@ -23,10 +32,10 @@ export default function ProfilePage() {
       const [pRes, aRes] = await Promise.all([getUserProfile(), getAchievements()]);
       if (pRes.code === 0) {
         // 合并后端成就到 profile
-        setProfile({ ...pRes.data, achievements: aRes.code === 0 ? aRes.data : pRes.data.achievements || [] });
+        setProfile({ ...pRes.data, achievements: aRes.code === 0 ? aRes.data.map(normalizeAchievement) : (pRes.data.achievements || []).map(normalizeAchievement) });
       }
       if (aRes.code === 0 && pRes.code !== 0) {
-        setProfile(prev => ({ ...prev, achievements: aRes.data }));
+        setProfile(prev => ({ ...prev, achievements: aRes.data.map(normalizeAchievement) }));
       }
     } catch { /* keep defaults */ }
   };

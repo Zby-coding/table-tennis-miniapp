@@ -6,13 +6,13 @@ import { User } from '../../entities/user.entity';
 
 // Achievement definitions
 const ACHIEVEMENTS = {
-  first_checkin: { name: '初次打卡', desc: '完成第一次场地签到', icon: 'where_to_vote', points: 10 },
-  visit_100_days: { name: '百日球王', desc: '累计打球达到100小时', icon: 'military_tech', points: 100 },
-  early_riser: { name: '早起达人', desc: '在早上8点前签到10次', icon: 'wb_sunny', points: 50 },
-  swift_wins: { name: '迅捷如风', desc: '连续赢得5场比赛', icon: 'bolt', points: 80 },
-  social_butterfly: { name: '广交球友', desc: '与20名不同的球友切磋', icon: 'groups', points: 60 },
-  reviewer: { name: '点评达人', desc: '发表10条场地评价', icon: 'rate_review', points: 30 },
-  custom_badge: { name: '自定义勋章', desc: '上传第一个自定义图标', icon: 'verified', points: 15 },
+  first_checkin: { name: '初次打卡', desc: '完成第一次场地签到', icon: '📍', points: 10 },
+  visit_100_days: { name: '百日球王', desc: '累计打球达到100小时', icon: '🏆', points: 100 },
+  early_riser: { name: '早起达人', desc: '在早上8点前签到10次', icon: '☀️', points: 50 },
+  swift_wins: { name: '迅捷如风', desc: '连续赢得5场比赛', icon: '⚡', points: 80 },
+  social_butterfly: { name: '广交球友', desc: '与20名不同的球友切磋', icon: '🤝', points: 60 },
+  reviewer: { name: '点评达人', desc: '发表10条场地评价', icon: '📝', points: 30 },
+  custom_badge: { name: '自定义勋章', desc: '上传第一个自定义图标', icon: '✅', points: 15 },
 } as const;
 
 export type AchievementKey = keyof typeof ACHIEVEMENTS;

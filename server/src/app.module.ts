@@ -1,4 +1,4 @@
-import { Module, Global } from '@nestjs/common';
+﻿import { Module, Global } from '@nestjs/common';
 import { APP_GUARD } from '@nestjs/core';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -10,6 +10,7 @@ import { databaseConfig } from './config/database.config';
 import { redisConfig } from './config/redis.config';
 import { jwtConfig } from './config/jwt.config';
 import { entities } from './entities';
+import { AppController } from './app.controller';
 import { JwtAuthGuard } from './common/guards/jwt-auth.guard';
 import { UserModule } from './modules/user/user.module';
 import { AuthModule } from './modules/auth/auth.module';
@@ -61,7 +62,7 @@ import { RedisModule } from './modules/redis/redis.module';
       inject: [ConfigService],
       useFactory: (config: ConfigService) => ({
         secret: config.get<string>('jwt.secret'),
-        signOptions: { expiresIn: config.get<string>('jwt.expiresIn', '7d') },
+        signOptions: { expiresIn: '7d' as const },
       }),
     }),
     ScheduleModule.forRoot(),
@@ -74,5 +75,7 @@ import { RedisModule } from './modules/redis/redis.module';
     { provide: APP_GUARD, useClass: JwtAuthGuard },
     { provide: APP_GUARD, useClass: ThrottlerGuard },
   ],
+  controllers: [AppController],
 })
 export class AppModule {}
+

@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+﻿import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Inject } from '@nestjs/common';
@@ -6,6 +6,7 @@ import Redis from 'ioredis';
 import { Court } from '../../entities/court.entity';
 import { CourtReview } from '../../entities/court-review.entity';
 import { Favorite } from '../../entities/favorite.entity';
+import { PaidCourtProvider, ThirdPartyPaidCourt } from './paid-court.provider';
 
 @Injectable()
 export class CourtService {
@@ -16,7 +17,8 @@ export class CourtService {
     private reviewRepo: Repository<CourtReview>,
     @InjectRepository(Favorite)
     private favoriteRepo: Repository<Favorite>,
-    @Inject('REDIS_CLIENT') private redis: Redis,
+    @Inject('REDIS_CLIENT') private redis: Redis | null,
+    private paidCourtProvider: PaidCourtProvider,
   ) {}
 
   /**
@@ -58,25 +60,30 @@ export class CourtService {
     }
 
     const courts = await qb.limit(500).getMany();
+    const paidCourts = await this.getPaidCourtsForNearby(lat, lng, radius, filters);
 
-    // Enrich distance + filter by radius in JS (SQLite-compatible)
     const enriched = courts
       .map((court) => {
         const distance = this.calcDistance(lat, lng, Number(court.lat), Number(court.lng));
         return { court, distance };
       })
       .filter(({ distance }) => distance <= radius)
+      .map(({ court, distance }) => ({ court, distance, thirdParty: false }))
+      .concat(paidCourts)
       .sort((a, b) => a.distance - b.distance)
       .slice(0, 30);
-    // Single MGET for all active counts
-    const keys = enriched.map(({ court }) => `court:${court.id}:active_count`);
-    const counts = this.redis
-      ? (await this.redis.mget(...keys)).map((v) => parseInt(v || '0', 10))
-      : enriched.map(() => 0);
 
-    return enriched.map(({ court, distance }, i) => ({
+    const dbItems = enriched.filter((item) => !item.thirdParty);
+    const keys = dbItems.map(({ court }) => `court:${court.id}:active_count`);
+    const redisCounts = this.redis && keys.length > 0
+      ? (await this.redis.mget(...keys)).map((v) => parseInt(v || '0', 10))
+      : keys.map(() => 0);
+    const countByCourtId = new Map<number, number>();
+    dbItems.forEach(({ court }, i) => countByCourtId.set(Number(court.id), redisCounts[i] || 0));
+
+    return enriched.map(({ court, distance, thirdParty }) => ({
       ...court,
-      activePlayers: counts[i],
+      activePlayers: thirdParty ? 0 : countByCourtId.get(Number(court.id)) || 0,
       distanceStr: distance < 1000 ? `${Math.round(distance)}m` : `${(distance / 1000).toFixed(1)}km`,
       lat: Number(court.lat),
       lng: Number(court.lng),
@@ -88,7 +95,11 @@ export class CourtService {
    */
   async getDetail(id: number) {
     const court = await this.courtRepo.findOne({ where: { id } });
-    if (!court) throw new NotFoundException('场地不存在');
+    if (!court) {
+      const paidCourt = (await this.paidCourtProvider.fetchPaidCourts('南阳')).find((item) => item.id === id);
+      if (!paidCourt) throw new NotFoundException('场地不存在');
+      return { ...paidCourt, activePlayers: 0, reviews: [] };
+    }
 
     const reviews = await this.reviewRepo.find({
       where: { courtId: id },
@@ -127,7 +138,6 @@ export class CourtService {
     const review = this.reviewRepo.create({ userId, courtId, rating, content, images });
     await this.reviewRepo.save(review);
 
-    // Update court average rating
     const avg = await this.reviewRepo
       .createQueryBuilder('r')
       .select('AVG(r.rating)', 'avg')
@@ -186,6 +196,38 @@ export class CourtService {
       features: ['用户贡献'],
     });
     return this.courtRepo.save(court);
+  }
+
+  private async getPaidCourtsForNearby(lat: number, lng: number, radius: number, filters?: {
+    isFree?: boolean;
+    isIndoor?: boolean;
+    hasLighting?: boolean;
+    keyword?: string;
+  }) {
+    if (filters?.isFree === true) return [];
+
+    const paidCourts = await this.paidCourtProvider.fetchPaidCourts('南阳');
+    const keyword = filters?.keyword?.trim().toLowerCase();
+
+    return paidCourts
+      .filter((court) => filters?.isIndoor === undefined || court.isIndoor === filters.isIndoor)
+      .filter((court) => filters?.hasLighting === undefined || court.hasLighting === filters.hasLighting)
+      .filter((court) => !keyword || court.name.toLowerCase().includes(keyword) || court.address.toLowerCase().includes(keyword))
+      .map((court) => ({ court: this.normalizePaidCourt(court), distance: this.calcDistance(lat, lng, court.lat, court.lng), thirdParty: true }))
+      .filter(({ distance }) => distance <= radius);
+  }
+
+  private normalizePaidCourt(court: ThirdPartyPaidCourt) {
+    return {
+      ...court,
+      photos: [],
+      galleryImages: [],
+      photo: '',
+      status: 1,
+      contributorId: null,
+      reviews: [],
+      favorites: [],
+    } as any;
   }
 
   private calcDistance(lat1: number, lng1: number, lat2: number, lng2: number): number {

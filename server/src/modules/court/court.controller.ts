@@ -4,11 +4,13 @@ import { CurrentUser } from '../../common/decorators/current-user.decorator';
 import { NearbyCourtsDto } from './dto/nearby-courts.dto';
 import { ReviewCourtDto } from './dto/review-court.dto';
 import { CreateCourtDto } from './dto/create-court.dto';
+import { Public } from '../../common/decorators/public.decorator';
 
 @Controller('api/courts')
 export class CourtController {
   constructor(private courtService: CourtService) {}
 
+  @Public()
   @Get('nearby')
   async nearby(@Query() dto: NearbyCourtsDto) {
     return this.courtService.findNearby(
@@ -24,6 +26,7 @@ export class CourtController {
     );
   }
 
+  @Public()
   @Get(':id')
   async detail(@Param('id') id: string) {
     return this.courtService.getDetail(parseInt(id));

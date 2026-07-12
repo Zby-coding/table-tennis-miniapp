@@ -1,4 +1,4 @@
-import { IsLatitude, IsLongitude, IsOptional, IsInt, Min, Max } from 'class-validator';
+import { IsLatitude, IsLongitude, IsOptional, IsInt, IsBooleanString, Min, Max } from 'class-validator';
 import { Type } from 'class-transformer';
 
 export class NearbyCourtsDto {
@@ -14,18 +14,22 @@ export class NearbyCourtsDto {
   @Type(() => Number)
   @IsInt()
   @Min(100)
-  @Max(50000)
+  @Max(150000)
   radius?: number;
 
   @IsOptional()
+  @IsBooleanString()
   isFree?: string;
 
   @IsOptional()
+  @IsBooleanString()
   isIndoor?: string;
 
   @IsOptional()
+  @IsBooleanString()
   hasLighting?: string;
 
   @IsOptional()
   keyword?: string;
 }
+

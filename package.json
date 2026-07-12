@@ -10,11 +10,13 @@
   },
   "scripts": {
     "build:weapp": "taro build --type weapp",
+    "build:weapp:direct": "node scripts/run-weapp-direct.js",
     "build:swan": "taro build --type swan",
     "build:alipay": "taro build --type alipay",
     "build:tt": "taro build --type tt",
     "build:h5": "taro build --type h5",
     "dev:weapp": "npm run build:weapp -- --watch",
+    "dev:weapp:direct": "node scripts/run-weapp-direct.js --watch",
     "dev:h5": "npm run build:h5 -- --watch"
   },
   "browserslist": [
@@ -28,8 +30,8 @@
     "@tarojs/components": "4.1.9",
     "@tarojs/helper": "4.1.9",
     "@tarojs/plugin-framework-react": "4.1.9",
-    "@tarojs/plugin-platform-weapp": "4.1.9",
     "@tarojs/plugin-platform-h5": "4.1.9",
+    "@tarojs/plugin-platform-weapp": "4.1.9",
     "@tarojs/react": "4.1.9",
     "@tarojs/runtime": "4.1.9",
     "@tarojs/shared": "4.1.9",
@@ -40,11 +42,13 @@
   "devDependencies": {
     "@babel/core": "^7.24.0",
     "@babel/preset-react": "^7.24.0",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.6.2",
     "@tarojs/cli": "4.1.9",
     "@tarojs/webpack5-runner": "4.1.9",
     "@types/react": "^18.2.0",
     "babel-preset-taro": "4.1.9",
+    "react-refresh": "^0.18.0",
     "typescript": "^5.3.0",
-    "webpack": "5.90.0"
+    "webpack": "^5.91.0"
   }
 }
