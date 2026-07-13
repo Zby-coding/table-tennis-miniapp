@@ -1,40 +1,51 @@
 import React, { useCallback, useMemo, useRef, useState } from 'react';
-import { View, Map as TaroMap, Input, ScrollView, Text } from '@tarojs/components';
+import { View, Map as TaroMap, Input, ScrollView, Text, Image } from '@tarojs/components';
 import Taro, { useReady } from '@tarojs/taro';
 import { Court } from '@/types';
+import CourtNameText from '@/components/CourtNameText';
 import { getNearbyCourts, checkin as apiCheckin, toggleFavorite, getFavorites } from '@/services/api';
+import {
+  DEFAULT_LOCATION,
+  isValidCoord,
+  getUserLocation,
+  ensureLocationPermission,
+  openCourtNavigation,
+} from '@/utils/location';
 import './index.scss';
 
 const withReviews = (court: Omit<Court, 'reviews'>): Court => ({ ...court, reviews: [] });
 
 const FALLBACK_COURTS: Court[] = [
-  withReviews({ id: 1, name: '白河湿地公园乒乓球区', address: '南阳市卧龙区白河大道', isFree: true, isIndoor: false, activePlayers: 15, distanceStr: '0.8km', tableCount: 10, material: '户外地砖', hasLighting: false, openHours: '全天', photo: '', galleryImages: [], lat: 32.9864, lng: 112.5349, rating: 4.5, features: ['免费开放', '河边风景', '空气好', '本市最热门'] }),
-  withReviews({ id: 2, name: '南阳市体育中心乒乓球场', address: '南阳市卧龙区滨河路', isFree: true, isIndoor: false, activePlayers: 8, distanceStr: '1.5km', tableCount: 6, material: '塑胶', hasLighting: true, openHours: '06:00-21:00', photo: '', galleryImages: [], lat: 32.9906, lng: 112.5284, rating: 4.3, features: ['免费开放', '塑胶地面', '夜间灯光'] }),
-  withReviews({ id: 3, name: '南阳理工学院乒乓球区', address: '南阳市宛城区长江路80号', isFree: true, isIndoor: false, activePlayers: 12, distanceStr: '2.1km', tableCount: 8, material: '水泥防滑', hasLighting: false, openHours: '06:00-20:00', photo: '', galleryImages: [], lat: 32.9788, lng: 112.5412, rating: 4.0, features: ['校园场地', '免费开放', '学生多'] }),
-  withReviews({ id: 4, name: '解放广场乒乓球角', address: '南阳市卧龙区中州路', isFree: true, isIndoor: false, activePlayers: 6, distanceStr: '3.0km', tableCount: 4, material: '水泥', hasLighting: false, openHours: '06:00-20:00', photo: '', galleryImages: [], lat: 32.9951, lng: 112.5219, rating: 3.8, features: ['市中心', '免费开放', '便民设施'] }),
-  withReviews({ id: 5, name: '汉冶路社区活动中心', address: '南阳市宛城区汉冶路', isFree: true, isIndoor: true, activePlayers: 3, distanceStr: '4.2km', tableCount: 2, material: '塑胶', hasLighting: true, openHours: '08:00-21:00', photo: '', galleryImages: [], lat: 33.0012, lng: 112.5498, rating: 3.5, features: ['室内', '社区免费', '灯光好'] }),
-  withReviews({ id: 6, name: '仲景养生小镇乒乓球区', address: '南阳市卧龙区仲景路', isFree: false, isIndoor: true, activePlayers: 4, distanceStr: '5.1km', tableCount: 3, material: '专业运动地板', hasLighting: true, openHours: '09:00-22:00', photo: '', galleryImages: [], lat: 32.9715, lng: 112.5103, rating: 4.2, features: ['付费15元/时', '室内空调', '专业级'] }),
-  withReviews({ id: 7, name: '南阳师范学院乒乓球场', address: '南阳市卧龙区卧龙路1638号', isFree: true, isIndoor: false, activePlayers: 20, distanceStr: '3.8km', tableCount: 12, material: '塑胶', hasLighting: true, openHours: '06:00-22:00', photo: '', galleryImages: [], lat: 32.9756, lng: 112.5034, rating: 4.7, features: ['免费开放', '球台多', '高手聚集'] }),
-  withReviews({ id: 8, name: '独山大道体育公园', address: '南阳市宛城区独山大道', isFree: true, isIndoor: false, activePlayers: 10, distanceStr: '2.5km', tableCount: 6, material: '户外硅PU', hasLighting: false, openHours: '06:00-19:00', photo: '', galleryImages: [], lat: 33.0089, lng: 112.5523, rating: 4.1, features: ['免费开放', '公园环境', '停车方便'] }),
-  withReviews({ id: 9, name: '二技校对面河边附近', address: '南阳市第二技工学校对面白河沿岸（点位待现场核验）', isFree: true, isIndoor: false, activePlayers: 0, distanceStr: '待定位', tableCount: 2, material: '户外水泥', hasLighting: false, openHours: '全天', photo: '', galleryImages: [], lat: 32.9942, lng: 112.5318, rating: 3.8, features: ['免费开放', '河边公共空间', '位置待核验'] }),
-  withReviews({ id: 10, name: '罗洼公园乒乓球区', address: '南阳市罗洼公园公共活动区（点位待现场核验）', isFree: true, isIndoor: false, activePlayers: 0, distanceStr: '待定位', tableCount: 2, material: '户外水泥', hasLighting: false, openHours: '全天', photo: '', galleryImages: [], lat: 32.9821, lng: 112.5667, rating: 3.8, features: ['免费开放', '公园公共设施', '位置待核验'] }),
-  withReviews({ id: 900001, name: '卓悦乒搏俱乐部', address: '南阳市区付费乒乓球俱乐部', isFree: false, isIndoor: true, activePlayers: 0, distanceStr: '1.4km', tableCount: 8, material: '专业运动地胶', hasLighting: true, openHours: '09:00-22:00', photo: '', galleryImages: [], lat: 32.9902, lng: 112.5288, rating: 4.6, features: ['第三方付费场馆', '乒乓球俱乐部', '室内球台', '需确认价格'] }),
-  withReviews({ id: 900008, name: '淘气猫梦幻岛（乒乓球区）', address: '南阳市淘气猫梦幻岛综合娱乐场所（具体门店与球台位置待核验）', isFree: false, isIndoor: true, activePlayers: 0, distanceStr: '待定位', tableCount: 2, material: '室内综合场地', hasLighting: true, openHours: '营业时间待核验', photo: '', galleryImages: [], lat: 32.9940, lng: 112.5310, rating: 4.0, features: ['综合娱乐场所', '疑似设有乒乓球区', '收费状态待核实', '坐标待核验'] }),
+  withReviews({ id: 1, name: '白河湿地公园乒乓球区', address: '河南省南阳市卧龙区白河大道白河湿地公园', isFree: true, isIndoor: false, activePlayers: 15, distanceStr: '0.8km', tableCount: 10, material: '户外地砖', hasLighting: false, openHours: '全天', photo: '', galleryImages: [], lat: 32.9864, lng: 112.5349, rating: 4.5, features: ['免费开放', '河边风景', '空气好', '本市最热门'], coordVerified: true }),
+  withReviews({ id: 2, name: '南阳市体育中心乒乓球场', address: '河南省南阳市宛城区滨河东路与鼎盛路交叉口东205米路北南阳体育中心', isFree: true, isIndoor: false, activePlayers: 8, distanceStr: '1.5km', tableCount: 6, material: '塑胶', hasLighting: true, openHours: '06:00-21:00', photo: '', galleryImages: [], lat: 32.990969, lng: 112.575669, rating: 4.3, features: ['免费开放', '塑胶地面', '夜间灯光'], coordVerified: true }),
+  withReviews({ id: 3, name: '南阳理工学院乒乓球区', address: '河南省南阳市宛城区长江路80号南阳理工学院', isFree: true, isIndoor: false, activePlayers: 12, distanceStr: '2.1km', tableCount: 8, material: '水泥防滑', hasLighting: false, openHours: '06:00-20:00', photo: '', galleryImages: [], lat: 32.9788, lng: 112.5412, rating: 4.0, features: ['校园场地', '免费开放', '学生多'], coordVerified: true }),
+  withReviews({ id: 4, name: '解放广场乒乓球角', address: '河南省南阳市卧龙区中州中路解放广场', isFree: true, isIndoor: false, activePlayers: 6, distanceStr: '3.0km', tableCount: 4, material: '水泥', hasLighting: false, openHours: '06:00-20:00', photo: '', galleryImages: [], lat: 32.9951, lng: 112.5219, rating: 3.8, features: ['市中心', '免费开放', '便民设施'], coordVerified: true }),
+  withReviews({ id: 5, name: '汉冶路社区活动中心', address: '河南省南阳市宛城区汉冶路汉冶路社区活动中心', isFree: true, isIndoor: true, activePlayers: 3, distanceStr: '4.2km', tableCount: 2, material: '塑胶', hasLighting: true, openHours: '08:00-21:00', photo: '', galleryImages: [], lat: 33.0012, lng: 112.5498, rating: 3.5, features: ['室内', '社区免费', '灯光好'], coordVerified: true }),
+  withReviews({ id: 6, name: '仲景养生小镇乒乓球区', address: '河南省南阳市卧龙区仲景路仲景养生小镇', isFree: false, isIndoor: true, activePlayers: 4, distanceStr: '5.1km', tableCount: 3, material: '专业运动地板', hasLighting: true, openHours: '09:00-22:00', photo: '', galleryImages: [], lat: 32.9715, lng: 112.5103, rating: 4.2, features: ['付费15元/时', '室内空调', '专业级'], coordVerified: true }),
+  withReviews({ id: 7, name: '南阳师范学院乒乓球场', address: '河南省南阳市卧龙区卧龙路1638号南阳师范学院', isFree: true, isIndoor: false, activePlayers: 20, distanceStr: '3.8km', tableCount: 12, material: '塑胶', hasLighting: true, openHours: '06:00-22:00', photo: '', galleryImages: [], lat: 32.9756, lng: 112.5034, rating: 4.7, features: ['免费开放', '球台多', '高手聚集'], coordVerified: true }),
+  withReviews({ id: 8, name: '独山大道体育公园', address: '河南省南阳市宛城区独山大道体育公园', isFree: true, isIndoor: false, activePlayers: 10, distanceStr: '2.5km', tableCount: 6, material: '户外硅PU', hasLighting: false, openHours: '06:00-19:00', photo: '', galleryImages: [], lat: 33.0089, lng: 112.5523, rating: 4.1, features: ['免费开放', '公园环境', '停车方便'], coordVerified: true }),
+  withReviews({ id: 9, name: '二技校对面河边乒乓球区', address: '河南省南阳市卧龙区滨河中路256号南阳市第二技工学校对面白河沿岸', isFree: true, isIndoor: false, activePlayers: 0, distanceStr: '1.2km', tableCount: 2, material: '户外水泥', hasLighting: false, openHours: '全天', photo: '', galleryImages: [], lat: 32.9945, lng: 112.5278, rating: 3.8, features: ['免费开放', '河边公共空间', '坐标已核实'], coordVerified: true }),
+  withReviews({ id: 10, name: '罗洼公园乒乓球区', address: '河南省南阳市宛城区张衡大道与新野路交叉口东南角罗洼体育公园北侧专业运动区', isFree: true, isIndoor: false, activePlayers: 0, distanceStr: '2.8km', tableCount: 2, material: '户外水泥', hasLighting: false, openHours: '全天', photo: '', galleryImages: [], lat: 32.9875, lng: 112.5718, rating: 3.8, features: ['免费开放', '公园公共设施', '坐标已核实'], coordVerified: true }),
+  withReviews({ id: 900001, name: '卓悦乒搏俱乐部', address: '河南省南阳市卧龙区张衡街道两相东路实验学校西666米瑞金福邸西头三楼', isFree: false, isIndoor: true, activePlayers: 0, distanceStr: '3.5km', tableCount: 8, material: '专业运动地胶', hasLighting: true, openHours: '09:00-22:00', photo: '', galleryImages: [], lat: 32.9986, lng: 112.5142, rating: 4.6, features: ['乒乓球培训', '室内球台', '坐标已核实'], venueType: 'training', coordVerified: true }),
+  withReviews({ id: 900002, name: '挥扬乒乓球运动俱乐部', address: '河南省南阳市宛城区汉冶街道金苑福润花园8号楼商业区2楼北1号', isFree: false, isIndoor: true, activePlayers: 0, distanceStr: '2.1km', tableCount: 6, material: '室内运动地胶', hasLighting: true, openHours: '09:00-21:30', photo: '', galleryImages: [], lat: 33.0042, lng: 112.5488, rating: 4.5, features: ['乒乓球培训', '少儿培训', '坐标已核实'], venueType: 'training', coordVerified: true }),
+  withReviews({ id: 900009, name: '南阳市青少年体育运动训练中心', address: '河南省南阳市宛城区滨河东路与鼎盛路交叉口东205米路北第一体育健身中心游泳馆三楼', isFree: false, isIndoor: true, activePlayers: 0, distanceStr: '2.0km', tableCount: 50, material: '专业运动地板', hasLighting: true, openHours: '09:00-17:00', photo: '', galleryImages: [], lat: 32.990969, lng: 112.575669, rating: 4.8, features: ['市级体校', '专业训练', '坐标已核实'], venueType: 'training', coordVerified: true }),
+  withReviews({ id: 900010, name: '爱尚乒乓', address: '河南省南阳市示范区商苑社区经十路与长江路口向东五十米路南兴华花园2楼西侧商业', isFree: false, isIndoor: true, activePlayers: 0, distanceStr: '2.4km', tableCount: 6, material: '室内运动地胶', hasLighting: true, openHours: '09:00-21:00', photo: '', galleryImages: [], lat: 32.9786, lng: 112.5548, rating: 4.0, features: ['乒乓球培训', '坐标已核实'], venueType: 'training', coordVerified: true }),
 ];
 
 const FILTERS = ['全部', '免费', '室内', '有灯光'] as const;
 const FILTER_TONES: Record<typeof FILTERS[number], string> = { 全部: 'all', 免费: 'free', 室内: 'indoor', 有灯光: 'lighting' };
-const DEFAULT_LOCATION = { lat: 32.9864, lng: 112.5349 };
 const INITIAL_MAP_SCALE = 14;
 const isH5 = process.env.TARO_ENV === 'h5';
 
-const isValidCoord = (lat: unknown, lng: unknown) => {
-  const nLat = Number(lat);
-  const nLng = Number(lng);
-  return Number.isFinite(nLat) && Number.isFinite(nLng) && nLat > 10 && nLat < 60 && nLng > 50 && nLng < 180;
-};
-
 const toBool = (value: unknown) => value === true || value === 1 || value === '1' || value === 'true';
+
+const getCourtThumb = (court: Court): string => {
+  const live = court.livePhotos?.[0];
+  if (live) return live;
+  if (court.galleryImages?.[0]) return court.galleryImages[0];
+  if (court.facilityPhotos?.[0]) return court.facilityPhotos[0];
+  return court.photo || '';
+};
 
 const normalizeCourt = (court: any): Court => ({
   ...court,
@@ -49,8 +60,15 @@ const normalizeCourt = (court: any): Court => ({
   rating: Number(court.rating || 0),
   photo: court.photo || '',
   galleryImages: court.galleryImages || [],
+  livePhotos: court.livePhotos || [],
+  photoSource: court.photoSource,
+  description: court.description || '',
+  facilityPhotos: court.facilityPhotos || [],
+  enrichmentMeta: court.enrichmentMeta || null,
   features: court.features || [],
   reviews: court.reviews || [],
+  venueType: court.venueType,
+  coordVerified: court.coordVerified === true || court.features?.includes('坐标已核实'),
 });
 
 const filterFallbackCourts = (filter: string, query: string) => {
@@ -66,10 +84,10 @@ const filterFallbackCourts = (filter: string, query: string) => {
 };
 
 const getMarkerIconPath = (court: Court) => {
-  if (!court.isFree) return '../../assets/marker-paid.png';
-  if (court.isIndoor) return '../../assets/marker-indoor.png';
-  if (court.hasLighting) return '../../assets/marker-hot.png';
-  return '../../assets/marker-free.png';
+  if (!court.isFree) return '../../assets/markers/marker-paid.png';
+  if (court.isIndoor) return '../../assets/markers/marker-indoor.png';
+  if (court.hasLighting) return '../../assets/markers/marker-hot.png';
+  return '../../assets/markers/marker-free.png';
 };
 
 const pickInitialCenter = (courts: Court[]) => {
@@ -98,24 +116,32 @@ export default function IndexPage() {
   const [checkingIn, setCheckingIn] = useState(false);
   const [checkedInId, setCheckedInId] = useState<number | null>(null);
   const [favorites, setFavorites] = useState<Set<number>>(new Set());
+  const [mapCenter, setMapCenter] = useState(DEFAULT_LOCATION);
 
   const markerTapFlagRef = useRef(false);
   const loadedRef = useRef(false);
-  const mapCenterRef = useRef(DEFAULT_LOCATION);
   const mapId = 'home-tennis-map';
 
-  const getLocation = useCallback(async () => {
+  const moveMapToUser = useCallback((loc: { lat: number; lng: number }) => {
+    if (isH5 || !isValidCoord(loc.lat, loc.lng)) return;
     try {
-      const setting = await Taro.getSetting();
-      if (setting.authSetting?.['scope.userLocation'] === false) return DEFAULT_LOCATION;
-      const res = await Taro.getLocation({ type: 'gcj02' });
-      const loc = isValidCoord(res.latitude, res.longitude) ? { lat: Number(res.latitude), lng: Number(res.longitude) } : DEFAULT_LOCATION;
-      setUserLocation(loc);
-      return loc;
+      Taro.createMapContext(mapId).moveToLocation();
     } catch {
-      setUserLocation(DEFAULT_LOCATION);
-      return DEFAULT_LOCATION;
+      // ignore map context errors on unsupported runtimes
     }
+  }, []);
+
+  const resolveUserLocation = useCallback(async (requestPermission = false) => {
+    const result = await getUserLocation();
+    if (result.denied && requestPermission) {
+      const permitted = await ensureLocationPermission();
+      if (!permitted) return { location: DEFAULT_LOCATION, denied: true, fromGps: false };
+      const retry = await getUserLocation();
+      setUserLocation(retry.location);
+      return retry;
+    }
+    setUserLocation(result.location);
+    return result;
   }, []);
 
   const loadCourts = useCallback(async (loc?: { lat: number; lng: number }, filterName?: string, queryStr?: string) => {
@@ -124,7 +150,7 @@ export default function IndexPage() {
     setLoading(true);
 
     try {
-      const location = loc || userLocation || (await getLocation());
+      const location = loc || userLocation || (await resolveUserLocation()).location;
       const params: { isFree?: boolean; isIndoor?: boolean; hasLighting?: boolean; keyword?: string } = {};
       if (filter === '免费') params.isFree = true;
       if (filter === '室内') params.isIndoor = true;
@@ -147,7 +173,7 @@ export default function IndexPage() {
     } finally {
       setLoading(false);
     }
-  }, [activeFilter, getLocation, searchQuery, userLocation]);
+  }, [activeFilter, resolveUserLocation, searchQuery, userLocation]);
 
   useReady(() => {
     if (loadedRef.current) return;
@@ -175,7 +201,13 @@ export default function IndexPage() {
           .catch((error) => console.warn('[Favorites] Load failed:', error));
       }
 
-      loadCourts(DEFAULT_LOCATION).catch((error) => console.error('[Courts] Failed:', error));
+      resolveUserLocation()
+        .then((result) => {
+          setMapCenter(result.location);
+          if (result.fromGps) moveMapToUser(result.location);
+          return loadCourts(result.location);
+        })
+        .catch((error) => console.error('[Courts] Failed:', error));
     }, 200);
   });
 
@@ -192,8 +224,6 @@ export default function IndexPage() {
 
       anchor: { x: 0.5, y: 0.9 },
     })), [courts]);
-
-  const mapCenter = mapCenterRef.current;
 
   const handleMarkerTap = useCallback((event: any) => {
     const markerId = Number(event?.detail?.markerId);
@@ -217,15 +247,22 @@ export default function IndexPage() {
   }, []);
 
   const handleNavigate = useCallback((court: Court) => {
-    Taro.openLocation({ latitude: court.lat, longitude: court.lng, name: court.name, address: court.address, scale: 16 })
-      .catch(() => Taro.showToast({ title: '请授权位置权限', icon: 'none' }));
+    openCourtNavigation(court, { mapId });
+  }, [mapId]);
+
+  const handleClosePreview = useCallback(() => {
+    setShowPreview(false);
   }, []);
 
   const handleCheckin = useCallback(async () => {
     if (!selectedCourt || checkingIn) return;
     setCheckingIn(true);
     try {
-      const loc = await getLocation();
+      const { location: loc, denied } = await resolveUserLocation(true);
+      if (denied) {
+        Taro.showToast({ title: '需要位置权限才能签到', icon: 'none' });
+        return;
+      }
       const res = await apiCheckin(selectedCourt.id, loc.lat, loc.lng);
       if (res.code === 0) {
         setCheckedInId(selectedCourt.id);
@@ -238,7 +275,7 @@ export default function IndexPage() {
     } finally {
       setCheckingIn(false);
     }
-  }, [checkingIn, getLocation, selectedCourt]);
+  }, [checkingIn, resolveUserLocation, selectedCourt]);
 
   const handleFavorite = useCallback(async () => {
     if (!selectedCourt) return;
@@ -280,6 +317,7 @@ export default function IndexPage() {
           longitude={mapCenter.lng}
           scale={INITIAL_MAP_SCALE}
           markers={markers}
+          showLocation
           showCompass
           showScale
           enableZoom
@@ -311,12 +349,20 @@ export default function IndexPage() {
 
       {showPreview && selectedCourt && (
         <View className="court-preview">
+          <View className="preview-close" onClick={handleClosePreview}><Text>✕</Text></View>
           <View className="preview-header">
-            <Text className="preview-name">{selectedCourt.name}</Text>
-            <View className="preview-badges">
-              {selectedCourt.isFree ? <View className="badge badge-free"><Text>免费</Text></View> : <View className="badge badge-paid"><Text>付费</Text></View>}
-              <View className="badge badge-rating"><Text>⭐{selectedCourt.rating}</Text></View>
-              <View className="badge badge-active"><Text>🏓{selectedCourt.activePlayers || 0}人</Text></View>
+            <CourtNameText name={selectedCourt.name} variant="preview" />
+            <View className="preview-sub-row">
+              {getCourtThumb(selectedCourt) ? (
+                <Image className="preview-thumb" src={getCourtThumb(selectedCourt)} mode="aspectFill" />
+              ) : null}
+              <View className="preview-badges">
+                {selectedCourt.isFree ? <View className="badge badge-free"><Text>免费</Text></View> : <View className="badge badge-paid"><Text>付费</Text></View>}
+                {selectedCourt.venueType === 'training' ? <View className="badge badge-training"><Text>培训馆</Text></View> : null}
+                {selectedCourt.coordVerified ? <View className="badge badge-verified"><Text>坐标已核实</Text></View> : null}
+                <View className="badge badge-rating"><Text>⭐{selectedCourt.rating}</Text></View>
+                <View className="badge badge-active"><Text>🏓{selectedCourt.activePlayers || 0}人</Text></View>
+              </View>
             </View>
           </View>
           <Text className="preview-address">{selectedCourt.address}</Text>
