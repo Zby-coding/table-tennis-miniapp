@@ -97,9 +97,6 @@ function validateTsxContract() {
   if (/className="cd-hero-name"/.test(detailSrc) || /<Text[^>]*cd-hero-name/.test(detailSrc)) {
     fail('[tsx] court-detail/index.tsx 仍使用裸 Text.cd-hero-name 渲染场点名称');
   }
-  if (/flex:\s*1/.test(componentSrc) || /flex:\s*1/.test(componentSrc.replace(/court-name/g, ''))) {
-    // Text 组件上不应有 flex
-  }
   if (!componentSrc.includes('court-name-inner')) {
     fail('[tsx] CourtNameText 应使用 court-name-inner 包裹 Text（避免微信 flex 宽度塌陷）');
   }
@@ -112,7 +109,7 @@ function validateScssContract() {
   const files = [
     { label: 'index.scss', path: INDEX_SCSS, classes: ['.preview-name'] },
     { label: 'court-detail/index.scss', path: DETAIL_SCSS, classes: ['.cd-hero-name'] },
-    { label: 'CourtNameText/index.scss', path: COMPONENT_SCSS, classes: ['.court-name-text', '.court-name-wrap'] },
+    { label: 'CourtNameText/index.scss', path: COMPONENT_SCSS, classes: ['.court-name-text', '.court-name-wrap', '.court-name-inner'] },
   ];
 
   for (const { label, path: filePath, classes } of files) {
