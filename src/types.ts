@@ -1,22 +1,49 @@
 export type LevelType = 'L1 萌新' | 'L2 进阶' | 'L3 高级' | 'Pro 大神';
 
+export type JoinStatusType = 'approved' | 'pending' | 'rejected' | null;
+
+export interface PostMember {
+  joinId: number;
+  userId: number;
+  nickname: string;
+  avatar: string;
+  level: LevelType;
+  status: 'approved' | 'pending' | 'rejected';
+  isOrganizer: boolean;
+}
+
 export interface MatchPost {
   id: string;
+  courtId?: number;
   organizerName: string;
   organizerAvatar: string;
   organizerLevel: LevelType;
   title: string;
   locationName: string;
   timeStr: string;
+  startTime?: string;
   joinedCount: number;
   totalCapacity: number;
   feeType: 'AA制' | '免费' | '付费';
   feeValue: number;
   description: string;
   status: string;
+  requireApproval?: boolean;
+  pendingCount?: number;
   participants: string[];
   isJoinedByMe?: boolean;
+  isPendingByMe?: boolean;
+  myJoinStatus?: JoinStatusType;
+  isOrganizerByMe?: boolean;
   createdAt?: string;
+}
+
+export interface MatchPostDetail extends MatchPost {
+  courtAddress?: string;
+  courtLat?: number | null;
+  courtLng?: number | null;
+  members?: PostMember[];
+  pendingMembers?: PostMember[];
 }
 
 export interface CourtReview {

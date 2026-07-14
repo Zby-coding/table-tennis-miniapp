@@ -130,7 +130,8 @@ export function updateUserPreferences(data: { remindMatch?: boolean; remindSignI
 export function getNearbyCourts(lat: number, lng: number, filters?: {
   isFree?: boolean; isIndoor?: boolean; hasLighting?: boolean; keyword?: string;
 }) {
-  const params = new URLSearchParams({ lat: String(lat), lng: String(lng), radius: '10000' });
+  // 150km：覆盖南阳全域（含西峡等远端场馆，约 104km）
+  const params = new URLSearchParams({ lat: String(lat), lng: String(lng), radius: '150000' });
   if (filters?.isFree !== undefined) params.set('isFree', String(filters.isFree));
   if (filters?.isIndoor !== undefined) params.set('isIndoor', String(filters.isIndoor));
   if (filters?.hasLighting !== undefined) params.set('hasLighting', String(filters.hasLighting));
@@ -188,19 +189,71 @@ export function submitCourtBackground(courtId: number, url: string) {
 }
 
 // ── 约球 ──
-export function getPosts(keyword?: string) {
-  return request<any[]>(`/posts${keyword ? `?keyword=${encodeURIComponent(keyword)}` : ''}`);
+export interface PostQueryParams {
+  keyword?: string;
+  level?: string;
+  timeFilter?: string;
+}
+
+function buildPostQuery(params?: PostQueryParams | string) {
+  if (!params) return '';
+  if (typeof params === 'string') {
+    return params ? `?keyword=${encodeURIComponent(params)}` : '';
+  }
+  const qs = new URLSearchParams();
+  if (params.keyword) qs.set('keyword', params.keyword);
+  if (params.level && params.level !== '全部') qs.set('level', params.level);
+  if (params.timeFilter && params.timeFilter !== '全部') qs.set('timeFilter', params.timeFilter);
+  const query = qs.toString();
+  return query ? `?${query}` : '';
+}
+
+export function getPosts(params?: PostQueryParams | string) {
+  return request<any[]>(`/posts${buildPostQuery(params)}`);
+}
+
+export function getMyPosts(params?: PostQueryParams) {
+  return request<any[]>(`/posts/mine${buildPostQuery(params)}`);
 }
 
 export function createPost(data: {
   title: string; courtId: number; startTime: string;
   totalCapacity: number; feeType: string; feeValue: number; description?: string;
+  requireApproval?: boolean;
 }) {
   return request('/posts', { method: 'POST', data });
 }
 
+export function updatePost(postId: number, data: {
+  title?: string; courtId?: number; startTime?: string;
+  totalCapacity?: number; feeType?: string; feeValue?: number; description?: string;
+  requireApproval?: boolean;
+}) {
+  return request(`/posts/${postId}`, { method: 'PATCH', data });
+}
+
+export function deletePost(postId: number) {
+  return request(`/posts/${postId}`, { method: 'DELETE' });
+}
+
 export function joinPost(postId: number) {
   return request(`/posts/${postId}/join`, { method: 'POST' });
+}
+
+export function leavePost(postId: number) {
+  return request(`/posts/${postId}/leave`, { method: 'POST' });
+}
+
+export function getPostDetail(postId: number) {
+  return request<any>(`/posts/${postId}`);
+}
+
+export function approveJoin(postId: number, joinId: number) {
+  return request(`/posts/${postId}/joins/${joinId}/approve`, { method: 'POST' });
+}
+
+export function rejectJoin(postId: number, joinId: number) {
+  return request(`/posts/${postId}/joins/${joinId}/reject`, { method: 'POST' });
 }
 
 // ── 战绩 ──

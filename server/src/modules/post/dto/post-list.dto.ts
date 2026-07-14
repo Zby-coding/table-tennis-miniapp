@@ -1,4 +1,4 @@
-import { IsString, IsOptional } from 'class-validator';
+import { IsString, IsOptional, IsIn } from 'class-validator';
 
 export class PostListDto {
   @IsOptional()
@@ -6,6 +6,14 @@ export class PostListDto {
   keyword?: string;
 
   @IsOptional()
-  @IsString()
+  @IsIn(['recruiting', 'full'])
   status?: string;
+
+  @IsOptional()
+  @IsString()
+  level?: string;
+
+  @IsOptional()
+  @IsString()
+  timeFilter?: string;
 }

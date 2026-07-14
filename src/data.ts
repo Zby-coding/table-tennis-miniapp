@@ -63,38 +63,6 @@ export const INITIAL_MATCH_POSTS: MatchPost[] = [
     status: '招募中',
     participants: [IMAGES.player1, IMAGES.player2, IMAGES.checkedIn1]
   },
-  {
-    id: 'post_2',
-    organizerName: '小李',
-    organizerAvatar: IMAGES.xiaoLiAvatar,
-    organizerLevel: 'L1 萌新',
-    title: '周六早起锻炼，有新手一起吗？',
-    locationName: '奥森北园',
-    timeStr: '明天 09:00',
-    joinedCount: 1,
-    totalCapacity: 2,
-    feeType: '免费',
-    feeValue: 0,
-    description: '刚开始学习乒乓球，主要是早起锻炼身体，有新手朋友一块娱乐的吗？男女不限哈！',
-    status: '最后1席',
-    participants: [IMAGES.player3]
-  },
-  {
-    id: 'post_3',
-    organizerName: '王教练',
-    organizerAvatar: IMAGES.coachWangAvatar,
-    organizerLevel: 'Pro 大神',
-    title: '高水平对抗赛，欢迎围观',
-    locationName: '五棵松体育馆',
-    timeStr: '周日 14:00',
-    joinedCount: 4,
-    totalCapacity: 4,
-    feeType: '付费',
-    feeValue: 50,
-    description: '本市高水平业余交流赛，全部是由L3/Pro等级组成的局，欢迎围观和指导。包含专业裁判计分。',
-    status: '已满员',
-    participants: [IMAGES.player1, IMAGES.player2, IMAGES.player3, IMAGES.checkedIn2]
-  }
 ];
 
 export const INITIAL_COURTS: Court[] = [

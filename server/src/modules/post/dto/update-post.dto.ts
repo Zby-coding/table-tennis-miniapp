@@ -1,31 +1,37 @@
 import { IsString, IsInt, IsOptional, IsBoolean, Min, Max } from 'class-validator';
 import { Type } from 'class-transformer';
 
-export class CreatePostDto {
+export class UpdatePostDto {
+  @IsOptional()
   @IsString()
-  title: string;
+  title?: string;
 
+  @IsOptional()
   @Type(() => Number)
   @IsInt()
   @Min(1)
-  courtId: number;
+  courtId?: number;
 
+  @IsOptional()
   @IsString()
-  startTime: string;
+  startTime?: string;
 
+  @IsOptional()
   @Type(() => Number)
   @IsInt()
   @Min(2)
   @Max(100)
-  totalCapacity: number;
+  totalCapacity?: number;
 
+  @IsOptional()
   @IsString()
-  feeType: string;
+  feeType?: string;
 
+  @IsOptional()
   @Type(() => Number)
   @IsInt()
   @Min(0)
-  feeValue: number;
+  feeValue?: number;
 
   @IsOptional()
   @IsString()

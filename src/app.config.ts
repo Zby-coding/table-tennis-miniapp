@@ -5,6 +5,7 @@ export default {
     'pages/profile/index',
     'pages/profile-edit/index',
     'pages/court-detail/index',
+    'pages/post-detail/index',
     'pages/favorites/index',
     'pages/records/index',
     'pages/settings/index',

@@ -49,6 +49,9 @@ export class MatchPost {
   @Column({ type: 'varchar', length: 16, default: 'recruiting' })
   status: string;
 
+  @Column({ type: 'boolean', default: true })
+  requireApproval: boolean;
+
   @ManyToOne(() => User)
   @JoinColumn({ name: 'userId' })
   organizer: User;
