@@ -167,6 +167,45 @@ async function main() {
   }
 
   console.log('\n✅ 全部有图场地的 URL 可达');
+
+  // 模拟真机 request(arraybuffer) 路径：抽样拉二进制并检查 Content-Type
+  const sampleIds = [
+    ...new Set(
+      [910024, 910001, sampleLocal?.id, withMedia[0]?.id].filter((id) => Number.isFinite(Number(id))),
+    ),
+  ].slice(0, 4);
+
+  for (const id of sampleIds) {
+    const detail = await fetchJson(`/api/courts/${id}`);
+    const urls = collectMedia(detail).filter((u) => !isStockUrl(u) && !isLoopbackUrl(u));
+    if (!urls.length) {
+      console.log(`抽样 #${id} 无本地/平台图，跳过二进制检查`);
+      continue;
+    }
+    const url = urls[0];
+    const absolute = url.startsWith('http') ? url : `${API_BASE}${url.startsWith('/') ? '' : '/'}${url}`;
+    const res = await fetch(absolute, { signal: AbortSignal.timeout(15000) });
+    if (!res.ok) {
+      throw new Error(`抽样 #${id} GET ${absolute} → HTTP ${res.status}`);
+    }
+    const ctype = String(res.headers.get('content-type') || '');
+    const buf = Buffer.from(await res.arrayBuffer());
+    if (!ctype.includes('image') && buf.length < 100) {
+      throw new Error(`抽样 #${id} 非图片响应: content-type=${ctype} bytes=${buf.length}`);
+    }
+    if (buf.length < 100) {
+      throw new Error(`抽样 #${id} 图片过小: bytes=${buf.length}`);
+    }
+    // JPEG/PNG/WebP 魔数粗检
+    const isJpeg = buf[0] === 0xff && buf[1] === 0xd8;
+    const isPng = buf[0] === 0x89 && buf[1] === 0x50;
+    const isWebp = buf.length > 12 && buf.toString('ascii', 0, 4) === 'RIFF';
+    if (!isJpeg && !isPng && !isWebp) {
+      throw new Error(`抽样 #${id} 非常见图片魔数: ${absolute}`);
+    }
+    console.log(`✓ 抽样二进制 OK #${id} ${ctype || 'image/?'} ${buf.length}B`);
+  }
+
   console.log('\n—— 真机抽检建议 ——');
   console.log(`西峡场馆 IDs: ${xixia.map((c) => c.id).join(', ') || '(无)'}`);
   console.log(`市中心样本: ${centerish.map((c) => `${c.id}:${c.name}`).join(' | ') || '(无)'}`);

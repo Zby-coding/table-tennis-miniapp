@@ -133,32 +133,67 @@ export default function CourtDetailPage() {
     [livePhotos, localPhotoMap],
   );
 
-  // 真机 Image 直连网络图不稳定时，先 downloadFile 再展示本地临时路径
+  // 真机上 Image/downloadFile 对 HTTP 局域网更敏感；用 request(arraybuffer) 落盘后再展示。
+  // request 失败时不标记 broken，继续用原 URL 兜底；仅 Image.onError 才清空坏图。
   useEffect(() => {
     let cancelled = false;
     const pending = livePhotos.filter((url) => url && /^https?:\/\//i.test(url));
-    if (!pending.length) return undefined;
+    if (!pending.length || courtId == null) return undefined;
+
+    const extOf = (url: string) => {
+      const m = url.match(/\.(jpe?g|png|webp|gif)(\?|$)/i);
+      return m ? m[1].toLowerCase().replace('jpeg', 'jpg') : 'jpg';
+    };
 
     const hydrate = async () => {
-      for (const url of pending) {
+      const fs = Taro.getFileSystemManager();
+      const baseDir = `${Taro.env.USER_DATA_PATH}/court-media`;
+      try {
+        fs.accessSync(baseDir);
+      } catch {
         try {
-          const res = await Taro.downloadFile({ url });
-          if (cancelled) return;
-          if (res.statusCode >= 200 && res.statusCode < 300 && res.tempFilePath) {
-            setLocalPhotoMap((prev) => (prev[url] ? prev : { ...prev, [url]: res.tempFilePath }));
-          } else {
-            markPhotoBroken(url);
-          }
+          fs.mkdirSync(baseDir, true);
         } catch {
-          if (!cancelled) markPhotoBroken(url);
+          // 目录创建失败则跳过落盘，保留网络 URL
         }
       }
+
+      await Promise.all(
+        pending.map(async (url, index) => {
+          try {
+            const res = await Taro.request({
+              url,
+              method: 'GET',
+              responseType: 'arraybuffer',
+              timeout: 20000,
+            });
+            if (cancelled) return;
+            if (res.statusCode < 200 || res.statusCode >= 300 || !res.data) return;
+
+            const localPath = `${baseDir}/${courtId}-${index}.${extOf(url)}`;
+            await new Promise<void>((resolve, reject) => {
+              fs.writeFile({
+                filePath: localPath,
+                data: res.data as ArrayBuffer,
+                encoding: 'binary',
+                success: () => resolve(),
+                fail: (err) => reject(err),
+              });
+            });
+            if (cancelled) return;
+            setLocalPhotoMap((prev) => (prev[url] ? prev : { ...prev, [url]: localPath }));
+          } catch {
+            // 静默降级：不 markPhotoBroken，Image 仍用原 LAN URL
+          }
+        }),
+      );
     };
+
     hydrate();
     return () => {
       cancelled = true;
     };
-  }, [livePhotos, markPhotoBroken]);
+  }, [livePhotos, courtId]);
 
   const previewImages = (urls: string[], current: string) => {
     if (!urls.length) return;
