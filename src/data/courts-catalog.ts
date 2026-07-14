@@ -11,14 +11,38 @@ export const formatTableCount = (count: number | undefined | null): string => {
   return Number.isFinite(n) && n > 0 ? `${n}张` : '待确认';
 };
 
-/** Turn /uploads/... into absolute URL using API origin (strip trailing /api). */
+/** API origin without trailing /api (for static /uploads). */
+const getAssetOrigin = (): string => getApiBaseUrl().replace(/\/api\/?$/, '');
+
+const isLoopbackHost = (host: string): boolean => {
+  const h = host.toLowerCase();
+  return h === '127.0.0.1' || h === 'localhost' || h === '::1' || h === '[::1]';
+};
+
+/** Turn /uploads/... into absolute URL; rewrite localhost/127.0.0.1 to LAN origin for 真机. */
 export const resolvePublicAssetUrl = (url: string): string => {
   if (!url || typeof url !== 'string') return '';
   const trimmed = url.trim();
   if (!trimmed) return '';
-  if (/^https?:\/\//i.test(trimmed)) return trimmed;
-  if (trimmed.startsWith('//')) return `https:${trimmed}`;
-  const origin = getApiBaseUrl().replace(/\/api\/?$/, '');
+
+  const origin = getAssetOrigin();
+
+  if (trimmed.startsWith('//')) {
+    return resolvePublicAssetUrl(`https:${trimmed}`);
+  }
+
+  if (/^https?:\/\//i.test(trimmed)) {
+    try {
+      const parsed = new URL(trimmed);
+      if (isLoopbackHost(parsed.hostname)) {
+        return `${origin}${parsed.pathname}${parsed.search}${parsed.hash}`;
+      }
+      return trimmed;
+    } catch {
+      return trimmed;
+    }
+  }
+
   return `${origin}${trimmed.startsWith('/') ? '' : '/'}${trimmed}`;
 };
 

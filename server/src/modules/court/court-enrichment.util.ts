@@ -21,13 +21,39 @@ interface EnrichmentCacheEntry {
 
 let enrichmentCache: Record<string, EnrichmentCacheEntry> | null = null;
 
+const DEFAULT_LAN_PUBLIC = 'http://192.168.0.102:3017';
+
+function isLoopbackPublicUrl(url: string): boolean {
+  try {
+    const host = new URL(url).hostname.toLowerCase();
+    return host === '127.0.0.1' || host === 'localhost' || host === '::1';
+  } catch {
+    return /127\.0\.0\.1|localhost/i.test(url);
+  }
+}
+
 function getApiBase(): string {
-  return process.env.API_PUBLIC_URL || 'http://192.168.0.102:3017';
+  const configured = (process.env.API_PUBLIC_URL || '').trim().replace(/\/$/, '');
+  if (configured && !isLoopbackPublicUrl(configured)) {
+    return configured;
+  }
+  // 真机 Image 直连手机侧，禁止把环回地址下发给客户端
+  return DEFAULT_LAN_PUBLIC;
 }
 
 function toPublicUrl(value: string, base: string): string {
   if (!value) return '';
-  if (value.startsWith('http://') || value.startsWith('https://')) return value;
+  if (value.startsWith('http://') || value.startsWith('https://')) {
+    if (isLoopbackPublicUrl(value)) {
+      try {
+        const parsed = new URL(value);
+        return `${base}${parsed.pathname}${parsed.search}`;
+      } catch {
+        return value;
+      }
+    }
+    return value;
+  }
   return `${base}${value.startsWith('/') ? '' : '/'}${value}`;
 }
 

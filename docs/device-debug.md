@@ -22,13 +22,22 @@ node scripts/verify-court-media.mjs
 1. 重启 Nest（让 `API_PUBLIC_URL` 生效）
 2. `npm run build:weapp` 或 watch，再重新预览
 
+## 实况图与开发工具不一致
+
+若开发者工具能出图、真机详情「场点实况」空白/裂图：
+
+1. 图片 URL 不得含 `127.0.0.1` / `localhost`（手机上指向自身）。运行 `prepare-device-debug.mjs` 后重启后端。
+2. 勾选「不校验合法域名」。
+3. 真机调试优先 **2.0**；仍报 `cmdId:1003 / errCode:-50005` 则改用 **预览**（功能验收以预览为准）。
+4. 详情页会对局域网图先 `downloadFile` 再展示临时路径，与开发工具观感对齐。
+
 ## 开发者工具
 
 1. 从仓库根目录打开项目（`miniprogramRoot` 为 `dist/`）
 2. 详情 → 本地设置：勾选「不校验合法域名、web-view、TLS 版本以及 HTTPS 证书」
 3. `project.private.config.json` 已开启 `useLanDebug: true`
 4. 真机调试优先选 **2.0**；仍断连则改用 **预览**
-
+5. 修改代码后务必重新编译 `npm run build:weapp`（或 watch）再扫码
 ## 网络
 
 - 手机与电脑同一 WiFi（避免访客网络隔离）

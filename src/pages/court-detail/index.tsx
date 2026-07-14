@@ -1,7 +1,7 @@
 /**
  * 场地详情页 — 对应 table-tennis-pro 的 CourtDetailsView
  */
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { View, Text, ScrollView, Map, Image, Swiper, SwiperItem } from '@tarojs/components';
 import Taro, { useLoad } from '@tarojs/taro';
 import { Court } from '@/types';
@@ -54,12 +54,15 @@ export default function CourtDetailPage() {
   const [favorited, setFavorited] = useState(false);
   const [uploadingBg, setUploadingBg] = useState(false);
   const [brokenPhotos, setBrokenPhotos] = useState<string[]>([]);
+  /** 网络图经 downloadFile 后的本地临时路径，真机与开发工具对齐 */
+  const [localPhotoMap, setLocalPhotoMap] = useState<Record<string, string>>({});
 
   const loadCourt = useCallback(async (id: number, preferCache = true) => {
     setCourtId(id);
     setLoading(true);
     setError('');
     setBrokenPhotos([]);
+    setLocalPhotoMap({});
     setLiveIndex(0);
 
     if (preferCache) {
@@ -107,6 +110,7 @@ export default function CourtDetailPage() {
 
   useLoad((options: any) => {
     setBrokenPhotos([]);
+    setLocalPhotoMap({});
     if (options?.id) loadCourt(Number(options.id), true);
     else {
       setLoading(false);
@@ -123,6 +127,38 @@ export default function CourtDetailPage() {
   const markPhotoBroken = useCallback((url: string) => {
     setBrokenPhotos((prev) => (prev.includes(url) ? prev : [...prev, url]));
   }, []);
+
+  const displayPhotos = useMemo(
+    () => livePhotos.map((url) => ({ remote: url, src: localPhotoMap[url] || url })),
+    [livePhotos, localPhotoMap],
+  );
+
+  // 真机 Image 直连网络图不稳定时，先 downloadFile 再展示本地临时路径
+  useEffect(() => {
+    let cancelled = false;
+    const pending = livePhotos.filter((url) => url && /^https?:\/\//i.test(url));
+    if (!pending.length) return undefined;
+
+    const hydrate = async () => {
+      for (const url of pending) {
+        try {
+          const res = await Taro.downloadFile({ url });
+          if (cancelled) return;
+          if (res.statusCode >= 200 && res.statusCode < 300 && res.tempFilePath) {
+            setLocalPhotoMap((prev) => (prev[url] ? prev : { ...prev, [url]: res.tempFilePath }));
+          } else {
+            markPhotoBroken(url);
+          }
+        } catch {
+          if (!cancelled) markPhotoBroken(url);
+        }
+      }
+    };
+    hydrate();
+    return () => {
+      cancelled = true;
+    };
+  }, [livePhotos, markPhotoBroken]);
 
   const previewImages = (urls: string[], current: string) => {
     if (!urls.length) return;
@@ -280,15 +316,15 @@ export default function CourtDetailPage() {
               duration={500}
               onChange={(e) => setLiveIndex(e.detail.current)}
             >
-              {livePhotos.map((img, index) => (
+              {displayPhotos.map((item, index) => (
                 <SwiperItem key={`${court.id}-live-${index}`}>
                   <Image
                     className="cd-hero-image"
-                    src={img}
+                    src={item.src}
                     mode="aspectFill"
                     lazyLoad={false}
-                    onError={() => markPhotoBroken(img)}
-                    onClick={() => previewImages(livePhotos, img)}
+                    onError={() => markPhotoBroken(item.remote)}
+                    onClick={() => previewImages(displayPhotos.map((p) => p.src), item.src)}
                   />
                 </SwiperItem>
               ))}

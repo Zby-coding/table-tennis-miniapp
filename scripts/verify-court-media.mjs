@@ -41,10 +41,23 @@ function isStockUrl(url) {
   return /unsplash\.com|pexels\.com|picsum\.photos/i.test(String(url || ''));
 }
 
+function isLoopbackUrl(url) {
+  try {
+    const host = new URL(url, API_BASE).hostname.toLowerCase();
+    return host === '127.0.0.1' || host === 'localhost' || host === '::1';
+  } catch {
+    return /127\.0\.0\.1|localhost/i.test(String(url || ''));
+  }
+}
+
 async function checkUrl(url) {
   // 示意外链在国内常不可达，不作为硬失败；详情 API 已过滤 stock
   if (isStockUrl(url)) {
     return { ok: true, reason: 'stockSkipped', detail: url };
+  }
+
+  if (isLoopbackUrl(url)) {
+    return { ok: false, reason: 'loopbackUrl', detail: url };
   }
 
   const local = localUploadPath(url);
@@ -105,10 +118,32 @@ async function main() {
     withMedia.push({ id, name: detail.name, urls });
 
     for (const url of urls) {
+      if (isLoopbackUrl(url)) {
+        failures.push({ id, name: detail.name, url, reason: 'loopbackUrl', detail: 'API 返回环回地址，真机不可用' });
+        continue;
+      }
       const result = await checkUrl(url);
       if (!result.ok) {
         failures.push({ id, name: detail.name, url, ...result });
       }
+    }
+  }
+
+  // 抽样：nearby 首条有图场与 detail 媒体应一致且非环回
+  const sample = withMedia[0];
+  if (sample) {
+    const again = await fetchJson(`/api/courts/${sample.id}`);
+    const againUrls = collectMedia(again);
+    const mismatch = sample.urls.length !== againUrls.length
+      || sample.urls.some((u) => !againUrls.includes(u));
+    if (mismatch) {
+      failures.push({
+        id: sample.id,
+        name: sample.name,
+        url: '',
+        reason: 'inconsistent',
+        detail: 'nearby/detail 媒体不一致',
+      });
     }
   }
 
