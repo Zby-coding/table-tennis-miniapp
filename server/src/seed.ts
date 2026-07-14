@@ -1,35 +1,179 @@
-﻿import { NestFactory } from '@nestjs/core';
+﻿import * as fs from 'fs';
+import * as path from 'path';
+import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { getRepositoryToken } from '@nestjs/typeorm';
+import { DataSource } from 'typeorm';
 import { Court } from './entities/court.entity';
+
+interface SnapshotCourt {
+  id?: number;
+  name?: string;
+  address?: string;
+  lat?: number;
+  lng?: number;
+  isFree?: boolean;
+  isIndoor?: boolean;
+  hasLighting?: boolean;
+  tableCount?: number;
+  material?: string;
+  openHours?: string;
+  rating?: number;
+  features?: string[];
+  city?: string;
+  description?: string;
+  photo?: string;
+  galleryImages?: string[];
+  livePhotos?: string[];
+  facilityPhotos?: string[];
+  enrichmentMeta?: Court['enrichmentMeta'];
+  status?: number;
+}
+
+/** 引用 courtId 的表，需在清空 courts 前删除，避免孤儿引用 */
+const COURT_DEPENDENT_TABLES = [
+  'post_joins',
+  'match_posts',
+  'court_reviews',
+  'court_background_submissions',
+  'favorites',
+  'checkins',
+  'match_records',
+  'courts',
+] as const;
+
+function loadSnapshot(): SnapshotCourt[] {
+  const candidates = [
+    path.resolve(__dirname, '../../src/data/courts-snapshot.json'),
+    path.resolve(process.cwd(), '../src/data/courts-snapshot.json'),
+    path.resolve(process.cwd(), 'src/data/courts-snapshot.json'),
+  ];
+  for (const file of candidates) {
+    if (fs.existsSync(file)) {
+      const raw = JSON.parse(fs.readFileSync(file, 'utf8'));
+      const list = Array.isArray(raw) ? raw : raw.courts || raw.data || [];
+      if (!Array.isArray(list)) {
+        throw new Error(`snapshot 格式无效（非数组）: ${file}`);
+      }
+      console.log(`📦 读取 snapshot: ${file} (${list.length} 条)`);
+      return list as SnapshotCourt[];
+    }
+  }
+  throw new Error('找不到 courts-snapshot.json，请确认路径 src/data/courts-snapshot.json');
+}
+
+function isValidCoord(lat: unknown, lng: unknown) {
+  const la = Number(lat);
+  const ln = Number(lng);
+  return Number.isFinite(la) && Number.isFinite(ln) && la >= 10 && la <= 60 && ln >= 50 && ln <= 180;
+}
+
+function collectPhotos(row: SnapshotCourt): string[] {
+  const photos = [
+    ...(Array.isArray(row.livePhotos) ? row.livePhotos : []),
+    ...(Array.isArray(row.galleryImages) ? row.galleryImages : []),
+    ...(row.photo ? [row.photo] : []),
+  ].filter((p): p is string => typeof p === 'string' && p.trim().length > 0);
+  return [...new Set(photos)];
+}
+
+function isSqlite(dataSource: DataSource): boolean {
+  return String(dataSource.options.type).includes('sqlite');
+}
+
+async function setForeignKeys(executor: { query: (sql: string) => Promise<unknown> }, sqlite: boolean, enabled: boolean) {
+  if (sqlite) {
+    await executor.query(`PRAGMA foreign_keys = ${enabled ? 'ON' : 'OFF'}`);
+  } else {
+    await executor.query(`SET FOREIGN_KEY_CHECKS = ${enabled ? 1 : 0}`);
+  }
+}
+
+async function clearCourtTables(executor: { query: (sql: string) => Promise<unknown> }) {
+  for (const table of COURT_DEPENDENT_TABLES) {
+    try {
+      await executor.query(`DELETE FROM ${table}`);
+      console.log(`🗑️  已清空 ${table}`);
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : String(err);
+      // 表可能尚未创建（首次迁移前），跳过即可
+      console.warn(`⚠️  跳过 ${table}: ${msg}`);
+    }
+  }
+}
 
 async function seed() {
   const app = await NestFactory.createApplicationContext(AppModule);
-  const repo = app.get(getRepositoryToken(Court));
+  const dataSource = app.get(DataSource);
+  const repo = dataSource.getRepository(Court);
+  const snapshot = loadSnapshot();
+  const sqlite = isSqlite(dataSource);
 
-  // 先清空再插入，避免每次重启产生重复数据
-  await repo.clear();
+  const queryRunner = dataSource.createQueryRunner();
+  await queryRunner.connect();
+  await queryRunner.startTransaction();
 
-  const courts = [
-    { name:'白河湿地公园乒乓球区', address:'南阳市卧龙区白河大道', lat:32.9864, lng:112.5349, isFree:true, tableCount:10, material:'户外地砖', hasLighting:false, openHours:'全天', rating:4.5, features:['免费开放','河边风景','空气好'] },
-    { name:'南阳市体育中心乒乓球场', address:'南阳市卧龙区滨河路', lat:32.9906, lng:112.5284, isFree:true, tableCount:6, material:'塑胶', hasLighting:true, openHours:'06:00-21:00', rating:4.3, features:['免费开放','塑胶地面','夜间灯光'] },
-    { name:'南阳理工学院乒乓球区', address:'南阳市宛城区长江路80号', lat:32.9788, lng:112.5412, isFree:true, tableCount:8, material:'水泥防滑', hasLighting:false, openHours:'06:00-20:00', rating:4.0, features:['校园场地','免费开放'] },
-    { name:'解放广场乒乓球角', address:'南阳市卧龙区中州路', lat:32.9951, lng:112.5219, isFree:true, tableCount:4, material:'水泥', hasLighting:false, openHours:'06:00-20:00', rating:3.8, features:['市中心','免费开放'] },
-    { name:'汉冶路社区活动中心', address:'南阳市宛城区汉冶路', lat:33.0012, lng:112.5498, isFree:true, isIndoor:true, tableCount:2, material:'塑胶', hasLighting:true, openHours:'08:00-21:00', rating:3.5, features:['室内','社区免费','灯光好'] },
-    { name:'仲景养生小镇乒乓球区', address:'南阳市卧龙区仲景路', lat:32.9715, lng:112.5103, isFree:false, isIndoor:true, tableCount:3, material:'专业运动地板', hasLighting:true, openHours:'09:00-22:00', rating:4.2, features:['付费¥15/h','室内空调','专业级'] },
-    { name:'南阳师范学院乒乓球场', address:'南阳市卧龙区卧龙路1638号', lat:32.9756, lng:112.5034, isFree:true, tableCount:12, material:'塑胶', hasLighting:true, openHours:'06:00-22:00', rating:4.7, features:['免费开放','球台多','高手聚集'] },
-    { name:'独山大道体育公园', address:'南阳市宛城区独山大道', lat:33.0089, lng:112.5523, isFree:true, tableCount:6, material:'户外硅PU', hasLighting:false, openHours:'06:00-19:00', rating:4.1, features:['免费开放','公园环境','停车方便'] },
-    { name:'二技校对面河边附近', address:'南阳市第二技工学校对面白河沿岸（点位待现场核验）', lat:32.9942, lng:112.5318, isFree:true, tableCount:2, material:'户外水泥', hasLighting:false, openHours:'全天', rating:3.8, features:['免费开放','河边公共空间','位置待核验'] },
-    { name:'罗洼公园乒乓球区', address:'南阳市罗洼公园公共活动区（点位待现场核验）', lat:32.9821, lng:112.5667, isFree:true, tableCount:2, material:'户外水泥', hasLighting:false, openHours:'全天', rating:3.8, features:['免费开放','公园公共设施','位置待核验'] },
-  ];
+  try {
+    await setForeignKeys(queryRunner, sqlite, false);
+    await clearCourtTables(queryRunner);
 
-  for (const c of courts) {
-    const entity = repo.create(c);
-    await repo.save(entity);
+    let inserted = 0;
+    let skipped = 0;
+
+    for (const row of snapshot) {
+      if (!row?.name || !isValidCoord(row.lat, row.lng)) {
+        skipped += 1;
+        continue;
+      }
+
+      const photos = collectPhotos(row);
+      const facilityPhotos = Array.isArray(row.facilityPhotos)
+        ? row.facilityPhotos.filter((p): p is string => typeof p === 'string' && p.trim().length > 0)
+        : [];
+
+      const entity = repo.create({
+        id: Number.isFinite(Number(row.id)) ? Number(row.id) : undefined,
+        name: String(row.name).slice(0, 128),
+        address: String(row.address || '').slice(0, 512),
+        lat: Number(row.lat),
+        lng: Number(row.lng),
+        isFree: row.isFree !== false,
+        isIndoor: !!row.isIndoor,
+        hasLighting: !!row.hasLighting,
+        tableCount: Number(row.tableCount) > 0 ? Number(row.tableCount) : 1,
+        material: String(row.material || '水泥').slice(0, 64),
+        openHours: String(row.openHours || '全天').slice(0, 128),
+        rating: Number.isFinite(Number(row.rating)) ? Number(row.rating) : 5,
+        features: Array.isArray(row.features) ? row.features : [],
+        city: row.city ? String(row.city).slice(0, 64) : '南阳',
+        description: row.description ? String(row.description) : null,
+        photos: photos.length ? photos : null,
+        facilityPhotos: facilityPhotos.length ? facilityPhotos : null,
+        enrichmentMeta: row.enrichmentMeta || null,
+        status: row.status === 0 ? 0 : 1,
+      } as Partial<Court>);
+
+      await queryRunner.manager.save(Court, entity);
+      inserted += 1;
+    }
+
+    await queryRunner.commitTransaction();
+    console.log(`✅ 插入 ${inserted} 个南阳场地（跳过无效 ${skipped}）`);
+  } catch (err) {
+    await queryRunner.rollbackTransaction();
+    throw err;
+  } finally {
+    try {
+      await setForeignKeys(queryRunner, sqlite, true);
+    } catch {
+      // ignore restore failure
+    }
+    await queryRunner.release();
   }
 
-  console.log(`✅ 插入 ${courts.length} 个南阳场地`);
   await app.close();
 }
-seed().catch(e => { console.error(e); process.exit(1); });
 
+seed().catch((e) => {
+  console.error(e);
+  process.exit(1);
+});

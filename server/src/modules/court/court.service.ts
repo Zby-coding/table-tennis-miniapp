@@ -71,8 +71,7 @@ export class CourtService {
         return { court, distance };
       })
       .filter(({ distance }) => distance <= radius)
-      .sort((a, b) => a.distance - b.distance)
-      .slice(0, 30);
+      .sort((a, b) => a.distance - b.distance);
     const keys = enriched.map(({ court }) => `court:${court.id}:active_count`);
     let counts: number[] = enriched.map(() => 0);
     if (this.redis && keys.length > 0) {

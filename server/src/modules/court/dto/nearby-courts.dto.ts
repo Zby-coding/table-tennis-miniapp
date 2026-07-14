@@ -1,4 +1,14 @@
-import { IsLatitude, IsLongitude, IsOptional, IsInt, IsBooleanString, Min, Max } from 'class-validator';
+import {
+  IsLatitude,
+  IsLongitude,
+  IsOptional,
+  IsInt,
+  IsBooleanString,
+  IsString,
+  Min,
+  Max,
+  MaxLength,
+} from 'class-validator';
 import { Type } from 'class-transformer';
 
 export class NearbyCourtsDto {
@@ -30,6 +40,8 @@ export class NearbyCourtsDto {
   hasLighting?: string;
 
   @IsOptional()
+  @IsString()
+  @MaxLength(64)
   keyword?: string;
 }
 

@@ -327,7 +327,7 @@ export default function IndexPage() {
           <View className="h5-map-fallback">
             <View className="h5-map-grid" />
             <View className="h5-map-label"><Text>H5 场地预览</Text></View>
-            {markers.slice(0, 12).map((marker, index) => (
+            {markers.map((marker, index) => (
               <View
                 key={marker.id}
                 className="h5-map-marker"
