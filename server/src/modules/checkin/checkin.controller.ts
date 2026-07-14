@@ -1,4 +1,4 @@
-import { Controller, Post, Get, Param, Body } from '@nestjs/common';
+import { Controller, Post, Get, Param, Body, Query } from '@nestjs/common';
 import { CheckinService } from './checkin.service';
 import { CurrentUser } from '../../common/decorators/current-user.decorator';
 import { Public } from '../../common/decorators/public.decorator';
@@ -26,9 +26,27 @@ export class CheckinController {
     return this.checkinService.getUserStatus(userId);
   }
 
+  @Get('history')
+  async history(
+    @CurrentUser('sub') userId: number,
+    @Query('page') page?: string,
+    @Query('pageSize') pageSize?: string,
+  ) {
+    return this.checkinService.getHistory(
+      userId,
+      page ? parseInt(page, 10) : 1,
+      pageSize ? parseInt(pageSize, 10) : 20,
+    );
+  }
+
   @Public()
   @Get('court/:courtId')
   async courtActive(@Param('courtId') courtId: string) {
-    return this.checkinService.getActiveCount(parseInt(courtId));
+    return this.checkinService.getActiveCount(parseInt(courtId, 10), { includePlayers: false });
+  }
+
+  @Get('court/:courtId/players')
+  async courtPlayers(@Param('courtId') courtId: string) {
+    return this.checkinService.getActiveCount(parseInt(courtId, 10), { includePlayers: true });
   }
 }

@@ -1,0 +1,58 @@
+.fav-page {
+  min-height: 100vh;
+  background: #F5F6F8;
+  padding: 16px;
+  box-sizing: border-box;
+}
+.fav-hd { margin-bottom: 14px; }
+.fav-title { display: block; font-size: 22px; font-weight: 800; color: #1A1A1A; }
+.fav-sub { display: block; margin-top: 4px; font-size: 12px; color: #888; }
+.fav-empty {
+  padding: 48px 16px;
+  text-align: center;
+  color: #999;
+  font-size: 14px;
+}
+.fav-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #fff;
+  border-radius: 14px;
+  padding: 12px;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 16px rgba(0,0,0,.04);
+}
+.fav-thumb {
+  width: 64px;
+  height: 64px;
+  border-radius: 10px;
+  flex-shrink: 0;
+  background: #F0F0F0;
+}
+.fav-thumb-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.fav-body { flex: 1; min-width: 0; }
+.fav-name {
+  display: block;
+  font-size: 15px;
+  font-weight: 700;
+  color: #222;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.fav-addr {
+  display: block;
+  margin-top: 4px;
+  font-size: 12px;
+  color: #888;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.fav-meta { display: block; margin-top: 4px; font-size: 11px; color: #FF6B35; font-weight: 600; }
+.fav-arrow { color: #CCC; font-size: 22px; }

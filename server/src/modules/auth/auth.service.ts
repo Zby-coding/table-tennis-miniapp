@@ -3,7 +3,7 @@ import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { ConfigService } from '@nestjs/config';
-import { User } from '../../entities/user.entity';
+import { User, UserRole, UserStatus } from '../../entities/user.entity';
 
 interface WxLoginResult {
   openid: string;
@@ -33,24 +33,28 @@ export class AuthService {
     }
 
     let user = await this.userRepo.findOne({ where: { openid } });
+    const isDevAdmin = this.isDevAdminLogin(code, openid);
 
     if (!user) {
       user = this.userRepo.create({
         openid,
-        nickname: nickname || `球友${Date.now().toString(36).slice(-4)}`,
+        nickname: nickname || (isDevAdmin ? '管理员' : `球友${Date.now().toString(36).slice(-4)}`),
         avatarUrl,
+        role: isDevAdmin ? UserRole.ADMIN : UserRole.USER,
+        status: UserStatus.ACTIVE,
       });
       await this.userRepo.save(user);
     } else {
       if (nickname) user.nickname = nickname;
       if (avatarUrl) user.avatarUrl = avatarUrl;
+      if (isDevAdmin && user.role !== UserRole.ADMIN) user.role = UserRole.ADMIN;
+      if (isDevAdmin && user.status !== UserStatus.ACTIVE) user.status = UserStatus.ACTIVE;
       await this.userRepo.save(user);
     }
 
     const token = this.jwtService.sign({ sub: user.id, openid });
     return { token, user: this.sanitizeUser(user) };
   }
-
   private async code2Session(code: string): Promise<WxLoginResult | null> {
     const appId = this.configService.get<string>('WECHAT_APP_ID');
     const appSecret = this.configService.get<string>('WECHAT_APP_SECRET');
@@ -92,6 +96,14 @@ export class AuthService {
     }
   }
 
+  private isDevAdminLogin(code: string, openid: string) {
+    const devMode = this.configService.get<string>('ENABLE_DEV_AUTH', 'false') === 'true';
+    const isDevelopment = this.configService.get<string>('NODE_ENV') === 'development';
+    const adminCode = (this.configService.get<string>('DEV_ADMIN_CODE') || '').trim();
+    if (!devMode || !isDevelopment || !adminCode) return false;
+    return code === adminCode && openid === `dev_${adminCode}`;
+  }
+
   async validateUser(userId: number): Promise<User | null> {
     return this.userRepo.findOne({ where: { id: userId } });
   }
@@ -110,6 +122,8 @@ export class AuthService {
       wins: user.wins,
       points: user.points,
       checkinStreak: user.checkinStreak,
+      role: user.role,
+      status: user.status,
       createdAt: user.createdAt,
       updatedAt: user.updatedAt,
     };

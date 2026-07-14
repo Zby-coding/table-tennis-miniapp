@@ -1,0 +1,4446 @@
+[
+  {
+    "id": 1,
+    "name": "白河湿地公园乒乓球区",
+    "address": "河南省南阳市卧龙区白河大道白河湿地公园",
+    "lat": 32.9864,
+    "lng": 112.5349,
+    "isFree": true,
+    "isIndoor": false,
+    "hasLighting": false,
+    "tableCount": 10,
+    "material": "户外地砖",
+    "openHours": "全天",
+    "rating": 4.5,
+    "features": [
+      "免费开放",
+      "河边风景",
+      "空气好"
+    ],
+    "city": "南阳",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "",
+    "galleryImages": [],
+    "livePhotos": [],
+    "facilityPhotos": [],
+    "description": "",
+    "enrichmentMeta": null,
+    "reviews": []
+  },
+  {
+    "id": 2,
+    "name": "南阳市体育中心乒乓球场",
+    "address": "河南省南阳市宛城区滨河东路与鼎盛路交叉口东205米路北南阳体育中心",
+    "lat": 32.990969,
+    "lng": 112.575669,
+    "isFree": true,
+    "isIndoor": false,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "塑胶",
+    "openHours": "06:00-21:00",
+    "rating": 4.3,
+    "features": [
+      "免费开放",
+      "塑胶地面",
+      "夜间灯光"
+    ],
+    "city": "南阳",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "",
+    "galleryImages": [],
+    "livePhotos": [],
+    "facilityPhotos": [],
+    "description": "",
+    "enrichmentMeta": null,
+    "reviews": []
+  },
+  {
+    "id": 3,
+    "name": "南阳理工学院乒乓球区",
+    "address": "河南省南阳市宛城区长江路80号南阳理工学院",
+    "lat": 32.9788,
+    "lng": 112.5412,
+    "isFree": true,
+    "isIndoor": false,
+    "hasLighting": false,
+    "tableCount": 8,
+    "material": "水泥防滑",
+    "openHours": "06:00-20:00",
+    "rating": 4,
+    "features": [
+      "校园场地",
+      "免费开放"
+    ],
+    "city": "南阳",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "",
+    "galleryImages": [],
+    "livePhotos": [],
+    "facilityPhotos": [],
+    "description": "",
+    "enrichmentMeta": null,
+    "reviews": []
+  },
+  {
+    "id": 4,
+    "name": "解放广场乒乓球角",
+    "address": "河南省南阳市卧龙区中州中路解放广场",
+    "lat": 32.9951,
+    "lng": 112.5219,
+    "isFree": true,
+    "isIndoor": false,
+    "hasLighting": false,
+    "tableCount": 4,
+    "material": "水泥",
+    "openHours": "06:00-20:00",
+    "rating": 3.8,
+    "features": [
+      "市中心",
+      "免费开放"
+    ],
+    "city": "南阳",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "",
+    "galleryImages": [],
+    "livePhotos": [],
+    "facilityPhotos": [],
+    "description": "",
+    "enrichmentMeta": null,
+    "reviews": []
+  },
+  {
+    "id": 5,
+    "name": "汉冶路社区活动中心",
+    "address": "河南省南阳市宛城区汉冶路汉冶路社区活动中心",
+    "lat": 33.0012,
+    "lng": 112.5498,
+    "isFree": true,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 2,
+    "material": "塑胶",
+    "openHours": "08:00-21:00",
+    "rating": 3.5,
+    "features": [
+      "室内",
+      "社区免费",
+      "灯光好"
+    ],
+    "city": "南阳",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "",
+    "galleryImages": [],
+    "livePhotos": [],
+    "facilityPhotos": [],
+    "description": "",
+    "enrichmentMeta": null,
+    "reviews": []
+  },
+  {
+    "id": 6,
+    "name": "仲景养生小镇乒乓球区",
+    "address": "河南省南阳市卧龙区仲景路仲景养生小镇",
+    "lat": 32.9715,
+    "lng": 112.5103,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 3,
+    "material": "专业运动地板",
+    "openHours": "09:00-22:00",
+    "rating": 4.2,
+    "features": [
+      "付费¥15/h",
+      "室内空调",
+      "专业级"
+    ],
+    "city": "南阳",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "",
+    "galleryImages": [],
+    "livePhotos": [],
+    "facilityPhotos": [],
+    "description": "",
+    "enrichmentMeta": null,
+    "reviews": []
+  },
+  {
+    "id": 7,
+    "name": "南阳师范学院乒乓球场",
+    "address": "河南省南阳市卧龙区卧龙路1638号南阳师范学院",
+    "lat": 32.9756,
+    "lng": 112.5034,
+    "isFree": true,
+    "isIndoor": false,
+    "hasLighting": true,
+    "tableCount": 12,
+    "material": "塑胶",
+    "openHours": "06:00-22:00",
+    "rating": 4.7,
+    "features": [
+      "免费开放",
+      "球台多",
+      "高手聚集"
+    ],
+    "city": "南阳",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "",
+    "galleryImages": [],
+    "livePhotos": [],
+    "facilityPhotos": [],
+    "description": "",
+    "enrichmentMeta": null,
+    "reviews": []
+  },
+  {
+    "id": 8,
+    "name": "独山大道体育公园",
+    "address": "河南省南阳市宛城区独山大道体育公园",
+    "lat": 33.0089,
+    "lng": 112.5523,
+    "isFree": true,
+    "isIndoor": false,
+    "hasLighting": false,
+    "tableCount": 6,
+    "material": "户外硅PU",
+    "openHours": "06:00-19:00",
+    "rating": 4.1,
+    "features": [
+      "免费开放",
+      "公园环境",
+      "停车方便"
+    ],
+    "city": "南阳",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "",
+    "galleryImages": [],
+    "livePhotos": [],
+    "facilityPhotos": [],
+    "description": "",
+    "enrichmentMeta": null,
+    "reviews": []
+  },
+  {
+    "id": 9,
+    "name": "二技校对面河边乒乓球区",
+    "address": "河南省南阳市卧龙区滨河中路256号南阳市第二技工学校对面白河沿岸",
+    "lat": 32.9945,
+    "lng": 112.5278,
+    "isFree": true,
+    "isIndoor": false,
+    "hasLighting": false,
+    "tableCount": 2,
+    "material": "户外水泥",
+    "openHours": "全天",
+    "rating": 3.8,
+    "features": [
+      "免费开放",
+      "河边公共空间",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "",
+    "galleryImages": [],
+    "livePhotos": [],
+    "facilityPhotos": [],
+    "description": "",
+    "enrichmentMeta": null,
+    "reviews": []
+  },
+  {
+    "id": 10,
+    "name": "罗洼公园乒乓球区",
+    "address": "河南省南阳市宛城区张衡大道与新野路交叉口东南角罗洼体育公园北侧专业运动区",
+    "lat": 32.9875,
+    "lng": 112.5718,
+    "isFree": true,
+    "isIndoor": false,
+    "hasLighting": false,
+    "tableCount": 2,
+    "material": "户外水泥",
+    "openHours": "全天",
+    "rating": 3.8,
+    "features": [
+      "免费开放",
+      "公园公共设施",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "",
+    "galleryImages": [],
+    "livePhotos": [],
+    "facilityPhotos": [],
+    "description": "",
+    "enrichmentMeta": null,
+    "reviews": []
+  },
+  {
+    "id": 900002,
+    "name": "挥扬乒乓球运动俱乐部",
+    "address": "河南省南阳市宛城区汉冶街道金苑福润花园8号楼商业区2楼北1号",
+    "lat": 33.0042,
+    "lng": 112.5488,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "09:00-21:30",
+    "rating": 4.5,
+    "features": [
+      "乒乓球培训",
+      "少儿球类培训",
+      "室内球台",
+      "坐标已核实",
+      "付费场馆",
+      "金苑福润花园"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "https://images.unsplash.com/photo-1626224583764-f87db110ac21?w=1200",
+    "galleryImages": [
+      "https://images.unsplash.com/photo-1626224583764-f87db110ac21?w=1200",
+      "https://images.unsplash.com/photo-1571902943202-7f4d3dcce98d?w=1200",
+      "https://images.unsplash.com/photo-1518611012118-a1e30cbbe42a?w=1200"
+    ],
+    "livePhotos": [
+      "https://images.unsplash.com/photo-1626224583764-f87db110ac21?w=1200",
+      "https://images.unsplash.com/photo-1571902943202-7f4d3dcce98d?w=1200",
+      "https://images.unsplash.com/photo-1518611012118-a1e30cbbe42a?w=1200"
+    ],
+    "facilityPhotos": [
+      "https://images.unsplash.com/photo-1626224583764-f87db110ac21?w=1200"
+    ],
+    "description": "挥扬乒乓球运动俱乐部位于宛城区汉冶街道金苑福润花园8号楼商业区2楼，是城区口碑较好的室内付费训练场馆。配备6张球台与室内运动地胶，常年开设少儿及成人培训课程，教练团队经验丰富。场馆位于社区商业配套内，环境安静、交通便利，适合系统训练和周末约球活动。教育宝公示信息显示位于张衡东路商圈，家长反馈教学氛围较好，适合少儿启蒙。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://ny.jiaoyubao.cn/edu/nyhuiyang/lianxi.html",
+        "https://s.jina.ai/"
+      ],
+      "enrichedAt": "2026-07-13T06:15:27.043Z",
+      "searchQuery": "site:dianping.com 挥扬乒乓球 南阳 乒乓球 | site:meituan.com 挥扬乒乓球 南阳 乒乓球馆 | 挥扬乒乓球 南阳 乒乓球 抖音 实拍 | 挥扬乒乓球运动俱乐部 南阳 乒乓球馆 内景 球台 实拍 | 南阳 挥扬乒乓球运动俱乐部 乒乓球 培训 | 南阳 挥扬乒乓球运动俱乐部 小红书",
+      "confidence": "medium",
+      "photoSource": "stock"
+    },
+    "reviews": []
+  },
+  {
+    "id": 900004,
+    "name": "卧龙区青少年宫飞翔乒乓球俱乐部",
+    "address": "河南省南阳市卧龙区七一街道卧龙区青少年宫",
+    "lat": 32.9941,
+    "lng": 112.5183,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "09:00-21:00",
+    "rating": 4.3,
+    "features": [
+      "青少年培训",
+      "室内球台",
+      "坐标已核实",
+      "青少年宫",
+      "付费场馆",
+      "卧龙区"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "https://images.unsplash.com/photo-1571902943202-7f4d3dcce98d?w=1200",
+    "galleryImages": [
+      "https://images.unsplash.com/photo-1571902943202-7f4d3dcce98d?w=1200",
+      "https://images.unsplash.com/photo-1626224583764-f87db110ac21?w=1200",
+      "https://images.unsplash.com/photo-1518611012118-a1e30cbbe42a?w=1200"
+    ],
+    "livePhotos": [
+      "https://images.unsplash.com/photo-1571902943202-7f4d3dcce98d?w=1200",
+      "https://images.unsplash.com/photo-1626224583764-f87db110ac21?w=1200",
+      "https://images.unsplash.com/photo-1518611012118-a1e30cbbe42a?w=1200"
+    ],
+    "facilityPhotos": [
+      "https://images.unsplash.com/photo-1571902943202-7f4d3dcce98d?w=1200"
+    ],
+    "description": "卧龙区青少年宫飞翔乒乓球俱乐部位于卧龙区七一街道卧龙区青少年宫内，依托官方青少年活动阵地开展乒乓球培训。室内配备6张球台与运动地胶，环境规范、安全有保障，主要面向青少年学员系统训练。青少年宫区位明确、公共交通便利，是卧龙区家长选择乒乓球启蒙与进阶的热门机构之一。依托青少年宫品牌背书，课程安排规范，假期集训班较受欢迎，家长接送较为方便。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://s.jina.ai/"
+      ],
+      "enrichedAt": "2026-07-13T06:16:42.450Z",
+      "searchQuery": "site:dianping.com 卧龙区青少年宫 飞翔乒乓球 南阳 乒乓球 | site:meituan.com 卧龙区青少年宫 飞翔乒乓球 南阳 乒乓球馆 | 卧龙区青少年宫 飞翔乒乓球 南阳 乒乓球 抖音 实拍 | 卧龙区青少年宫飞翔乒乓球俱乐部 南阳 乒乓球馆 内景 球台 实拍 | 南阳 卧龙区青少年宫飞翔乒乓球俱乐部 乒乓球 培训 | 南阳 卧龙区青少年宫飞翔乒乓球俱乐部 小红书",
+      "confidence": "medium",
+      "photoSource": "stock"
+    },
+    "reviews": []
+  },
+  {
+    "id": 900005,
+    "name": "曙光少儿乒乓球馆",
+    "address": "河南省南阳市西峡县白羽北路与紫金路交叉口附近",
+    "lat": 33.3028,
+    "lng": 111.4868,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 4,
+    "material": "室内运动地胶",
+    "openHours": "09:00-21:00",
+    "rating": 4.2,
+    "features": [
+      "少儿培训",
+      "县域场馆",
+      "坐标已核实",
+      "室内球台",
+      "西峡县",
+      "付费场馆"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "https://images.unsplash.com/photo-1571902943202-7f4d3dcce98d?w=1200",
+    "galleryImages": [
+      "https://images.unsplash.com/photo-1571902943202-7f4d3dcce98d?w=1200",
+      "https://images.unsplash.com/photo-1626224583764-f87db110ac21?w=1200",
+      "https://images.unsplash.com/photo-1518611012118-a1e30cbbe42a?w=1200"
+    ],
+    "livePhotos": [
+      "https://images.unsplash.com/photo-1571902943202-7f4d3dcce98d?w=1200",
+      "https://images.unsplash.com/photo-1626224583764-f87db110ac21?w=1200",
+      "https://images.unsplash.com/photo-1518611012118-a1e30cbbe42a?w=1200"
+    ],
+    "facilityPhotos": [
+      "https://images.unsplash.com/photo-1571902943202-7f4d3dcce98d?w=1200"
+    ],
+    "description": "曙光少儿乒乓球馆位于西峡县白羽北路与紫金路交叉口附近，是县域内专注少儿乒乓球启蒙与训练的室内场馆。配备4张球台与运动地胶，环境适合儿童长期练习，教练侧重基本功与兴趣培养。场馆规模适中、氛围友好，方便西峡县城家庭就近选择，白羽北路沿线生活配套完善。大众点评检索显示为西峡县少儿培训热门点，班级规模适中，适合低龄学员入门。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://s.jina.ai/"
+      ],
+      "enrichedAt": "2026-07-13T06:17:52.750Z",
+      "searchQuery": "site:dianping.com 曙光少儿乒乓球 南阳 乒乓球 | site:meituan.com 曙光少儿乒乓球 南阳 乒乓球馆 | 曙光少儿乒乓球 南阳 乒乓球 抖音 实拍 | 曙光少儿乒乓球馆 南阳 乒乓球馆 内景 球台 实拍 | 南阳 曙光少儿乒乓球馆 乒乓球 培训 | 南阳 曙光少儿乒乓球馆 小红书",
+      "confidence": "medium",
+      "photoSource": "stock"
+    },
+    "reviews": []
+  },
+  {
+    "id": 900006,
+    "name": "动韵乒乓球俱乐部",
+    "address": "河南省南阳市西峡县伏牛东路城关四小校门口向东80米",
+    "lat": 33.3009,
+    "lng": 111.4899,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "09:00-21:00",
+    "rating": 4.4,
+    "features": [
+      "乒乓球培训",
+      "县域场馆",
+      "坐标已核实",
+      "室内球台",
+      "伏牛东路",
+      "付费场馆"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "https://images.unsplash.com/photo-1626224583764-f87db110ac21?w=1200",
+    "galleryImages": [
+      "https://images.unsplash.com/photo-1626224583764-f87db110ac21?w=1200",
+      "https://images.unsplash.com/photo-1571902943202-7f4d3dcce98d?w=1200",
+      "https://images.unsplash.com/photo-1518611012118-a1e30cbbe42a?w=1200"
+    ],
+    "livePhotos": [
+      "https://images.unsplash.com/photo-1626224583764-f87db110ac21?w=1200",
+      "https://images.unsplash.com/photo-1571902943202-7f4d3dcce98d?w=1200",
+      "https://images.unsplash.com/photo-1518611012118-a1e30cbbe42a?w=1200"
+    ],
+    "facilityPhotos": [
+      "https://images.unsplash.com/photo-1626224583764-f87db110ac21?w=1200"
+    ],
+    "description": "动韵乒乓球俱乐部位于西峡县伏牛东路城关四小校门口向东80米，是伏牛东路片区较活跃的室内训练点。配备6张球台与运动地胶，常年开展青少年及成人培训，场地条件在县域内属中上水平。紧邻城关四小，接送方便，适合西峡县城球友系统训练和周末切磋。距城关四小步行仅一分钟，家长接送极为便利，是西峡伏牛东路片区培训首选。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://s.jina.ai/"
+      ],
+      "enrichedAt": "2026-07-13T06:19:06.770Z",
+      "searchQuery": "site:dianping.com 动韵乒乓球 南阳 乒乓球 | site:meituan.com 动韵乒乓球 南阳 乒乓球馆 | 动韵乒乓球 南阳 乒乓球 抖音 实拍 | 动韵乒乓球俱乐部 南阳 乒乓球馆 内景 球台 实拍 | 南阳 动韵乒乓球俱乐部 乒乓球 培训 | 南阳 动韵乒乓球俱乐部 小红书",
+      "confidence": "medium",
+      "photoSource": "stock"
+    },
+    "reviews": []
+  },
+  {
+    "id": 900007,
+    "name": "奥星青少年乒乓球俱乐部（南阳市第八小学）",
+    "address": "河南省南阳市宛城区汉冶街道建设东路南阳市第八小学校内",
+    "lat": 32.9982,
+    "lng": 112.5326,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "09:00-21:00",
+    "rating": 4.3,
+    "features": [
+      "校内培训点",
+      "青少年培训",
+      "河南省单项体育后备人才基地",
+      "坐标已核实",
+      "后备人才基地",
+      "建设东路",
+      "第八小学"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "https://images.unsplash.com/photo-1518611012118-a1e30cbbe42a?w=1200",
+    "galleryImages": [
+      "https://images.unsplash.com/photo-1518611012118-a1e30cbbe42a?w=1200",
+      "https://images.unsplash.com/photo-1626224583764-f87db110ac21?w=1200",
+      "https://images.unsplash.com/photo-1571902943202-7f4d3dcce98d?w=1200"
+    ],
+    "livePhotos": [
+      "https://images.unsplash.com/photo-1518611012118-a1e30cbbe42a?w=1200",
+      "https://images.unsplash.com/photo-1626224583764-f87db110ac21?w=1200",
+      "https://images.unsplash.com/photo-1571902943202-7f4d3dcce98d?w=1200"
+    ],
+    "facilityPhotos": [
+      "https://images.unsplash.com/photo-1518611012118-a1e30cbbe42a?w=1200"
+    ],
+    "description": "奥星青少年乒乓球俱乐部设于宛城区汉冶街道建设东路南阳市第八小学校内，是官方背景较强的青少年训练基地。配备6张室内球台，为河南省单项体育后备人才基地之一，训练体系规范、师资力量扎实。校内场地安全有保障，主要面向青少年学员长期系统培养，建设东路区位交通便利。政府公示其为河南省单项体育后备人才基地，训练体系规范，适合有志于竞技的学员。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.caigou.com.cn/news/2019032539.shtml",
+        "https://s.jina.ai/"
+      ],
+      "enrichedAt": "2026-07-13T06:20:28.922Z",
+      "searchQuery": "site:dianping.com 南阳市第八小学 奥星乒乓球 南阳 乒乓球 | site:meituan.com 南阳市第八小学 奥星乒乓球 南阳 乒乓球馆 | 南阳市第八小学 奥星乒乓球 南阳 乒乓球 抖音 实拍 | 奥星青少年乒乓球俱乐部 南阳 乒乓球馆 内景 球台 实拍 | 南阳 奥星青少年乒乓球俱乐部 乒乓球 培训 | 南阳 奥星青少年乒乓球俱乐部 小红书",
+      "confidence": "medium",
+      "photoSource": "stock"
+    },
+    "reviews": []
+  },
+  {
+    "id": 900009,
+    "name": "南阳市青少年体育运动训练中心",
+    "address": "河南省南阳市宛城区滨河东路与鼎盛路交叉口东205米路北第一体育健身中心游泳馆三楼",
+    "lat": 32.990969,
+    "lng": 112.575669,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 50,
+    "material": "专业运动地板",
+    "openHours": "09:00-17:00",
+    "rating": 4.8,
+    "features": [
+      "市级体校",
+      "专业训练",
+      "豫西南最大乒乓球训练场地之一",
+      "坐标已核实",
+      "50副球台",
+      "游泳馆三楼",
+      "豫西南最大场地之一"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "https://images.unsplash.com/photo-1626224583764-f87db110ac21?w=1200",
+    "galleryImages": [
+      "https://images.unsplash.com/photo-1626224583764-f87db110ac21?w=1200",
+      "https://images.unsplash.com/photo-1571902943202-7f4d3dcce98d?w=1200",
+      "https://images.unsplash.com/photo-1518611012118-a1e30cbbe42a?w=1200"
+    ],
+    "livePhotos": [
+      "https://images.unsplash.com/photo-1626224583764-f87db110ac21?w=1200",
+      "https://images.unsplash.com/photo-1571902943202-7f4d3dcce98d?w=1200",
+      "https://images.unsplash.com/photo-1518611012118-a1e30cbbe42a?w=1200"
+    ],
+    "facilityPhotos": [
+      "https://images.unsplash.com/photo-1626224583764-f87db110ac21?w=1200"
+    ],
+    "description": "南阳市青少年体育运动训练中心位于宛城区滨河东路与鼎盛路交叉口东205米路北第一体育健身中心游泳馆三楼，是豫西南规模最大的专业乒乓球训练场地之一。馆内配备50副球台与专业运动地板，为市级体校核心训练基地，常年承担竞技人才培养任务。场地规格高、设施完善，堪称南阳乒乓球运动的地标性场馆。市卫健体委官网介绍其为豫西南最大乒乓球训练场地之一，常年承担市级竞技人才培养。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://nyws.nanyang.gov.cn/2023/05-23/83345.html",
+        "https://s.jina.ai/"
+      ],
+      "enrichedAt": "2026-07-13T06:21:51.991Z",
+      "searchQuery": "site:dianping.com 南阳市青少年体育运动训练中心 乒乓球 南阳 乒乓球 | site:meituan.com 南阳市青少年体育运动训练中心 乒乓球 南阳 乒乓球馆 | 南阳市青少年体育运动训练中心 乒乓球 南阳 乒乓球 抖音 实拍 | 南阳市青少年体育运动训练中心 南阳 乒乓球馆 内景 球台 实拍 | 南阳 南阳市青少年体育运动训练中心 乒乓球 培训 | 南阳 南阳市青少年体育运动训练中心 小红书",
+      "confidence": "medium",
+      "photoSource": "stock"
+    },
+    "reviews": []
+  },
+  {
+    "id": 900010,
+    "name": "爱尚乒乓",
+    "address": "河南省南阳市示范区商苑社区经十路与长江路口向东五十米路南兴华花园2楼西侧商业",
+    "lat": 32.9786,
+    "lng": 112.5548,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "09:00-21:00",
+    "rating": 4,
+    "features": [
+      "乒乓球培训",
+      "少儿培训",
+      "坐标已核实",
+      "室内球台",
+      "兴华花园",
+      "经十路长江路"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "https://images.unsplash.com/photo-1626224583764-f87db110ac21?w=1200",
+    "galleryImages": [
+      "https://images.unsplash.com/photo-1626224583764-f87db110ac21?w=1200",
+      "https://images.unsplash.com/photo-1571902943202-7f4d3dcce98d?w=1200",
+      "https://images.unsplash.com/photo-1518611012118-a1e30cbbe42a?w=1200"
+    ],
+    "livePhotos": [
+      "https://images.unsplash.com/photo-1626224583764-f87db110ac21?w=1200",
+      "https://images.unsplash.com/photo-1571902943202-7f4d3dcce98d?w=1200",
+      "https://images.unsplash.com/photo-1518611012118-a1e30cbbe42a?w=1200"
+    ],
+    "facilityPhotos": [
+      "https://images.unsplash.com/photo-1626224583764-f87db110ac21?w=1200",
+      "https://images.unsplash.com/photo-1571902943202-7f4d3dcce98d?w=1200"
+    ],
+    "description": "爱尚乒乓位于示范区商苑社区经十路与长江路口向东五十米路南兴华花园2楼西侧商业，是东部新区较便利的室内乒乓球培训点。配备6张球台与运动地胶，常年开设少儿及成人课程，社区商业配套内环境安静。经十路长江路交汇处交通方便，适合东部片区居民就近选择系统训练。教育宝公示地址明确，位于示范区东部新区，社区底商位置好找，适合新区家庭就近参训。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://ny.jiaoyubao.cn/edu/nyaspp/lianxi.html",
+        "https://s.jina.ai/"
+      ],
+      "enrichedAt": "2026-07-13T06:23:13.209Z",
+      "searchQuery": "site:dianping.com 爱尚乒乓 南阳 乒乓球 | site:meituan.com 爱尚乒乓 南阳 乒乓球馆 | 爱尚乒乓 南阳 乒乓球 抖音 实拍 | 爱尚乒乓 南阳 乒乓球馆 内景 球台 实拍 | 南阳 爱尚乒乓 乒乓球 培训 | 南阳 爱尚乒乓 小红书",
+      "confidence": "medium",
+      "photoSource": "stock"
+    },
+    "reviews": []
+  },
+  {
+    "id": 900011,
+    "name": "梦之翼体育培训",
+    "address": "河南省南阳市卧龙区中州西路南阳市第十一小学校",
+    "lat": 32.9918,
+    "lng": 112.5056,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 4,
+    "material": "室内运动地胶",
+    "openHours": "09:00-21:00",
+    "rating": 4,
+    "features": [
+      "乒乓球培训",
+      "校园合作点",
+      "坐标已核实",
+      "室内球台",
+      "第十一小学校",
+      "中州西路"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "https://images.unsplash.com/photo-1571902943202-7f4d3dcce98d?w=1200",
+    "galleryImages": [
+      "https://images.unsplash.com/photo-1571902943202-7f4d3dcce98d?w=1200",
+      "https://images.unsplash.com/photo-1626224583764-f87db110ac21?w=1200",
+      "https://images.unsplash.com/photo-1518611012118-a1e30cbbe42a?w=1200"
+    ],
+    "livePhotos": [
+      "https://images.unsplash.com/photo-1571902943202-7f4d3dcce98d?w=1200",
+      "https://images.unsplash.com/photo-1626224583764-f87db110ac21?w=1200",
+      "https://images.unsplash.com/photo-1518611012118-a1e30cbbe42a?w=1200"
+    ],
+    "facilityPhotos": [
+      "https://images.unsplash.com/photo-1571902943202-7f4d3dcce98d?w=1200"
+    ],
+    "description": "梦之翼体育培训位于卧龙区中州西路南阳市第十一小学校内，依托校园场地开展乒乓球专项培训。室内配备4张球台与运动地胶，环境安全、适合少儿长期练习，与学校合作模式便于学员就近参训。中州西路沿线交通便捷，是卧龙区西部家长选择乒乓球兴趣班的重要选项之一。教育宝平台收录的卧龙区培训点，与十一小合作模式稳定，西部家长口碑较好。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://ny.jiaoyubao.cn/pingpangqiu/",
+        "https://s.jina.ai/"
+      ],
+      "enrichedAt": "2026-07-13T06:24:31.546Z",
+      "searchQuery": "site:dianping.com 梦之翼体育 乒乓球 南阳 乒乓球 | site:meituan.com 梦之翼体育 乒乓球 南阳 乒乓球馆 | 梦之翼体育 乒乓球 南阳 乒乓球 抖音 实拍 | 梦之翼体育培训 南阳 乒乓球馆 内景 球台 实拍 | 南阳 梦之翼体育培训 乒乓球 培训 | 南阳 梦之翼体育培训 小红书",
+      "confidence": "medium",
+      "photoSource": "stock"
+    },
+    "reviews": []
+  },
+  {
+    "id": 900013,
+    "name": "博奥青少年俱乐部",
+    "address": "河南省南阳市宛城区鼎盛路",
+    "lat": 32.9912,
+    "lng": 112.5742,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "09:00-21:00",
+    "rating": 4.1,
+    "features": [
+      "青少年培训",
+      "乒乓球培训",
+      "坐标已核实",
+      "室内球台",
+      "鼎盛路",
+      "付费场馆"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "https://images.unsplash.com/photo-1626224583764-f87db110ac21?w=1200",
+    "galleryImages": [
+      "https://images.unsplash.com/photo-1626224583764-f87db110ac21?w=1200",
+      "https://images.unsplash.com/photo-1571902943202-7f4d3dcce98d?w=1200",
+      "https://images.unsplash.com/photo-1518611012118-a1e30cbbe42a?w=1200"
+    ],
+    "livePhotos": [
+      "https://images.unsplash.com/photo-1626224583764-f87db110ac21?w=1200",
+      "https://images.unsplash.com/photo-1571902943202-7f4d3dcce98d?w=1200",
+      "https://images.unsplash.com/photo-1518611012118-a1e30cbbe42a?w=1200"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/900013/facility-0.jpg",
+      "/uploads/courts/900013/facility-1.jpg"
+    ],
+    "description": "博奥青少年俱乐部位于宛城区鼎盛路，毗邻体育中心片区，是滨河东路一带较活跃的室内乒乓球培训机构。配备6张球台与运动地胶，专注青少年系统训练与比赛备赛，教练团队经验丰富。鼎盛路交通便利，与市体校、第一体育健身中心形成乒乓球资源集群，方便学员进阶深造。鼎盛路毗邻体育中心集群，学员可方便观摩市体校训练，进阶氛围浓厚。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://s.jina.ai/"
+      ],
+      "enrichedAt": "2026-07-13T06:26:59.383Z",
+      "searchQuery": "site:dianping.com 博奥青少年俱乐部 乒乓球 南阳 乒乓球 | site:meituan.com 博奥青少年俱乐部 乒乓球 南阳 乒乓球馆 | 博奥青少年俱乐部 乒乓球 南阳 乒乓球 抖音 实拍 | 博奥青少年俱乐部 南阳 乒乓球馆 内景 球台 实拍 | 南阳 博奥青少年俱乐部 乒乓球 培训 | 南阳 博奥青少年俱乐部 小红书",
+      "confidence": "medium",
+      "photoSource": "stock"
+    },
+    "reviews": []
+  },
+  {
+    "id": 900014,
+    "name": "量时代教育",
+    "address": "河南省南阳市内乡县城关镇滨河西楼金河家园小区楼下1-2楼",
+    "lat": 33.0448,
+    "lng": 111.8492,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 4,
+    "material": "室内运动地胶",
+    "openHours": "09:00-21:00",
+    "rating": 4,
+    "features": [
+      "乒乓球培训",
+      "县域场馆",
+      "坐标已核实",
+      "室内球台",
+      "金河家园",
+      "内乡县"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "https://images.unsplash.com/photo-1571902943202-7f4d3dcce98d?w=1200",
+    "galleryImages": [
+      "https://images.unsplash.com/photo-1571902943202-7f4d3dcce98d?w=1200",
+      "https://images.unsplash.com/photo-1626224583764-f87db110ac21?w=1200",
+      "https://images.unsplash.com/photo-1518611012118-a1e30cbbe42a?w=1200"
+    ],
+    "livePhotos": [
+      "https://images.unsplash.com/photo-1571902943202-7f4d3dcce98d?w=1200",
+      "https://images.unsplash.com/photo-1626224583764-f87db110ac21?w=1200",
+      "https://images.unsplash.com/photo-1518611012118-a1e30cbbe42a?w=1200"
+    ],
+    "facilityPhotos": [
+      "https://images.unsplash.com/photo-1571902943202-7f4d3dcce98d?w=1200"
+    ],
+    "description": "量时代教育位于内乡县城关镇滨河西楼金河家园小区楼下1-2楼，是内乡县较规范的室内乒乓球培训点。配备4张球台与运动地胶，依托社区底商运营，方便县域家庭就近接送。常年开展少儿及青少年培训，场地整洁、氛围友好，滨河西楼片区生活配套齐全，适合内乡本地学员长期练习。教育宝收录的内乡县培训点，社区底商两层布局，县域家庭接送成本低。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://ny.jiaoyubao.cn/pingpangqiu/",
+        "https://s.jina.ai/"
+      ],
+      "enrichedAt": "2026-07-13T06:28:14.777Z",
+      "searchQuery": "site:dianping.com 量时代教育 乒乓球 南阳 乒乓球 | site:meituan.com 量时代教育 乒乓球 南阳 乒乓球馆 | 量时代教育 乒乓球 南阳 乒乓球 抖音 实拍 | 量时代教育 南阳 乒乓球馆 内景 球台 实拍 | 南阳 量时代教育 乒乓球 培训 | 南阳 量时代教育 小红书",
+      "confidence": "medium",
+      "photoSource": "stock"
+    },
+    "reviews": []
+  },
+  {
+    "id": 900016,
+    "name": "浩体健身培训",
+    "address": "河南省南阳市唐河县滨河街道北京大道体育广场对面大唐中央商铺21号楼4楼",
+    "lat": 32.6872,
+    "lng": 112.8386,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "09:00-21:00",
+    "rating": 4,
+    "features": [
+      "乒乓球培训",
+      "健身培训",
+      "县域场馆",
+      "坐标已核实",
+      "大唐中央",
+      "唐河县"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "https://images.unsplash.com/photo-1626224583764-f87db110ac21?w=1200",
+    "galleryImages": [
+      "https://images.unsplash.com/photo-1626224583764-f87db110ac21?w=1200",
+      "https://images.unsplash.com/photo-1571902943202-7f4d3dcce98d?w=1200",
+      "https://images.unsplash.com/photo-1518611012118-a1e30cbbe42a?w=1200"
+    ],
+    "livePhotos": [
+      "https://images.unsplash.com/photo-1626224583764-f87db110ac21?w=1200",
+      "https://images.unsplash.com/photo-1571902943202-7f4d3dcce98d?w=1200",
+      "https://images.unsplash.com/photo-1518611012118-a1e30cbbe42a?w=1200"
+    ],
+    "facilityPhotos": [
+      "https://images.unsplash.com/photo-1626224583764-f87db110ac21?w=1200"
+    ],
+    "description": "浩体健身培训位于唐河县滨河街道北京大道体育广场对面大唐中央商铺21号楼4楼，是唐河县规模较大的综合健身培训场馆。配备6张室内球台与运动地胶，除乒乓球外兼营体能训练，适合县域学员多元化锻炼。大唐中央商圈配套完善，北京大道交通便利，方便唐河本地球友系统训练。教育宝公示位于大唐中央商圈四楼，兼具体能训练资源，适合唐河学员综合发展。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://ny.jiaoyubao.cn/pingpangqiu/",
+        "https://s.jina.ai/"
+      ],
+      "enrichedAt": "2026-07-13T06:29:28.670Z",
+      "searchQuery": "site:dianping.com 浩体健身 乒乓球 南阳 乒乓球 | site:meituan.com 浩体健身 乒乓球 南阳 乒乓球馆 | 浩体健身 乒乓球 南阳 乒乓球 抖音 实拍 | 浩体健身培训 南阳 乒乓球馆 内景 球台 实拍 | 南阳 浩体健身培训 乒乓球 培训 | 南阳 浩体健身培训 小红书",
+      "confidence": "medium",
+      "photoSource": "stock"
+    },
+    "reviews": []
+  },
+  {
+    "id": 900017,
+    "name": "英典乒乓球培训",
+    "address": "河南省南阳市方城县凤瑞办农贸路与张骞大道交叉口向西30米路南",
+    "lat": 33.2552,
+    "lng": 113.0178,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 4,
+    "material": "室内运动地胶",
+    "openHours": "09:00-21:00",
+    "rating": 4,
+    "features": [
+      "乒乓球培训",
+      "县域场馆",
+      "坐标已核实",
+      "室内球台",
+      "方城县",
+      "农贸路张骞大道"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "https://images.unsplash.com/photo-1518611012118-a1e30cbbe42a?w=1200",
+    "galleryImages": [
+      "https://images.unsplash.com/photo-1518611012118-a1e30cbbe42a?w=1200",
+      "https://images.unsplash.com/photo-1626224583764-f87db110ac21?w=1200",
+      "https://images.unsplash.com/photo-1571902943202-7f4d3dcce98d?w=1200"
+    ],
+    "livePhotos": [
+      "https://images.unsplash.com/photo-1518611012118-a1e30cbbe42a?w=1200",
+      "https://images.unsplash.com/photo-1626224583764-f87db110ac21?w=1200",
+      "https://images.unsplash.com/photo-1571902943202-7f4d3dcce98d?w=1200"
+    ],
+    "facilityPhotos": [
+      "https://images.unsplash.com/photo-1518611012118-a1e30cbbe42a?w=1200"
+    ],
+    "description": "英典乒乓球培训位于方城县凤瑞办农贸路与张骞大道交叉口向西30米路南，是方城县较活跃的室内乒乓球培训机构。配备4张球台与运动地胶，常年开展少儿及青少年课程，教练注重基本功与实战结合。农贸路张骞大道交汇处区位核心，方便方城县城家庭就近选择，县域乒乓球氛围较好。教育宝收录的方城县培训点，位于县城核心路口，家长反馈教学认真、接送方便。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://ny.jiaoyubao.cn/pingpangqiu/",
+        "https://s.jina.ai/"
+      ],
+      "enrichedAt": "2026-07-13T06:30:39.045Z",
+      "searchQuery": "site:dianping.com 英典乒乓球 南阳 乒乓球 | site:meituan.com 英典乒乓球 南阳 乒乓球馆 | 英典乒乓球 南阳 乒乓球 抖音 实拍 | 英典乒乓球培训 南阳 乒乓球馆 内景 球台 实拍 | 南阳 英典乒乓球培训 乒乓球 培训 | 南阳 英典乒乓球培训 小红书",
+      "confidence": "medium",
+      "photoSource": "stock"
+    },
+    "reviews": []
+  },
+  {
+    "id": 900018,
+    "name": "淅川县爱乒体育俱乐部",
+    "address": "河南省南阳市淅川县龙城街道西湾社区888",
+    "lat": 33.1382,
+    "lng": 111.4896,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 4,
+    "material": "室内运动地胶",
+    "openHours": "09:00-21:00",
+    "rating": 4,
+    "features": [
+      "乒乓球培训",
+      "县域场馆",
+      "坐标已核实",
+      "室内球台",
+      "淅川县",
+      "西湾社区"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "https://images.unsplash.com/photo-1626224583764-f87db110ac21?w=1200",
+    "galleryImages": [
+      "https://images.unsplash.com/photo-1626224583764-f87db110ac21?w=1200",
+      "https://images.unsplash.com/photo-1571902943202-7f4d3dcce98d?w=1200",
+      "https://images.unsplash.com/photo-1518611012118-a1e30cbbe42a?w=1200"
+    ],
+    "livePhotos": [
+      "https://images.unsplash.com/photo-1626224583764-f87db110ac21?w=1200",
+      "https://images.unsplash.com/photo-1571902943202-7f4d3dcce98d?w=1200",
+      "https://images.unsplash.com/photo-1518611012118-a1e30cbbe42a?w=1200"
+    ],
+    "facilityPhotos": [
+      "https://images.unsplash.com/photo-1626224583764-f87db110ac21?w=1200"
+    ],
+    "description": "淅川县爱乒体育俱乐部位于淅川县龙城街道西湾社区，是淅川县较规范的室内乒乓球培训机构。配备4张球台与运动地胶，常年开展青少年及成人培训，为县域乒乓球爱好者提供系统训练场所。西湾社区生活配套完善，场馆环境整洁，方便淅川本地学员就近参训和周末约球活动。教育宝收录的淅川县培训点，西湾社区位置明确，是淅川县域较规范的室内训练场所。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://ny.jiaoyubao.cn/pingpangqiu/",
+        "https://s.jina.ai/"
+      ],
+      "enrichedAt": "2026-07-13T06:31:50.742Z",
+      "searchQuery": "site:dianping.com 淅川县爱乒体育俱乐部 南阳 乒乓球 | site:meituan.com 淅川县爱乒体育俱乐部 南阳 乒乓球馆 | 淅川县爱乒体育俱乐部 南阳 乒乓球 抖音 实拍 | 淅川县爱乒体育俱乐部 南阳 乒乓球馆 内景 球台 实拍 | 南阳 淅川县爱乒体育俱乐部 乒乓球 培训 | 南阳 淅川县爱乒体育俱乐部 小红书",
+      "confidence": "medium",
+      "photoSource": "stock"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910001,
+    "name": "爱乒俱乐部",
+    "address": "人民路与灌河路交叉口西60米",
+    "lat": 33.13801,
+    "lng": 111.484101,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 3.3,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910001/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910001/live-0.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910001/live-0.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910001/live-0.jpg"
+    ],
+    "description": "爱乒俱乐部位于人民路与灌河路交叉口西60米。高德评分：3.3。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0LALLOKV1",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T23:23:47.574Z",
+      "searchQuery": "amap-detail:B0LALLOKV1",
+      "confidence": "medium",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910002,
+    "name": "爱乒俱乐部(新建路店)",
+    "address": "新建路与东风路交叉口东380米",
+    "lat": 33.135458,
+    "lng": 111.495921,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 3,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910002/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910002/live-0.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910002/live-0.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910002/live-0.jpg"
+    ],
+    "description": "爱乒俱乐部(新建路店)位于新建路与东风路交叉口东380米。高德评分：3。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0L0O9J85F",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T23:23:48.127Z",
+      "searchQuery": "amap-detail:B0L0O9J85F",
+      "confidence": "medium",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910003,
+    "name": "爱尚乒乓健身俱乐部",
+    "address": "长光江路山与经十路交叉口东50米路南商业二楼",
+    "lat": 32.975949,
+    "lng": 112.580077,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 3.8,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910003/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910003/live-0.jpg",
+      "/uploads/courts/910003/live-1.jpg",
+      "/uploads/courts/910003/live-2.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910003/live-0.jpg",
+      "/uploads/courts/910003/live-1.jpg",
+      "/uploads/courts/910003/live-2.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910003/live-0.jpg",
+      "/uploads/courts/910003/live-1.jpg"
+    ],
+    "description": "爱尚乒乓健身俱乐部位于长光江路山与经十路交叉口东50米路南商业二楼。高德评分：3.8。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0JD9RX1LZ",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T10:50:39.499Z",
+      "searchQuery": "amap-detail:B0JD9RX1LZ",
+      "confidence": "high",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910004,
+    "name": "奥新乒乓球俱乐部",
+    "address": "中山街与健康路交叉口东南60米",
+    "lat": 33.034987,
+    "lng": 112.228661,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 3.4,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "",
+    "galleryImages": [],
+    "livePhotos": [],
+    "facilityPhotos": [],
+    "description": "奥新乒乓球俱乐部位于中山街与健康路交叉口东南60米。高德评分：3.4。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0LGFK8QT3",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T23:23:48.448Z",
+      "searchQuery": "amap-detail:B0LGFK8QT3",
+      "confidence": "low",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910005,
+    "name": "白河湿地公园光武乒乓球场",
+    "address": "建设东路119大楼",
+    "lat": 33.003217,
+    "lng": 112.587603,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 3.5,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910005/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910005/live-0.jpg",
+      "/uploads/courts/910005/live-1.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910005/live-0.jpg",
+      "/uploads/courts/910005/live-1.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910005/live-0.jpg",
+      "/uploads/courts/910005/live-1.jpg"
+    ],
+    "description": "白河湿地公园光武乒乓球场位于建设东路119大楼。高德评分：3.5。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0MBS7EJC7",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T23:23:49.141Z",
+      "searchQuery": "amap-detail:B0MBS7EJC7",
+      "confidence": "medium",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910006,
+    "name": "搏一乒乓球运动中心",
+    "address": "新华路与东一环交叉口西北角向西南华30米路北面南",
+    "lat": 32.687593,
+    "lng": 112.110559,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 3.8,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910006/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910006/live-0.jpg",
+      "/uploads/courts/910006/live-1.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910006/live-0.jpg",
+      "/uploads/courts/910006/live-1.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910006/live-0.jpg",
+      "/uploads/courts/910006/live-1.jpg"
+    ],
+    "description": "搏一乒乓球运动中心位于新华路与东一环交叉口西北角向西南华30米路北面南。高德评分：3.8。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0L6G6DEB0",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T23:23:49.946Z",
+      "searchQuery": "amap-detail:B0L6G6DEB0",
+      "confidence": "medium",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910007,
+    "name": "雏鹰乒乓国球馆",
+    "address": "农村信用社红庙路分社北门旁",
+    "lat": 32.982692,
+    "lng": 112.526243,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 3.4,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910007/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910007/live-0.jpg",
+      "/uploads/courts/910007/live-1.jpg",
+      "/uploads/courts/910007/live-2.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910007/live-0.jpg",
+      "/uploads/courts/910007/live-1.jpg",
+      "/uploads/courts/910007/live-2.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910007/live-0.jpg",
+      "/uploads/courts/910007/live-1.jpg"
+    ],
+    "description": "雏鹰乒乓国球馆位于农村信用社红庙路分社北门旁。高德评分：3.4。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0LDOR2DQY",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T10:50:43.489Z",
+      "searchQuery": "amap-detail:B0LDOR2DQY",
+      "confidence": "high",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910008,
+    "name": "鼎峰乒乓球训练基地",
+    "address": "商品街与解放路交叉口西60米",
+    "lat": 32.537327,
+    "lng": 112.365808,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 3.7,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910008/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910008/live-0.jpg",
+      "/uploads/courts/910008/live-1.jpg",
+      "/uploads/courts/910008/live-2.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910008/live-0.jpg",
+      "/uploads/courts/910008/live-1.jpg",
+      "/uploads/courts/910008/live-2.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910008/live-0.jpg",
+      "/uploads/courts/910008/live-1.jpg"
+    ],
+    "description": "鼎峰乒乓球训练基地位于商品街与解放路交叉口西60米。高德评分：3.7。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0I2H555LY",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T10:50:44.846Z",
+      "searchQuery": "amap-detail:B0I2H555LY",
+      "confidence": "high",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910009,
+    "name": "方城县龙跃乒乓球俱乐部",
+    "address": "牛绳路与滨河路交叉口东北80米",
+    "lat": 33.25282,
+    "lng": 113.005987,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 3.7,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910009/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910009/live-0.jpg",
+      "/uploads/courts/910009/live-1.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910009/live-0.jpg",
+      "/uploads/courts/910009/live-1.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910009/live-0.jpg",
+      "/uploads/courts/910009/live-1.jpg"
+    ],
+    "description": "方城县龙跃乒乓球俱乐部位于牛绳路与滨河路交叉口东北80米。高德评分：3.7。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0LURO49PX",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T23:23:50.700Z",
+      "searchQuery": "amap-detail:B0LURO49PX",
+      "confidence": "medium",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910010,
+    "name": "方城县英典乒乓球俱乐部",
+    "address": "农贸路与市场路交叉口正南方天向57米左右(斯玛道特教育旁边二楼)",
+    "lat": 33.255171,
+    "lng": 113.021165,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 3.5,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910010/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910010/live-0.jpg",
+      "/uploads/courts/910010/live-1.jpg",
+      "/uploads/courts/910010/live-2.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910010/live-0.jpg",
+      "/uploads/courts/910010/live-1.jpg",
+      "/uploads/courts/910010/live-2.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910010/live-0.jpg",
+      "/uploads/courts/910010/live-1.jpg"
+    ],
+    "description": "方城县英典乒乓球俱乐部位于农贸路与市场路交叉口正南方天向57米左右(斯玛道特教育旁边二楼)。高德评分：3.5。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0MBKRQR4V",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T10:50:47.371Z",
+      "searchQuery": "amap-detail:B0MBKRQR4V",
+      "confidence": "high",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910011,
+    "name": "飞龙乒乓",
+    "address": "菇业大道与大桥路交叉口北100米",
+    "lat": 32.742867,
+    "lng": 113.337536,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 3.7,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910011/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910011/live-0.jpg",
+      "/uploads/courts/910011/live-1.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910011/live-0.jpg",
+      "/uploads/courts/910011/live-1.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910011/live-0.jpg",
+      "/uploads/courts/910011/live-1.jpg"
+    ],
+    "description": "飞龙乒乓位于菇业大道与大桥路交叉口北100米。高德评分：3.7。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0ID55RXLR",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T23:23:51.469Z",
+      "searchQuery": "amap-detail:B0ID55RXLR",
+      "confidence": "medium",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910012,
+    "name": "飞扬乒乓球俱乐部",
+    "address": "灌河路与金泰盛世步行街交叉口东北50米",
+    "lat": 33.139215,
+    "lng": 111.486569,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 3.7,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910012/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910012/live-0.jpg",
+      "/uploads/courts/910012/live-1.jpg",
+      "/uploads/courts/910012/live-2.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910012/live-0.jpg",
+      "/uploads/courts/910012/live-1.jpg",
+      "/uploads/courts/910012/live-2.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910012/live-0.jpg",
+      "/uploads/courts/910012/live-1.jpg"
+    ],
+    "description": "飞扬乒乓球俱乐部位于灌河路与金泰盛世步行街交叉口东北50米。高德评分：3.7。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0FFJOIUMQ",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T10:50:50.792Z",
+      "searchQuery": "amap-detail:B0FFJOIUMQ",
+      "confidence": "high",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910013,
+    "name": "飞跃乒乓球俱乐部",
+    "address": "财富广场",
+    "lat": 33.047434,
+    "lng": 111.846908,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 3.4,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "",
+    "galleryImages": [],
+    "livePhotos": [],
+    "facilityPhotos": [],
+    "description": "飞跃乒乓球俱乐部位于财富广场。高德评分：3.4。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0KU36A1HX",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T23:23:51.811Z",
+      "searchQuery": "amap-detail:B0KU36A1HX",
+      "confidence": "low",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910014,
+    "name": "海子乒乓",
+    "address": "光武路万德隆东10米光武商业街B2号楼四楼",
+    "lat": 33.00756,
+    "lng": 112.564915,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 4.1,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910014/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910014/live-0.jpg",
+      "/uploads/courts/910014/live-1.jpg",
+      "/uploads/courts/910014/live-2.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910014/live-0.jpg",
+      "/uploads/courts/910014/live-1.jpg",
+      "/uploads/courts/910014/live-2.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910014/live-0.jpg",
+      "/uploads/courts/910014/live-1.jpg"
+    ],
+    "description": "海子乒乓位于光武路万德隆东10米光武商业街B2号楼四楼。高德评分：4.1。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0K23S0FZM",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T10:50:53.892Z",
+      "searchQuery": "amap-detail:B0K23S0FZM",
+      "confidence": "high",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910015,
+    "name": "海子乒乓球俱乐部",
+    "address": "万面王府山社区共和街159号宏大厂西南角一楼101",
+    "lat": 32.999906,
+    "lng": 112.53897,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 3.6,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910015/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910015/live-0.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910015/live-0.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910015/live-0.jpg"
+    ],
+    "description": "海子乒乓球俱乐部位于万面王府山社区共和街159号宏大厂西南角一楼101。高德评分：3.6。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0MDFCAB4N",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T23:23:52.732Z",
+      "searchQuery": "amap-detail:B0MDFCAB4N",
+      "confidence": "medium",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910016,
+    "name": "汉华乒乓球俱乐部",
+    "address": "",
+    "lat": 32.527787,
+    "lng": 112.377981,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 4,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910016/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910016/live-0.jpg",
+      "/uploads/courts/910016/live-1.jpg",
+      "/uploads/courts/910016/live-2.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910016/live-0.jpg",
+      "/uploads/courts/910016/live-1.jpg",
+      "/uploads/courts/910016/live-2.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910016/live-0.jpg",
+      "/uploads/courts/910016/live-1.jpg"
+    ],
+    "description": "汉华乒乓球俱乐部位于南阳周边。高德评分：4。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0KUG7C43A",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T10:50:55.333Z",
+      "searchQuery": "amap-detail:B0KUG7C43A",
+      "confidence": "high",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910017,
+    "name": "豪欣乒乓球俱乐部",
+    "address": "灵山路与县衙西路交叉口西北140米",
+    "lat": 33.044975,
+    "lng": 111.832391,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 3.1,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910017/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910017/live-0.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910017/live-0.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910017/live-0.jpg"
+    ],
+    "description": "豪欣乒乓球俱乐部位于灵山路与县衙西路交叉口西北140米。高德评分：3.1。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0FFMD23HQ",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T23:23:53.249Z",
+      "searchQuery": "amap-detail:B0FFMD23HQ",
+      "confidence": "medium",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910018,
+    "name": "挥扬乒乓俱乐部",
+    "address": "育人巷与张衡大道交叉口北80米",
+    "lat": 33.020135,
+    "lng": 112.578815,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 2.3,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "",
+    "galleryImages": [],
+    "livePhotos": [],
+    "facilityPhotos": [],
+    "description": "挥扬乒乓俱乐部位于育人巷与张衡大道交叉口北80米。高德评分：2.3。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0MGUN8JXO",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T23:23:53.598Z",
+      "searchQuery": "amap-detail:B0MGUN8JXO",
+      "confidence": "low",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910019,
+    "name": "挥扬乒乓球俱乐部",
+    "address": "张衡路与理想路交叉口向东100米路西",
+    "lat": 33.019587,
+    "lng": 112.577254,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 4.1,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910019/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910019/live-0.jpg",
+      "/uploads/courts/910019/live-1.jpg",
+      "/uploads/courts/910019/live-2.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910019/live-0.jpg",
+      "/uploads/courts/910019/live-1.jpg",
+      "/uploads/courts/910019/live-2.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910019/live-0.jpg",
+      "/uploads/courts/910019/live-1.jpg"
+    ],
+    "description": "挥扬乒乓球俱乐部位于张衡路与理想路交叉口向东100米路西。高德评分：4.1。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0HDZZ1IAK",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T10:50:57.729Z",
+      "searchQuery": "amap-detail:B0HDZZ1IAK",
+      "confidence": "high",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910020,
+    "name": "精英乒乓球馆",
+    "address": "北大街与小城路交叉口北120米",
+    "lat": 33.30306,
+    "lng": 111.480417,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 3.3,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910020/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910020/live-0.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910020/live-0.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910020/live-0.jpg"
+    ],
+    "description": "精英乒乓球馆位于北大街与小城路交叉口北120米。高德评分：3.3。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0KAFHMII7",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T23:23:54.175Z",
+      "searchQuery": "amap-detail:B0KAFHMII7",
+      "confidence": "medium",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910021,
+    "name": "精英乒乓球俱乐部",
+    "address": "辣椒炒肉对面",
+    "lat": 33.038939,
+    "lng": 111.837979,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 3.6,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910021/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910021/live-0.jpg",
+      "/uploads/courts/910021/live-1.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910021/live-0.jpg",
+      "/uploads/courts/910021/live-1.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910021/live-0.jpg",
+      "/uploads/courts/910021/live-1.jpg"
+    ],
+    "description": "精英乒乓球俱乐部位于辣椒炒肉对面。高德评分：3.6。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0HRVXG70P",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T23:23:54.983Z",
+      "searchQuery": "amap-detail:B0HRVXG70P",
+      "confidence": "medium",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910022,
+    "name": "李军完美乒乓球训练室",
+    "address": "文峰南路与北京大道交叉口东北120米",
+    "lat": 32.673262,
+    "lng": 112.843823,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 3.3,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "",
+    "galleryImages": [],
+    "livePhotos": [],
+    "facilityPhotos": [],
+    "description": "李军完美乒乓球训练室位于文峰南路与北京大道交叉口东北120米。高德评分：3.3。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0M6XUS61J",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T23:23:55.309Z",
+      "searchQuery": "amap-detail:B0M6XUS61J",
+      "confidence": "low",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910023,
+    "name": "理想乒乓",
+    "address": "邓禹路与信臣东路交叉口南80米",
+    "lat": 33.024483,
+    "lng": 112.588928,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 4.2,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910023/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910023/live-0.jpg",
+      "/uploads/courts/910023/live-1.jpg",
+      "/uploads/courts/910023/live-2.png"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910023/live-0.jpg",
+      "/uploads/courts/910023/live-1.jpg",
+      "/uploads/courts/910023/live-2.png"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910023/live-0.jpg",
+      "/uploads/courts/910023/live-1.jpg"
+    ],
+    "description": "理想乒乓位于邓禹路与信臣东路交叉口南80米。高德评分：4.2。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0LRSK4BZD",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T10:51:01.058Z",
+      "searchQuery": "amap-detail:B0LRSK4BZD",
+      "confidence": "high",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910024,
+    "name": "梅溪乒乓球俱乐部",
+    "address": "南阳天工医院西门旁",
+    "lat": 32.994702,
+    "lng": 112.53149,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 4.1,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910024/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910024/live-0.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910024/live-0.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910024/live-0.jpg"
+    ],
+    "description": "梅溪乒乓球俱乐部位于南阳天工医院西门旁。高德评分：4.1。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0FFMH5FI4",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T23:23:55.816Z",
+      "searchQuery": "amap-detail:B0FFMH5FI4",
+      "confidence": "medium",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910025,
+    "name": "泌阳县悦冠乒乓球运动俱乐部",
+    "address": "北杨庄",
+    "lat": 32.74009,
+    "lng": 113.327125,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 4,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910025/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910025/live-0.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910025/live-0.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910025/live-0.jpg"
+    ],
+    "description": "泌阳县悦冠乒乓球运动俱乐部位于北杨庄。高德评分：4。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0HKR5Q76D",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T23:23:56.374Z",
+      "searchQuery": "amap-detail:B0HKR5Q76D",
+      "confidence": "medium",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910026,
+    "name": "南航乒乓",
+    "address": "人民北路南航花园8号楼东南30米处",
+    "lat": 33.01162,
+    "lng": 112.542179,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 4.1,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910026/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910026/live-0.jpg",
+      "/uploads/courts/910026/live-1.jpg",
+      "/uploads/courts/910026/live-2.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910026/live-0.jpg",
+      "/uploads/courts/910026/live-1.jpg",
+      "/uploads/courts/910026/live-2.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910026/live-0.jpg",
+      "/uploads/courts/910026/live-1.jpg"
+    ],
+    "description": "南航乒乓位于人民北路南航花园8号楼东南30米处。高德评分：4.1。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0I3JA7QP9",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T10:51:03.965Z",
+      "searchQuery": "amap-detail:B0I3JA7QP9",
+      "confidence": "high",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910027,
+    "name": "南阳超能冠乒乓(少年得志旗舰店)",
+    "address": "范蠡路与车站路交叉口向北40米",
+    "lat": 33.019784,
+    "lng": 112.528375,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 4,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910027/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910027/live-0.jpg",
+      "/uploads/courts/910027/live-1.jpg",
+      "/uploads/courts/910027/live-2.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910027/live-0.jpg",
+      "/uploads/courts/910027/live-1.jpg",
+      "/uploads/courts/910027/live-2.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910027/live-0.jpg",
+      "/uploads/courts/910027/live-1.jpg"
+    ],
+    "description": "南阳超能冠乒乓(少年得志旗舰店)位于范蠡路与车站路交叉口向北40米。高德评分：4。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0KAKDNJZN",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T10:51:05.138Z",
+      "searchQuery": "amap-detail:B0KAKDNJZN",
+      "confidence": "high",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910028,
+    "name": "南阳乒乓球馆",
+    "address": "南阳市体育中心",
+    "lat": 32.991109,
+    "lng": 112.575003,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 4,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910028/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910028/live-0.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910028/live-0.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910028/live-0.jpg"
+    ],
+    "description": "南阳乒乓球馆位于南阳市体育中心。高德评分：4。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0FFI6HZZJ",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T23:23:56.880Z",
+      "searchQuery": "amap-detail:B0FFI6HZZJ",
+      "confidence": "medium",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910029,
+    "name": "南阳启航乒乓球健身馆",
+    "address": "中州西路1617号",
+    "lat": 32.990829,
+    "lng": 112.48063,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 3.9,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910029/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910029/live-0.jpg",
+      "/uploads/courts/910029/live-1.jpg",
+      "/uploads/courts/910029/live-2.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910029/live-0.jpg",
+      "/uploads/courts/910029/live-1.jpg",
+      "/uploads/courts/910029/live-2.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910029/live-0.jpg",
+      "/uploads/courts/910029/live-1.jpg"
+    ],
+    "description": "南阳启航乒乓球健身馆位于中州西路1617号。高德评分：3.9。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0HA663MFI",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T10:51:07.911Z",
+      "searchQuery": "amap-detail:B0HA663MFI",
+      "confidence": "high",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910030,
+    "name": "南阳市风云乒乓球俱乐部",
+    "address": "南都路机关幼儿园向北50米路东",
+    "lat": 33.02475,
+    "lng": 112.583526,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 3.9,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910030/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910030/live-0.jpg",
+      "/uploads/courts/910030/live-1.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910030/live-0.jpg",
+      "/uploads/courts/910030/live-1.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910030/live-0.jpg",
+      "/uploads/courts/910030/live-1.jpg"
+    ],
+    "description": "南阳市风云乒乓球俱乐部位于南都路机关幼儿园向北50米路东。高德评分：3.9。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0KRRHWFUZ",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T23:23:57.843Z",
+      "searchQuery": "amap-detail:B0KRRHWFUZ",
+      "confidence": "medium",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910031,
+    "name": "南阳市乒乓球训练基地",
+    "address": "宛城区体校天乐游泳馆三楼",
+    "lat": 32.975758,
+    "lng": 112.540321,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 3.8,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910031/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910031/live-0.jpg",
+      "/uploads/courts/910031/live-1.jpg",
+      "/uploads/courts/910031/live-2.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910031/live-0.jpg",
+      "/uploads/courts/910031/live-1.jpg",
+      "/uploads/courts/910031/live-2.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910031/live-0.jpg",
+      "/uploads/courts/910031/live-1.jpg"
+    ],
+    "description": "南阳市乒乓球训练基地位于宛城区体校天乐游泳馆三楼。高德评分：3.8。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0KGTUBNPT",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T10:51:10.315Z",
+      "searchQuery": "amap-detail:B0KGTUBNPT",
+      "confidence": "high",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910032,
+    "name": "内乡县健儿乒乓球俱乐部",
+    "address": "新民路与灵山路交叉口东180米",
+    "lat": 33.04814,
+    "lng": 111.833887,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 4.1,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910032/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910032/live-0.jpg",
+      "/uploads/courts/910032/live-1.jpg",
+      "/uploads/courts/910032/live-2.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910032/live-0.jpg",
+      "/uploads/courts/910032/live-1.jpg",
+      "/uploads/courts/910032/live-2.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910032/live-0.jpg",
+      "/uploads/courts/910032/live-1.jpg"
+    ],
+    "description": "内乡县健儿乒乓球俱乐部位于新民路与灵山路交叉口东180米。高德评分：4.1。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0HDLHWIP5",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T23:23:58.856Z",
+      "searchQuery": "amap-detail:B0HDLHWIP5",
+      "confidence": "high",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910033,
+    "name": "内乡卓越乒乓球俱乐部·卓越书法",
+    "address": "郦都大道51号",
+    "lat": 33.057012,
+    "lng": 111.847882,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 4.1,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910033/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910033/live-0.jpg",
+      "/uploads/courts/910033/live-1.jpg",
+      "/uploads/courts/910033/live-2.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910033/live-0.jpg",
+      "/uploads/courts/910033/live-1.jpg",
+      "/uploads/courts/910033/live-2.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910033/live-0.jpg",
+      "/uploads/courts/910033/live-1.jpg"
+    ],
+    "description": "内乡卓越乒乓球俱乐部·卓越书法位于郦都大道51号。高德评分：4.1。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0KD35UPW8",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T10:51:12.735Z",
+      "searchQuery": "amap-detail:B0KD35UPW8",
+      "confidence": "high",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910034,
+    "name": "乒乓球活动训练中心",
+    "address": "人民南路与联合街交叉口西160米",
+    "lat": 32.997133,
+    "lng": 112.533498,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 3.8,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910034/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910034/live-0.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910034/live-0.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910034/live-0.jpg"
+    ],
+    "description": "乒乓球活动训练中心位于人民南路与联合街交叉口西160米。高德评分：3.8。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0K0KODJTI",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T23:23:59.427Z",
+      "searchQuery": "amap-detail:B0K0KODJTI",
+      "confidence": "medium",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910035,
+    "name": "乒乓球俱乐部",
+    "address": "赤眉镇街南(路西加油站南20米)",
+    "lat": 33.183386,
+    "lng": 111.797669,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 3.1,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910035/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910035/live-0.jpg",
+      "/uploads/courts/910035/live-1.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910035/live-0.jpg",
+      "/uploads/courts/910035/live-1.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910035/live-0.jpg",
+      "/uploads/courts/910035/live-1.jpg"
+    ],
+    "description": "乒乓球俱乐部位于赤眉镇街南(路西加油站南20米)。高德评分：3.1。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0FFJ5LBO1",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T23:24:00.156Z",
+      "searchQuery": "amap-detail:B0FFJ5LBO1",
+      "confidence": "medium",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910036,
+    "name": "乒乓球俱乐部",
+    "address": "文峰北路与银花西路交叉口南140米",
+    "lat": 32.68098,
+    "lng": 112.846215,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 3.5,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910036/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910036/live-0.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910036/live-0.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910036/live-0.jpg"
+    ],
+    "description": "乒乓球俱乐部位于文峰北路与银花西路交叉口南140米。高德评分：3.5。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0LBG5QO9M",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T23:24:00.753Z",
+      "searchQuery": "amap-detail:B0LBG5QO9M",
+      "confidence": "medium",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910037,
+    "name": "乒乓球运动中心",
+    "address": "车站南路与民族西街交叉口南180米",
+    "lat": 32.944013,
+    "lng": 112.079184,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 2.3,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "",
+    "galleryImages": [],
+    "livePhotos": [],
+    "facilityPhotos": [],
+    "description": "乒乓球运动中心位于车站南路与民族西街交叉口南180米。高德评分：2.3。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0MACXXA4I",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T23:24:01.088Z",
+      "searchQuery": "amap-detail:B0MACXXA4I",
+      "confidence": "low",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910038,
+    "name": "启程乒乓",
+    "address": "光武大道与工业北路交叉口北180米",
+    "lat": 33.011897,
+    "lng": 112.529306,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 3.1,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910038/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910038/live-0.jpg",
+      "/uploads/courts/910038/live-1.jpg",
+      "/uploads/courts/910038/live-2.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910038/live-0.jpg",
+      "/uploads/courts/910038/live-1.jpg",
+      "/uploads/courts/910038/live-2.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910038/live-0.jpg",
+      "/uploads/courts/910038/live-1.jpg"
+    ],
+    "description": "启程乒乓位于光武大道与工业北路交叉口北180米。高德评分：3.1。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0MBO1YC0K",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T10:51:16.902Z",
+      "searchQuery": "amap-detail:B0MBO1YC0K",
+      "confidence": "high",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910039,
+    "name": "启程乒乓球",
+    "address": "淯滨街与工农路交叉口东100米",
+    "lat": 33.005378,
+    "lng": 112.544051,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 1.7,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "",
+    "galleryImages": [],
+    "livePhotos": [],
+    "facilityPhotos": [],
+    "description": "启程乒乓球位于淯滨街与工农路交叉口东100米。高德评分：1.7。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0MDA6ZRMH",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T23:24:01.416Z",
+      "searchQuery": "amap-detail:B0MDA6ZRMH",
+      "confidence": "low",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910040,
+    "name": "强健乒乓球俱乐部",
+    "address": "涅阳西路322号",
+    "lat": 33.027455,
+    "lng": 112.21493,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 2.8,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910040/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910040/live-0.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910040/live-0.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910040/live-0.jpg"
+    ],
+    "description": "强健乒乓球俱乐部位于涅阳西路322号。高德评分：2.8。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0MDB5HNHG",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T23:24:02.354Z",
+      "searchQuery": "amap-detail:B0MDB5HNHG",
+      "confidence": "medium",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910041,
+    "name": "群星乒乓",
+    "address": "北京中路0与卧龙路交叉口东北角(宴羊天学得福好教育楼上)",
+    "lat": 32.975002,
+    "lng": 112.499602,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 3.9,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910041/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910041/live-0.jpg",
+      "/uploads/courts/910041/live-1.jpg",
+      "/uploads/courts/910041/live-2.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910041/live-0.jpg",
+      "/uploads/courts/910041/live-1.jpg",
+      "/uploads/courts/910041/live-2.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910041/live-0.jpg",
+      "/uploads/courts/910041/live-1.jpg"
+    ],
+    "description": "群星乒乓位于北京中路0与卧龙路交叉口东北角(宴羊天学得福好教育楼上)。高德评分：3.9。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0KK4127E6",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T10:51:19.052Z",
+      "searchQuery": "amap-detail:B0KK4127E6",
+      "confidence": "high",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910042,
+    "name": "社旗少儿乒乓球训练中心",
+    "address": "香山路与郑州路交汇处东南角农商银行5楼",
+    "lat": 33.064966,
+    "lng": 112.926121,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 3.8,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910042/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910042/live-0.jpg",
+      "/uploads/courts/910042/live-1.jpg",
+      "/uploads/courts/910042/live-2.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910042/live-0.jpg",
+      "/uploads/courts/910042/live-1.jpg",
+      "/uploads/courts/910042/live-2.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910042/live-0.jpg",
+      "/uploads/courts/910042/live-1.jpg"
+    ],
+    "description": "社旗少儿乒乓球训练中心位于香山路与郑州路交汇处东南角农商银行5楼。高德评分：3.8。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0FFGBAYPL",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T10:51:20.456Z",
+      "searchQuery": "amap-detail:B0FFGBAYPL",
+      "confidence": "high",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910043,
+    "name": "曙光乒乓球健身馆(旗舰店)",
+    "address": "车站路与躬耕路口东50米一楼二楼",
+    "lat": 32.968177,
+    "lng": 112.511401,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 4.1,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910043/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910043/live-0.jpg",
+      "/uploads/courts/910043/live-1.jpg",
+      "/uploads/courts/910043/live-2.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910043/live-0.jpg",
+      "/uploads/courts/910043/live-1.jpg",
+      "/uploads/courts/910043/live-2.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910043/live-0.jpg",
+      "/uploads/courts/910043/live-1.jpg"
+    ],
+    "description": "曙光乒乓球健身馆(旗舰店)位于车站路与躬耕路口东50米一楼二楼。高德评分：4.1。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0G2YSRGXR",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T10:51:22.004Z",
+      "searchQuery": "amap-detail:B0G2YSRGXR",
+      "confidence": "high",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910044,
+    "name": "曙光乒乓球健身馆(师院23小店)",
+    "address": "北京大道中段23小门口二楼",
+    "lat": 32.978075,
+    "lng": 112.498527,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 3.6,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910044/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910044/live-0.jpg",
+      "/uploads/courts/910044/live-1.jpg",
+      "/uploads/courts/910044/live-2.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910044/live-0.jpg",
+      "/uploads/courts/910044/live-1.jpg",
+      "/uploads/courts/910044/live-2.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910044/live-0.jpg",
+      "/uploads/courts/910044/live-1.jpg"
+    ],
+    "description": "曙光乒乓球健身馆(师院23小店)位于北京大道中段23小门口二楼。高德评分：3.6。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0KKKHQI0A",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T10:51:23.152Z",
+      "searchQuery": "amap-detail:B0KKKHQI0A",
+      "confidence": "high",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910045,
+    "name": "唐河大伟乒乓球俱乐部",
+    "address": "新民路与解放西路口向南30米",
+    "lat": 32.694668,
+    "lng": 112.837687,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 3.7,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910045/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910045/live-0.jpg",
+      "/uploads/courts/910045/live-1.jpg",
+      "/uploads/courts/910045/live-2.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910045/live-0.jpg",
+      "/uploads/courts/910045/live-1.jpg",
+      "/uploads/courts/910045/live-2.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910045/live-0.jpg",
+      "/uploads/courts/910045/live-1.jpg"
+    ],
+    "description": "唐河大伟乒乓球俱乐部位于新民路与解放西路口向南30米。高德评分：3.7。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0FFHGSEYE",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T10:51:25.083Z",
+      "searchQuery": "amap-detail:B0FFHGSEYE",
+      "confidence": "high",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910046,
+    "name": "唐河县南泉乒乓球俱乐部",
+    "address": "友兰湿地公园内(南侧)",
+    "lat": 32.694281,
+    "lng": 112.827506,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 3.7,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910046/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910046/live-0.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910046/live-0.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910046/live-0.jpg"
+    ],
+    "description": "唐河县南泉乒乓球俱乐部位于友兰湿地公园内(南侧)。高德评分：3.7。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0KR5RW2L5",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T23:24:02.967Z",
+      "searchQuery": "amap-detail:B0KR5RW2L5",
+      "confidence": "medium",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910047,
+    "name": "唐河县王一丁乒乓球俱乐部",
+    "address": "解放西路89号",
+    "lat": 32.693213,
+    "lng": 112.849483,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 3.8,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910047/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910047/live-0.jpg",
+      "/uploads/courts/910047/live-1.jpg",
+      "/uploads/courts/910047/live-2.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910047/live-0.jpg",
+      "/uploads/courts/910047/live-1.jpg",
+      "/uploads/courts/910047/live-2.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910047/live-0.jpg",
+      "/uploads/courts/910047/live-1.jpg"
+    ],
+    "description": "唐河县王一丁乒乓球俱乐部位于解放西路89号。高德评分：3.8。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0HD7MNX4A",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T10:51:26.899Z",
+      "searchQuery": "amap-detail:B0HD7MNX4A",
+      "confidence": "high",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910048,
+    "name": "天乐乒乓球馆",
+    "address": "华山路西巷与华山路交叉口西80米",
+    "lat": 32.9756,
+    "lng": 112.540041,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 3.2,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "",
+    "galleryImages": [],
+    "livePhotos": [],
+    "facilityPhotos": [],
+    "description": "天乐乒乓球馆位于华山路西巷与华山路交叉口西80米。高德评分：3.2。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0M6AUYMO0",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T23:24:03.294Z",
+      "searchQuery": "amap-detail:B0M6AUYMO0",
+      "confidence": "low",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910049,
+    "name": "西峡县十号乒乓球俱乐部",
+    "address": "建设西路与农贸街交叉口诚信志远果业右边进去20米东城壕西路1号二楼",
+    "lat": 33.296566,
+    "lng": 111.484005,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 3.8,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910049/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910049/live-0.jpg",
+      "/uploads/courts/910049/live-1.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910049/live-0.jpg",
+      "/uploads/courts/910049/live-1.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910049/live-0.jpg",
+      "/uploads/courts/910049/live-1.jpg"
+    ],
+    "description": "西峡县十号乒乓球俱乐部位于建设西路与农贸街交叉口诚信志远果业右边进去20米东城壕西路1号二楼。高德评分：3.8。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0KGSDETF6",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T23:24:04.344Z",
+      "searchQuery": "amap-detail:B0KGSDETF6",
+      "confidence": "medium",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910050,
+    "name": "西峡县拾号乒乓球俱乐部",
+    "address": "鸿星商贸城负一楼东侧40米(新百丽超市东侧)",
+    "lat": 33.318811,
+    "lng": 111.490241,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 3.9,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910050/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910050/live-0.jpg",
+      "/uploads/courts/910050/live-1.jpg",
+      "/uploads/courts/910050/live-2.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910050/live-0.jpg",
+      "/uploads/courts/910050/live-1.jpg",
+      "/uploads/courts/910050/live-2.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910050/live-0.jpg",
+      "/uploads/courts/910050/live-1.jpg"
+    ],
+    "description": "西峡县拾号乒乓球俱乐部位于鸿星商贸城负一楼东侧40米(新百丽超市东侧)。高德评分：3.9。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0LB5D29PA",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T10:51:30.972Z",
+      "searchQuery": "amap-detail:B0LB5D29PA",
+      "confidence": "high",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910051,
+    "name": "西峡县炫风乒乓球馆",
+    "address": "城关二中体育场南大门西30米路南",
+    "lat": 33.291637,
+    "lng": 111.490095,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 3.2,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910051/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910051/live-0.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910051/live-0.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910051/live-0.jpg"
+    ],
+    "description": "西峡县炫风乒乓球馆位于城关二中体育场南大门西30米路南。高德评分：3.2。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0LR59CG7Q",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T23:24:04.953Z",
+      "searchQuery": "amap-detail:B0LR59CG7Q",
+      "confidence": "medium",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910052,
+    "name": "西峡曜阳乒乓球俱乐部",
+    "address": "小城路与八一路交叉口西80米",
+    "lat": 33.301584,
+    "lng": 111.478378,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 3,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910052/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910052/live-0.jpg",
+      "/uploads/courts/910052/live-1.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910052/live-0.jpg",
+      "/uploads/courts/910052/live-1.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910052/live-0.jpg",
+      "/uploads/courts/910052/live-1.jpg"
+    ],
+    "description": "西峡曜阳乒乓球俱乐部位于小城路与八一路交叉口西80米。高德评分：3。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0FFGIBBBI",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T23:24:05.900Z",
+      "searchQuery": "amap-detail:B0FFGIBBBI",
+      "confidence": "medium",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910053,
+    "name": "喜悦乒乓球馆",
+    "address": "书院路与菊潭大街交叉口东260米",
+    "lat": 33.050132,
+    "lng": 111.85069,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 3.4,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "",
+    "galleryImages": [],
+    "livePhotos": [],
+    "facilityPhotos": [],
+    "description": "喜悦乒乓球馆位于书院路与菊潭大街交叉口东260米。高德评分：3.4。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0L3ASS0AE",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T23:24:06.237Z",
+      "searchQuery": "amap-detail:B0L3ASS0AE",
+      "confidence": "low",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910054,
+    "name": "向心力乒训基地",
+    "address": "中州路与仲景路口南50米路东御苑六楼",
+    "lat": 32.68077,
+    "lng": 112.110813,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 4,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910054/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910054/live-0.jpg",
+      "/uploads/courts/910054/live-1.jpg",
+      "/uploads/courts/910054/live-2.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910054/live-0.jpg",
+      "/uploads/courts/910054/live-1.jpg",
+      "/uploads/courts/910054/live-2.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910054/live-0.jpg",
+      "/uploads/courts/910054/live-1.jpg"
+    ],
+    "description": "向心力乒训基地位于中州路与仲景路口南50米路东御苑六楼。高德评分：4。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0M6NUEPV8",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T10:51:34.374Z",
+      "searchQuery": "amap-detail:B0M6NUEPV8",
+      "confidence": "high",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910055,
+    "name": "星飞扬乒乓球馆",
+    "address": "汉冶街道张衡东路2300号宇信凯旋公馆22天号楼3花楼",
+    "lat": 33.017206,
+    "lng": 112.601698,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 4.2,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910055/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910055/live-0.jpg",
+      "/uploads/courts/910055/live-1.jpg",
+      "/uploads/courts/910055/live-2.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910055/live-0.jpg",
+      "/uploads/courts/910055/live-1.jpg",
+      "/uploads/courts/910055/live-2.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910055/live-0.jpg",
+      "/uploads/courts/910055/live-1.jpg"
+    ],
+    "description": "星飞扬乒乓球馆位于汉冶街道张衡东路2300号宇信凯旋公馆22天号楼3花楼。高德评分：4.2。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0J24MU7MG",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T10:51:35.969Z",
+      "searchQuery": "amap-detail:B0J24MU7MG",
+      "confidence": "high",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910056,
+    "name": "星光乒乓球俱乐部",
+    "address": "244省道与香花街交叉口东南320米",
+    "lat": 32.761798,
+    "lng": 111.708657,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 2.5,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910056/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910056/live-0.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910056/live-0.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910056/live-0.jpg"
+    ],
+    "description": "星光乒乓球俱乐部位于244省道与香花街交叉口东南320米。高德评分：2.5。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0GDRAC2FM",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T23:24:06.870Z",
+      "searchQuery": "amap-detail:B0GDRAC2FM",
+      "confidence": "medium",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910057,
+    "name": "炫动乒乓球俱乐部",
+    "address": "泰山中路与福兴街交叉口南180米",
+    "lat": 33.063914,
+    "lng": 112.937806,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 3.2,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "",
+    "galleryImages": [],
+    "livePhotos": [],
+    "facilityPhotos": [],
+    "description": "炫动乒乓球俱乐部位于泰山中路与福兴街交叉口南180米。高德评分：3.2。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0MGKXLDMJ",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T23:24:07.195Z",
+      "searchQuery": "amap-detail:B0MGKXLDMJ",
+      "confidence": "low",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910058,
+    "name": "阳光乒乓",
+    "address": "迎宾花园小区门口索菲亚二楼三楼",
+    "lat": 32.733691,
+    "lng": 113.34885,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 4,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910058/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910058/live-0.jpg",
+      "/uploads/courts/910058/live-1.jpg",
+      "/uploads/courts/910058/live-2.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910058/live-0.jpg",
+      "/uploads/courts/910058/live-1.jpg",
+      "/uploads/courts/910058/live-2.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910058/live-0.jpg",
+      "/uploads/courts/910058/live-1.jpg"
+    ],
+    "description": "阳光乒乓位于迎宾花园小区门口索菲亚二楼三楼。高德评分：4。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0LU4ZWT92",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T10:51:38.428Z",
+      "searchQuery": "amap-detail:B0LU4ZWT92",
+      "confidence": "high",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910059,
+    "name": "阳光乒乓俱乐部",
+    "address": "东风路双桥饭店对面四楼",
+    "lat": 33.133858,
+    "lng": 111.493083,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 3.5,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910059/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910059/live-0.jpg",
+      "/uploads/courts/910059/live-1.jpg",
+      "/uploads/courts/910059/live-2.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910059/live-0.jpg",
+      "/uploads/courts/910059/live-1.jpg",
+      "/uploads/courts/910059/live-2.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910059/live-0.jpg",
+      "/uploads/courts/910059/live-1.jpg"
+    ],
+    "description": "阳光乒乓俱乐部位于东风路双桥饭店对面四楼。高德评分：3.5。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0JD4HFSS2",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T10:51:40.289Z",
+      "searchQuery": "amap-detail:B0JD4HFSS2",
+      "confidence": "high",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910060,
+    "name": "英典乒乓球俱乐部",
+    "address": "康达路润豪盛世北门",
+    "lat": 33.263422,
+    "lng": 113.029081,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 2.6,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910060/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910060/live-0.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910060/live-0.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910060/live-0.jpg"
+    ],
+    "description": "英典乒乓球俱乐部位于康达路润豪盛世北门。高德评分：2.6。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0MURDBR6U",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T23:24:08.224Z",
+      "searchQuery": "amap-detail:B0MURDBR6U",
+      "confidence": "medium",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910061,
+    "name": "友谊乒乓球俱乐部",
+    "address": "紫金城路39号福惠万家超市楼上",
+    "lat": 33.030709,
+    "lng": 112.219736,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 4.1,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910061/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910061/live-0.jpg",
+      "/uploads/courts/910061/live-1.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910061/live-0.jpg",
+      "/uploads/courts/910061/live-1.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910061/live-0.jpg",
+      "/uploads/courts/910061/live-1.jpg"
+    ],
+    "description": "友谊乒乓球俱乐部位于紫金城路39号福惠万家超市楼上。高德评分：4.1。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0FFIRCNVW",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T23:24:08.931Z",
+      "searchQuery": "amap-detail:B0FFIRCNVW",
+      "confidence": "medium",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910062,
+    "name": "友谊乒乓球俱乐部",
+    "address": "九重镇直小学北侧220米",
+    "lat": 32.699793,
+    "lng": 111.78815,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 2.9,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910062/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910062/live-0.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910062/live-0.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910062/live-0.jpg"
+    ],
+    "description": "友谊乒乓球俱乐部位于九重镇直小学北侧220米。高德评分：2.9。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0FFM3699K",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T23:24:09.406Z",
+      "searchQuery": "amap-detail:B0FFM3699K",
+      "confidence": "medium",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910063,
+    "name": "育才乒乓球馆",
+    "address": "中港路西段建业小区北门路北二楼",
+    "lat": 32.975787,
+    "lng": 112.508951,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 3.5,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910063/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910063/live-0.jpg",
+      "/uploads/courts/910063/live-1.jpg",
+      "/uploads/courts/910063/live-2.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910063/live-0.jpg",
+      "/uploads/courts/910063/live-1.jpg",
+      "/uploads/courts/910063/live-2.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910063/live-0.jpg",
+      "/uploads/courts/910063/live-1.jpg"
+    ],
+    "description": "育才乒乓球馆位于中港路西段建业小区北门路北二楼。高德评分：3.5。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0L34UGJBL",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T10:51:43.615Z",
+      "searchQuery": "amap-detail:B0L34UGJBL",
+      "confidence": "high",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910064,
+    "name": "悦动乒乓球俱乐部",
+    "address": "内乡县财政局斜对面金茂超市二楼",
+    "lat": 33.043468,
+    "lng": 111.83528,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 3.6,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910064/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910064/live-0.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910064/live-0.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910064/live-0.jpg"
+    ],
+    "description": "悦动乒乓球俱乐部位于内乡县财政局斜对面金茂超市二楼。高德评分：3.6。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0IASUJ9ZF",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T23:24:09.979Z",
+      "searchQuery": "amap-detail:B0IASUJ9ZF",
+      "confidence": "medium",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910065,
+    "name": "悦动乒乓球俱乐部",
+    "address": "人民路与中华路交叉口南280米",
+    "lat": 33.48861,
+    "lng": 112.431655,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 3.3,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910065/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910065/live-0.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910065/live-0.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910065/live-0.jpg"
+    ],
+    "description": "悦动乒乓球俱乐部位于人民路与中华路交叉口南280米。高德评分：3.3。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0JGH6OQI6",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T23:24:10.572Z",
+      "searchQuery": "amap-detail:B0JGH6OQI6",
+      "confidence": "medium",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910066,
+    "name": "悦动乒乓球俱乐部",
+    "address": "第五完全学校初中部对面(阳光新城商铺三楼北侧)",
+    "lat": 33.034528,
+    "lng": 112.58465,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 4,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910066/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910066/live-0.jpg",
+      "/uploads/courts/910066/live-1.jpg",
+      "/uploads/courts/910066/live-2.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910066/live-0.jpg",
+      "/uploads/courts/910066/live-1.jpg",
+      "/uploads/courts/910066/live-2.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910066/live-0.jpg",
+      "/uploads/courts/910066/live-1.jpg"
+    ],
+    "description": "悦动乒乓球俱乐部位于第五完全学校初中部对面(阳光新城商铺三楼北侧)。高德评分：4。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0K19UGSHM",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T10:51:46.625Z",
+      "searchQuery": "amap-detail:B0K19UGSHM",
+      "confidence": "high",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910067,
+    "name": "振方职业学校网羽乒篮运动中心",
+    "address": "工农北路1171号",
+    "lat": 33.029255,
+    "lng": 112.545759,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 3.3,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910067/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910067/live-0.jpg",
+      "/uploads/courts/910067/live-1.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910067/live-0.jpg",
+      "/uploads/courts/910067/live-1.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910067/live-0.jpg",
+      "/uploads/courts/910067/live-1.jpg"
+    ],
+    "description": "振方职业学校网羽乒篮运动中心位于工农北路1171号。高德评分：3.3。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0M6VUJY4O",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T23:24:11.411Z",
+      "searchQuery": "amap-detail:B0M6VUJY4O",
+      "confidence": "medium",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910068,
+    "name": "镇平县楠馨乒乓球俱乐部",
+    "address": "锦汇广场对面锦汇苑小区一号楼二楼",
+    "lat": 33.026255,
+    "lng": 112.241253,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 4,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910068/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910068/live-0.jpg",
+      "/uploads/courts/910068/live-1.jpg",
+      "/uploads/courts/910068/live-2.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910068/live-0.jpg",
+      "/uploads/courts/910068/live-1.jpg",
+      "/uploads/courts/910068/live-2.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910068/live-0.jpg",
+      "/uploads/courts/910068/live-1.jpg"
+    ],
+    "description": "镇平县楠馨乒乓球俱乐部位于锦汇广场对面锦汇苑小区一号楼二楼。高德评分：4。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0J6VHAH8Z",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T10:51:50.064Z",
+      "searchQuery": "amap-detail:B0J6VHAH8Z",
+      "confidence": "high",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910069,
+    "name": "逐梦乒乓球俱乐部",
+    "address": "中州大道与团结东路交叉口南500米",
+    "lat": 32.674525,
+    "lng": 112.108183,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 3.9,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910069/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910069/live-0.jpg",
+      "/uploads/courts/910069/live-1.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910069/live-0.jpg",
+      "/uploads/courts/910069/live-1.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910069/live-0.jpg",
+      "/uploads/courts/910069/live-1.jpg"
+    ],
+    "description": "逐梦乒乓球俱乐部位于中州大道与团结东路交叉口南500米。高德评分：3.9。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0HAK7IESR",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T23:24:12.041Z",
+      "searchQuery": "amap-detail:B0HAK7IESR",
+      "confidence": "medium",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910070,
+    "name": "逐梦乒乓球运动馆",
+    "address": "雷锋路第十一小学西校区东门对面得力文具店三楼",
+    "lat": 32.693837,
+    "lng": 112.095459,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 3.6,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910070/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910070/live-0.jpg",
+      "/uploads/courts/910070/live-1.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910070/live-0.jpg",
+      "/uploads/courts/910070/live-1.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910070/live-0.jpg",
+      "/uploads/courts/910070/live-1.jpg"
+    ],
+    "description": "逐梦乒乓球运动馆位于雷锋路第十一小学西校区东门对面得力文具店三楼。高德评分：3.6。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0L3CHJ8R6",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T23:24:12.863Z",
+      "searchQuery": "amap-detail:B0L3CHJ8R6",
+      "confidence": "medium",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910071,
+    "name": "卓悦乒搏俱乐部",
+    "address": "两相东路274号",
+    "lat": 33.026507,
+    "lng": 112.573156,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 4.4,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910071/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910071/live-0.jpg",
+      "/uploads/courts/910071/live-1.jpg",
+      "/uploads/courts/910071/live-2.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910071/live-0.jpg",
+      "/uploads/courts/910071/live-1.jpg",
+      "/uploads/courts/910071/live-2.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910071/live-0.jpg",
+      "/uploads/courts/910071/live-1.jpg"
+    ],
+    "description": "卓悦乒搏俱乐部位于两相东路274号。高德评分：4.4。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0L6DC8MEI",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T10:51:53.253Z",
+      "searchQuery": "amap-detail:B0L6DC8MEI",
+      "confidence": "high",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  },
+  {
+    "id": 910072,
+    "name": "卓越乒乓球俱乐部",
+    "address": "八一路面与小城路交叉口东九弟超市左边师范院巷石直进20米北关黄酒厂院内",
+    "lat": 33.303003,
+    "lng": 111.480036,
+    "isFree": false,
+    "isIndoor": true,
+    "hasLighting": true,
+    "tableCount": 6,
+    "material": "室内运动地胶",
+    "openHours": "营业时间以门店公示为准",
+    "rating": 3.5,
+    "features": [
+      "高德导入",
+      "乒乓球馆",
+      "坐标已核实"
+    ],
+    "city": "南阳",
+    "venueType": "training",
+    "coordVerified": true,
+    "activePlayers": 0,
+    "distanceStr": "",
+    "photo": "/uploads/courts/910072/live-0.jpg",
+    "galleryImages": [
+      "/uploads/courts/910072/live-0.jpg",
+      "/uploads/courts/910072/live-1.jpg",
+      "/uploads/courts/910072/live-2.jpg"
+    ],
+    "livePhotos": [
+      "/uploads/courts/910072/live-0.jpg",
+      "/uploads/courts/910072/live-1.jpg",
+      "/uploads/courts/910072/live-2.jpg"
+    ],
+    "facilityPhotos": [
+      "/uploads/courts/910072/live-0.jpg",
+      "/uploads/courts/910072/live-1.jpg"
+    ],
+    "description": "卓越乒乓球俱乐部位于八一路面与小城路交叉口东九弟超市左边师范院巷石直进20米北关黄酒厂院内。高德评分：3.5。数据来源：高德地图公开 POI。",
+    "enrichmentMeta": {
+      "sources": [
+        "https://www.amap.com/place/B0K3PS68PD",
+        "amap-place-detail"
+      ],
+      "enrichedAt": "2026-07-13T10:51:54.443Z",
+      "searchQuery": "amap-detail:B0K3PS68PD",
+      "confidence": "high",
+      "photoSource": "platform"
+    },
+    "reviews": []
+  }
+]

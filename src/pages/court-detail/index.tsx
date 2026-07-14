@@ -1,19 +1,41 @@
 /**
  * 场地详情页 — 对应 table-tennis-pro 的 CourtDetailsView
  */
-import React, { useMemo, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { View, Text, ScrollView, Map, Image, Swiper, SwiperItem } from '@tarojs/components';
 import Taro, { useLoad } from '@tarojs/taro';
 import { Court } from '@/types';
 import CourtNameText from '@/components/CourtNameText';
-import { getCourtDetail, checkin } from '@/services/api';
+import { getCourtDetail, checkin, toggleFavorite, getFavorites, uploadFile, submitCourtBackground, getBackgroundEligibility } from '@/services/api';
+import {
+  COURT_PREVIEW_KEY,
+  formatTableCount,
+  getSnapshotCourtById,
+  mergeCourtMedia,
+  normalizeCourt,
+} from '@/data/courts-catalog';
 import { getUserLocation, ensureLocationPermission, openCourtNavigation } from '@/utils/location';
 import './index.scss';
 
 const uniqueUrls = (urls: string[]) => [...new Set(urls.filter(Boolean))];
 
+const readCourtPreview = (id: number): Court | null => {
+  try {
+    const cached = Taro.getStorageSync(COURT_PREVIEW_KEY(id));
+    if (cached && typeof cached === 'object' && Number(cached.id) === id) {
+      return normalizeCourt(cached);
+    }
+  } catch {
+    // ignore
+  }
+  return null;
+};
+
+const resolveOfflineCourt = (id: number): Court | null =>
+  readCourtPreview(id) || getSnapshotCourtById(id);
+
 const buildLivePhotos = (court: Court): string[] => {
-  if (court.livePhotos?.length) return court.livePhotos.slice(0, 5);
+  if (court.livePhotos?.length) return court.livePhotos.slice(0, 3);
   return uniqueUrls([
     ...(court.facilityPhotos || []),
     ...(court.galleryImages || []),
@@ -22,21 +44,71 @@ const buildLivePhotos = (court: Court): string[] => {
 };
 
 export default function CourtDetailPage() {
+  const [courtId, setCourtId] = useState<number | null>(null);
   const [court, setCourt] = useState<Court | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
   const [checkedIn, setCheckedIn] = useState(false);
   const [checkingIn, setCheckingIn] = useState(false);
   const [liveIndex, setLiveIndex] = useState(0);
+  const [favorited, setFavorited] = useState(false);
+  const [uploadingBg, setUploadingBg] = useState(false);
+
+  const loadCourt = useCallback(async (id: number, preferCache = true) => {
+    setCourtId(id);
+    setLoading(true);
+    setError('');
+
+    if (preferCache) {
+      const offline = resolveOfflineCourt(id);
+      if (offline) setCourt(offline);
+    }
+
+    try {
+      const [res, favRes] = await Promise.all([
+        getCourtDetail(id),
+        getFavorites().catch(() => null),
+      ]);
+      if (favRes && favRes.code === 0) {
+        setFavorited((favRes.data || []).some((c: any) => Number(c.id) === Number(id)));
+      }
+      if (res.code === 0 && res.data) {
+        const remote = normalizeCourt(res.data);
+        const local = resolveOfflineCourt(id);
+        setCourt(mergeCourtMedia(remote, local));
+        setError('');
+        return;
+      }
+
+      const offline = resolveOfflineCourt(id);
+      if (offline) {
+        setCourt(offline);
+        setError(res.message || '接口未返回完整数据，已展示本地数据');
+      } else {
+        setCourt(null);
+        setError(res.message || '场地不存在');
+      }
+    } catch {
+      const offline = resolveOfflineCourt(id);
+      if (offline) {
+        setCourt(offline);
+        setError('网络异常，已展示本地数据');
+      } else {
+        setCourt(null);
+        setError('加载失败，请检查网络后重试');
+      }
+    } finally {
+      setLoading(false);
+    }
+  }, []);
 
   useLoad((options: any) => {
-    if (options?.id) loadCourt(Number(options.id));
+    if (options?.id) loadCourt(Number(options.id), true);
+    else {
+      setLoading(false);
+      setError('缺少场地 ID');
+    }
   });
-
-  const loadCourt = async (id: number) => {
-    try {
-      const res = await getCourtDetail(id);
-      if (res.code === 0) setCourt(res.data);
-    } catch {}
-  };
 
   const livePhotos = useMemo(() => (court ? buildLivePhotos(court) : []), [court]);
 
@@ -61,14 +133,66 @@ export default function CourtDetailPage() {
       const res = await checkin(court.id, result.location.lat, result.location.lng);
       if (res.code === 0) {
         setCheckedIn(true);
-        Taro.showToast({ title: '🎉 签到成功！', icon: 'success' });
+        const unlocked = res.data?.newAchievements?.length
+          ? `解锁 ${res.data.newAchievements.length} 枚勋章`
+          : '签到成功！';
+        Taro.showToast({ title: unlocked, icon: 'success' });
       } else {
         Taro.showToast({ title: res.message || '签到失败', icon: 'none' });
       }
-    } catch {
-      setCheckedIn(true);
-      Taro.showToast({ title: '签到成功(本地)', icon: 'success' });
+    } catch (err: any) {
+      Taro.showToast({ title: err?.message || '签到失败，请检查网络与位置', icon: 'none' });
     } finally { setCheckingIn(false); }
+  };
+
+  const handleFavorite = async () => {
+    if (!court) return;
+    try {
+      const res = await toggleFavorite(court.id);
+      if (res.code === 0) {
+        setFavorited(!!res.data?.favorite);
+        Taro.showToast({ title: res.data?.favorite ? '已收藏' : '已取消', icon: 'success' });
+      } else {
+        Taro.showToast({ title: res.message || '收藏失败', icon: 'none' });
+      }
+    } catch {
+      Taro.showToast({ title: '收藏需连接服务器', icon: 'none' });
+    }
+  };
+
+  const handleUploadBackground = async () => {
+    if (!court || uploadingBg) return;
+    try {
+      const eligibility = await getBackgroundEligibility(court.id);
+      if (eligibility.code !== 0 || !eligibility.data?.canContribute) {
+        Taro.showToast({ title: eligibility.data?.reason || eligibility.message || '当前不可上传实拍', icon: 'none' });
+        return;
+      }
+    } catch {
+      Taro.showToast({ title: '无法确认上传资格', icon: 'none' });
+      return;
+    }
+    try {
+      const choose = await Taro.chooseImage({ count: 1, sizeType: ['compressed'], sourceType: ['album', 'camera'] });
+      const filePath = choose.tempFilePaths?.[0];
+      if (!filePath) return;
+      setUploadingBg(true);
+      const uploaded = await uploadFile(filePath);
+      if (uploaded.code !== 0 || !uploaded.data?.url) {
+        Taro.showToast({ title: uploaded.message || '上传失败', icon: 'none' });
+        return;
+      }
+      const res = await submitCourtBackground(court.id, uploaded.data.url);
+      if (res.code === 0) {
+        Taro.showToast({ title: '已提交审核', icon: 'success' });
+      } else {
+        Taro.showToast({ title: res.message || '提交失败', icon: 'none' });
+      }
+    } catch (err: any) {
+      Taro.showToast({ title: err?.errMsg || err?.message || '上传取消或失败', icon: 'none' });
+    } finally {
+      setUploadingBg(false);
+    }
   };
 
   const handleNavigate = () => {
@@ -76,11 +200,29 @@ export default function CourtDetailPage() {
     openCourtNavigation(court, { mapId: 'court-nav-map' });
   };
 
-  if (!court) return <View className="cd-loading"><Text>加载中...</Text></View>;
+  const handleRetry = () => {
+    if (courtId != null) loadCourt(courtId, false);
+  };
+
+  if (loading && !court) {
+    return <View className="cd-loading"><Text>加载中...</Text></View>;
+  }
+
+  if (!court) {
+    return (
+      <View className="cd-loading cd-error">
+        <Text className="cd-error-text">{error || '加载失败'}</Text>
+        <View className="cd-retry-btn" onClick={handleRetry}>
+          <Text className="cd-retry-text">重试</Text>
+        </View>
+      </View>
+    );
+  }
 
   const hasLivePhotos = livePhotos.length > 0;
-  const showStockHint = court.photoSource === 'stock'
-    || (court.enrichmentMeta?.confidence === 'low' && court.photoSource !== 'platform');
+  const showStockHint = court.showStockHint
+    ?? (!hasLivePhotos || court.photoSource !== 'platform');
+  const canContribute = court.canContribute ?? showStockHint;
 
   return (
     <>
@@ -91,6 +233,12 @@ export default function CourtDetailPage() {
         style={{ width: 0, height: 0, position: 'fixed', left: -9999 }}
       />
       <ScrollView className="cd-page" scrollY>
+        {error ? (
+          <View className="cd-banner-warn" onClick={handleRetry}>
+            <Text className="cd-banner-text">{error}（点此重试）</Text>
+          </View>
+        ) : null}
+
         <View className="cd-live-section">
           <View className="cd-live-hd">
             <View className="cd-live-hd-left">
@@ -102,6 +250,11 @@ export default function CourtDetailPage() {
             {hasLivePhotos && (
               <Text className="cd-live-counter">{liveIndex + 1}/{livePhotos.length}</Text>
             )}
+            {canContribute ? (
+              <Text className="cd-upload-entry" onClick={handleUploadBackground}>
+                {uploadingBg ? '上传中…' : '上传实拍'}
+              </Text>
+            ) : null}
           </View>
           {hasLivePhotos ? (
             <Swiper
@@ -110,15 +263,18 @@ export default function CourtDetailPage() {
               indicatorColor="rgba(255,255,255,0.45)"
               indicatorActiveColor="#FF6B35"
               circular
-              autoplay={livePhotos.length > 1}
+              autoplay
+              interval={3000}
+              duration={500}
               onChange={(e) => setLiveIndex(e.detail.current)}
             >
               {livePhotos.map((img, index) => (
-                <SwiperItem key={index}>
+                <SwiperItem key={`${court.id}-live-${index}`}>
                   <Image
                     className="cd-hero-image"
                     src={img}
                     mode="aspectFill"
+                    lazyLoad={false}
                     onClick={() => previewImages(livePhotos, img)}
                   />
                 </SwiperItem>
@@ -149,7 +305,7 @@ export default function CourtDetailPage() {
 
         <View className="cd-bento">
           {[
-            { label: '球台', value: `${court.tableCount}张`, icon: '🏓' },
+            { label: '球台', value: formatTableCount(court.tableCount), icon: '🏓' },
             { label: '材质', value: court.material, icon: '🧱' },
             { label: '灯光', value: court.hasLighting ? '有' : '无', icon: '💡' },
             { label: '时间', value: court.openHours, icon: '🕐' },
@@ -200,11 +356,14 @@ export default function CourtDetailPage() {
         </View>
 
         <View className="cd-actions">
+          <View className="cd-btn-fav" onClick={handleFavorite}>
+            <Text className="cd-btn-text">{favorited ? '❤️ 已收藏' : '🤍 收藏'}</Text>
+          </View>
           <View className="cd-btn-nav" onClick={handleNavigate}>
-            <Text className="cd-btn-text">🧭 一键导航</Text>
+            <Text className="cd-btn-text">🧭 导航</Text>
           </View>
           <View className={`cd-btn-checkin ${checkedIn ? 'done' : ''}`} onClick={handleCheckin}>
-            <Text className="cd-btn-text">{checkedIn ? '✅ 已签到' : checkingIn ? '核验位置...' : '🏓 签到打卡'}</Text>
+            <Text className="cd-btn-text">{checkedIn ? '✅ 已签到' : checkingIn ? '核验位置...' : '🏓 签到'}</Text>
           </View>
         </View>
       </ScrollView>

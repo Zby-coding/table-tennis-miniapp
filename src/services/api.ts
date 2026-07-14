@@ -15,14 +15,23 @@
 
 import Taro from '@tarojs/taro';
 
-// 开发环境: 局域网IP (仅开发时用)
+// 开发环境: 局域网IP (仅开发时用；优先使用 TARO_APP_API_BASE)
 const LAN_IP = '192.168.0.102';
 const PORT = '3017';
-// Taro 默认 NODE_ENV=development, process.env.NODE_ENV 在小程序中总是 undefined
-// 所以直接用三元判断 process.env.NODE_ENV 不生效
-// 方案: 硬编码开发地址, 发布时手动改成生产域名
-const BASE_URL = `http://${LAN_IP}:${PORT}/api`;
-// 上线时替换为: const BASE_URL = 'https://api.tabletennis.cn/api';
+const LAN_BASE = `http://${LAN_IP}:${PORT}/api`;
+const ENV_API_BASE = (typeof process !== 'undefined' && process.env && process.env.TARO_APP_API_BASE) || '';
+const NODE_ENV = (typeof process !== 'undefined' && process.env && process.env.NODE_ENV) || '';
+if (!ENV_API_BASE && NODE_ENV === 'production') {
+  console.error('[API] 生产构建缺少 TARO_APP_API_BASE，请配置 HTTPS 合法域名');
+}
+const BASE_URL = (ENV_API_BASE && String(ENV_API_BASE).trim()
+  ? String(ENV_API_BASE).trim()
+  : LAN_BASE
+).replace(/\/$/, '');
+
+export function getApiBaseUrl() {
+  return BASE_URL;
+}
 
 // ── Token 管理 ──
 let _token = '';
@@ -37,6 +46,15 @@ export function getToken(): string {
     _token = Taro.getStorageSync('token') || '';
   }
   return _token;
+}
+
+export function clearToken() {
+  _token = '';
+  try {
+    Taro.removeStorageSync('token');
+  } catch {
+    // ignore
+  }
 }
 
 // ── 通用请求 (错误处理 + 401 自动重登录) ──
@@ -62,13 +80,9 @@ async function request<T = any>(
     });
 
     if (res.statusCode === 401) {
-      const hadToken = Boolean(getToken());
-      Taro.removeStorageSync('token');
-      _token = '';
-      if (hadToken) {
+      clearToken();
       Taro.showToast({ title: '请重新登录', icon: 'none' });
       Taro.reLaunch({ url: '/pages/index/index' });
-      }
       throw new Error('Unauthorized');
     }
 
@@ -81,7 +95,7 @@ async function request<T = any>(
     if (msg.includes('url not in domain list')) {
       Taro.showModal({
         title: '开发环境域名提示',
-        content: `请将 ${BASE_URL} 添加到微信小程序 request 合法域名白名单\n或在开发者工具中关闭"不校验合法域名"`,
+        content: `请将 ${LAN_IP}:${PORT} 添加到微信小程序 request 合法域名白名单\n或在开发者工具中关闭"不校验合法域名"`,
         showCancel: false,
       });
     }
@@ -104,15 +118,19 @@ export function getUserProfile() {
   return request<any>('/user/profile');
 }
 
-export function updateUserProfile(data: { nickname?: string; avatarUrl?: string; style?: string; city?: string }) {
+export function updateUserProfile(data: { nickname?: string; avatarUrl?: string; style?: string; city?: string; level?: number }) {
   return request('/user/profile', { method: 'PATCH', data });
+}
+
+export function updateUserPreferences(data: { remindMatch?: boolean; remindSignIn?: boolean; showActivity?: boolean }) {
+  return request('/user/preferences', { method: 'PATCH', data });
 }
 
 // ── 场地 ──
 export function getNearbyCourts(lat: number, lng: number, filters?: {
   isFree?: boolean; isIndoor?: boolean; hasLighting?: boolean; keyword?: string;
 }) {
-  const params = new URLSearchParams({ lat: String(lat), lng: String(lng), radius: '150000' });
+  const params = new URLSearchParams({ lat: String(lat), lng: String(lng), radius: '10000' });
   if (filters?.isFree !== undefined) params.set('isFree', String(filters.isFree));
   if (filters?.isIndoor !== undefined) params.set('isIndoor', String(filters.isIndoor));
   if (filters?.hasLighting !== undefined) params.set('hasLighting', String(filters.hasLighting));
@@ -153,8 +171,20 @@ export function getCheckinStatus() {
   return request<any>('/checkin/status');
 }
 
+export function getCheckinHistory(page = 1, pageSize = 20) {
+  return request<any>(`/checkin/history?page=${page}&pageSize=${pageSize}`);
+}
+
 export function getCourtActiveCount(courtId: number) {
   return request<any>(`/checkin/court/${courtId}`);
+}
+
+export function getBackgroundEligibility(courtId: number) {
+  return request<any>(`/courts/${courtId}/background-eligibility`);
+}
+
+export function submitCourtBackground(courtId: number, url: string) {
+  return request(`/courts/${courtId}/backgrounds`, { method: 'POST', data: { url } });
 }
 
 // ── 约球 ──
@@ -198,14 +228,22 @@ export function getAchievements() {
 }
 
 // ── 上传 ──
-export function uploadFile(filePath: string) {
-  return Taro.uploadFile({
-    url: `${BASE_URL}/upload`,
-    filePath,
-    name: 'file',
-    header: { Authorization: `Bearer ${getToken()}` },
+export function uploadFile(filePath: string): Promise<{ code: number; data: { url: string }; message: string }> {
+  return new Promise((resolve, reject) => {
+    Taro.uploadFile({
+      url: `${BASE_URL}/upload`,
+      filePath,
+      name: 'file',
+      header: { Authorization: `Bearer ${getToken()}` },
+      success: (res) => {
+        try {
+          const data = typeof res.data === 'string' ? JSON.parse(res.data) : res.data;
+          resolve(data);
+        } catch (err) {
+          reject(err);
+        }
+      },
+      fail: reject,
+    });
   });
 }
-
-
-

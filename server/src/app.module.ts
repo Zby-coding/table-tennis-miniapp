@@ -1,8 +1,8 @@
-﻿import { Module, Global } from '@nestjs/common';
+import { Module, Global } from '@nestjs/common';
 import { APP_GUARD } from '@nestjs/core';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { JwtModule } from '@nestjs/jwt';
+import { JwtModule, JwtModuleOptions } from '@nestjs/jwt';
 import { ScheduleModule } from '@nestjs/schedule';
 import { ThrottlerModule, ThrottlerGuard } from '@nestjs/throttler';
 import { appConfig } from './config/app.config';
@@ -10,7 +10,6 @@ import { databaseConfig } from './config/database.config';
 import { redisConfig } from './config/redis.config';
 import { jwtConfig } from './config/jwt.config';
 import { entities } from './entities';
-import { AppController } from './app.controller';
 import { JwtAuthGuard } from './common/guards/jwt-auth.guard';
 import { UserModule } from './modules/user/user.module';
 import { AuthModule } from './modules/auth/auth.module';
@@ -21,6 +20,7 @@ import { MatchModule } from './modules/match/match.module';
 import { AchievementModule } from './modules/achievement/achievement.module';
 import { UploadModule } from './modules/upload/upload.module';
 import { RedisModule } from './modules/redis/redis.module';
+import { AdminUserModule } from './modules/admin/admin-user.module';
 
 @Global()
 @Module({
@@ -60,22 +60,20 @@ import { RedisModule } from './modules/redis/redis.module';
     }),
     JwtModule.registerAsync({
       inject: [ConfigService],
-      useFactory: (config: ConfigService) => ({
+      useFactory: (config: ConfigService): JwtModuleOptions => ({
         secret: config.get<string>('jwt.secret'),
-        signOptions: { expiresIn: '7d' as const },
+        signOptions: { expiresIn: config.get<string>('jwt.expiresIn', '7d') as any },
       }),
     }),
     ScheduleModule.forRoot(),
     ThrottlerModule.forRoot({ throttlers: [{ ttl: 60000, limit: 100 }] }),
     RedisModule,
     UserModule, AuthModule, CourtModule, CheckinModule,
-    PostModule, MatchModule, AchievementModule, UploadModule,
+    PostModule, MatchModule, AchievementModule, UploadModule, AdminUserModule,
   ],
   providers: [
     { provide: APP_GUARD, useClass: JwtAuthGuard },
     { provide: APP_GUARD, useClass: ThrottlerGuard },
   ],
-  controllers: [AppController],
 })
 export class AppModule {}
-

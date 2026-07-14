@@ -18,6 +18,7 @@
     "dev:weapp": "npm run build:weapp -- --watch",
     "dev:weapp:direct": "node scripts/run-weapp-direct.js --watch",
     "dev:h5": "npm run build:h5 -- --watch",
+    "verify:engagement": "node scripts/verify-engagement.mjs",
     "validate:court-names": "node scripts/validate-court-names.mjs"
   },
   "browserslist": [

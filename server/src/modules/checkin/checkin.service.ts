@@ -72,13 +72,16 @@ export class CheckinService {
         .set(`user:${userId}:checkin_time`, Date.now().toString())
         .exec();
 
-      // 5. Update user stats (credit on checkout, not here)
-      // 6. Check achievements
-      await this.achievementService.checkAndAward(userId, 'first_checkin');
+      // 6. Check achievements by cumulative checkin count
+      const checkinCount = await this.checkinRepo.count({ where: { userId } });
+      const awarded = await this.achievementService.checkAndAwardByRules(userId, { checkinCount });
 
       return {
-        success: true, courtId,
+        success: true,
+        courtId,
+        checkinCount,
         activePlayers: await this.redis.get(courtCountKey),
+        newAchievements: awarded.map((a) => a.achievementKey),
       };
     } catch (err) {
       // Best-effort rollback: DB record
@@ -154,36 +157,107 @@ export class CheckinService {
     };
   }
 
-  async getActiveCount(courtId: number) {
+  async getActiveCount(courtId: number, options: { includePlayers?: boolean } = {}) {
     // No Redis fallback: return 0 active
     if (!this.redis) return { count: 0, players: [] };
 
     const count = await this.redis.get(`court:${courtId}:active_count`);
-    const userIds = await this.redis.smembers(`court:${courtId}:active_users`);
+    if (!options.includePlayers) {
+      return { count: parseInt(count || '0', 10), players: [] };
+    }
 
+    const userIds = await this.redis.smembers(`court:${courtId}:active_users`);
     const users = userIds.length > 0
       ? await this.userRepo.findBy({ id: In(userIds.map(Number)) } as any)
       : [];
 
     return {
       count: parseInt(count || '0', 10),
-      players: users.map((u) => ({
-        id: u.id, nickname: u.nickname, avatarUrl: u.avatarUrl,
-      })),
+      players: users
+        .filter((u) => u.showActivity !== false)
+        .map((u) => ({
+          id: u.id, nickname: u.nickname, avatarUrl: u.avatarUrl,
+        })),
     };
   }
 
   async getUserStatus(userId: number) {
-    if (!this.redis) return { isCheckedIn: false };
+    const checkinCount = await this.checkinRepo.count({ where: { userId } });
+    if (!this.redis) return { isCheckedIn: false, checkinCount };
 
     const activeKey = `user:${userId}:checkin`;
     const courtId = await this.redis.get(activeKey);
-    if (!courtId) return { isCheckedIn: false };
+    if (!courtId) return { isCheckedIn: false, checkinCount };
 
     const checkinTime = await this.redis.get(`user:${userId}:checkin_time`);
     const duration = checkinTime ? Math.round((Date.now() - parseInt(checkinTime)) / 60000) : 0;
 
-    return { isCheckedIn: true, courtId: Number(courtId), duration };
+    return { isCheckedIn: true, courtId: Number(courtId), duration, checkinCount };
+  }
+
+  async getHistory(userId: number, page = 1, pageSize = 20) {
+    const take = Math.min(Math.max(pageSize, 1), 50);
+    const skip = (Math.max(page, 1) - 1) * take;
+    const [rows, total] = await this.checkinRepo.findAndCount({
+      where: { userId },
+      relations: { court: true },
+      order: { createdAt: 'DESC' },
+      take,
+      skip,
+    });
+    return {
+      total,
+      page,
+      pageSize: take,
+      checkinCount: total,
+      list: rows.map((r) => ({
+        id: r.id,
+        courtId: r.courtId,
+        courtName: r.court?.name || '未知场地',
+        courtAddress: r.court?.address || '',
+        startTime: r.startTime,
+        endTime: r.endTime,
+        duration: r.duration,
+        status: r.status,
+        createdAt: r.createdAt,
+      })),
+    };
+  }
+
+  async adminList(query: {
+    userId?: number;
+    courtId?: number;
+    page?: number;
+    pageSize?: number;
+  }) {
+    const page = Math.max(query.page || 1, 1);
+    const pageSize = Math.min(Math.max(query.pageSize || 20, 1), 100);
+    const qb = this.checkinRepo.createQueryBuilder('c')
+      .leftJoinAndSelect('c.user', 'user')
+      .leftJoinAndSelect('c.court', 'court')
+      .orderBy('c.createdAt', 'DESC')
+      .skip((page - 1) * pageSize)
+      .take(pageSize);
+    if (query.userId) qb.andWhere('c.userId = :userId', { userId: query.userId });
+    if (query.courtId) qb.andWhere('c.courtId = :courtId', { courtId: query.courtId });
+    const [rows, total] = await qb.getManyAndCount();
+    return {
+      total,
+      page,
+      pageSize,
+      list: rows.map((r) => ({
+        id: r.id,
+        userId: r.userId,
+        nickname: r.user?.nickname || '',
+        courtId: r.courtId,
+        courtName: r.court?.name || '',
+        startTime: r.startTime,
+        endTime: r.endTime,
+        duration: r.duration,
+        status: r.status,
+        createdAt: r.createdAt,
+      })),
+    };
   }
 
   private calcDistance(lat1: number, lng1: number, lat2: number, lng2: number): number {
