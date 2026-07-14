@@ -65,9 +65,11 @@ async function bootstrap() {
   app.useGlobalFilters(new AllExceptionsFilter());
   app.useGlobalInterceptors(new TransformInterceptor());
 
-  const port = process.env.PORT || 3001;
-  await app.listen(port);
-  console.log(`🏓 TableTennisPro Server running on http://localhost:${port}`);
+  const port = Number(process.env.PORT || 3001);
+  await app.listen(port, '0.0.0.0');
+  const publicUrl = process.env.API_PUBLIC_URL || `http://localhost:${port}`;
+  console.log(`🏓 TableTennisPro Server running on http://0.0.0.0:${port}`);
+  console.log(`   Public URL: ${publicUrl}`);
   console.log(`   Environment: ${process.env.NODE_ENV || 'development'}`);
   console.log(`   CORS Origin: ${corsOrigin}`);
 }

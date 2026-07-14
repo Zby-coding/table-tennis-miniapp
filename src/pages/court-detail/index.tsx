@@ -53,11 +53,14 @@ export default function CourtDetailPage() {
   const [liveIndex, setLiveIndex] = useState(0);
   const [favorited, setFavorited] = useState(false);
   const [uploadingBg, setUploadingBg] = useState(false);
+  const [brokenPhotos, setBrokenPhotos] = useState<string[]>([]);
 
   const loadCourt = useCallback(async (id: number, preferCache = true) => {
     setCourtId(id);
     setLoading(true);
     setError('');
+    setBrokenPhotos([]);
+    setLiveIndex(0);
 
     if (preferCache) {
       const offline = resolveOfflineCourt(id);
@@ -103,6 +106,7 @@ export default function CourtDetailPage() {
   }, []);
 
   useLoad((options: any) => {
+    setBrokenPhotos([]);
     if (options?.id) loadCourt(Number(options.id), true);
     else {
       setLoading(false);
@@ -110,7 +114,15 @@ export default function CourtDetailPage() {
     }
   });
 
-  const livePhotos = useMemo(() => (court ? buildLivePhotos(court) : []), [court]);
+  const livePhotos = useMemo(() => {
+    if (!court) return [];
+    const broken = new Set(brokenPhotos);
+    return buildLivePhotos(court).filter((url) => !broken.has(url));
+  }, [court, brokenPhotos]);
+
+  const markPhotoBroken = useCallback((url: string) => {
+    setBrokenPhotos((prev) => (prev.includes(url) ? prev : [...prev, url]));
+  }, []);
 
   const previewImages = (urls: string[], current: string) => {
     if (!urls.length) return;
@@ -275,6 +287,7 @@ export default function CourtDetailPage() {
                     src={img}
                     mode="aspectFill"
                     lazyLoad={false}
+                    onError={() => markPhotoBroken(img)}
                     onClick={() => previewImages(livePhotos, img)}
                   />
                 </SwiperItem>

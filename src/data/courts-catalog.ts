@@ -22,14 +22,24 @@ export const resolvePublicAssetUrl = (url: string): string => {
   return `${origin}${trimmed.startsWith('/') ? '' : '/'}${trimmed}`;
 };
 
+const isStockDemoUrl = (url: string) =>
+  /unsplash\.com|pexels\.com|picsum\.photos/i.test(url);
+
 export const isUsableCourtThumb = (url: string): boolean => {
   const resolved = resolvePublicAssetUrl(url);
-  return /^https?:\/\//i.test(resolved);
+  if (!/^https?:\/\//i.test(resolved)) return false;
+  // 示意外链在国内真机常不可达，不当作可用封面
+  if (isStockDemoUrl(resolved)) return false;
+  return true;
 };
 
 const resolveUrlList = (urls: unknown): string[] => {
   if (!Array.isArray(urls)) return [];
-  return [...new Set(urls.map((u) => resolvePublicAssetUrl(String(u || ''))).filter(Boolean))];
+  return [...new Set(
+    urls
+      .map((u) => resolvePublicAssetUrl(String(u || '')))
+      .filter((u) => u && isUsableCourtThumb(u)),
+  )];
 };
 
 const hasUsablePhotos = (court: Pick<Court, 'livePhotos' | 'photo' | 'galleryImages' | 'facilityPhotos'>) => {
@@ -46,7 +56,8 @@ export const normalizeCourt = (court: any): Court => {
   const livePhotos = resolveUrlList(court.livePhotos);
   const galleryImages = resolveUrlList(court.galleryImages);
   const facilityPhotos = resolveUrlList(court.facilityPhotos);
-  const photo = resolvePublicAssetUrl(court.photo || '') || livePhotos[0] || '';
+  const rawPhoto = resolvePublicAssetUrl(court.photo || '');
+  const photo = (rawPhoto && isUsableCourtThumb(rawPhoto) ? rawPhoto : '') || livePhotos[0] || '';
 
   return {
     ...court,

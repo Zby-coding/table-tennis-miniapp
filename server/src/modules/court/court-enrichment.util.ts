@@ -89,20 +89,16 @@ export function mapCourtMedia(court: {
   const enrichmentMeta = court.enrichmentMeta || cacheEntry?.enrichmentMeta || null;
   const base = getApiBase();
 
-  const galleryUrls = photos.map((p) => toPublicUrl(p, base));
-  const facilityUrls = facilityPhotos.map((p) => toPublicUrl(p, base));
+  const galleryUrls = photos.map((p) => toPublicUrl(p, base)).filter((u) => u && !isStockUrl(u));
+  const facilityUrls = facilityPhotos.map((p) => toPublicUrl(p, base)).filter((u) => u && !isStockUrl(u));
   const merged = [...new Set([...facilityUrls, ...galleryUrls])].filter(Boolean);
-  const hasHosted = merged.some((u) => u.includes('/uploads/'));
-  const filtered = hasHosted
-    ? merged.filter((u) => !isStockUrl(u))
-    : merged;
-  const livePhotos = filtered
+  const livePhotos = merged
     .sort((a, b) => scorePhotoUrl(b) - scorePhotoUrl(a))
     .slice(0, 3);
   const photoSource = detectPhotoSource(livePhotos, enrichmentMeta);
 
   return {
-    photo: livePhotos[0] || (photos[0] ? toPublicUrl(photos[0], base) : ''),
+    photo: livePhotos[0] || '',
     galleryImages: galleryUrls,
     facilityPhotos: facilityUrls,
     livePhotos,
