@@ -4,6 +4,13 @@ import { CurrentUser } from '../../common/decorators/current-user.decorator';
 import { NearbyCourtsDto } from './dto/nearby-courts.dto';
 import { ReviewCourtDto } from './dto/review-court.dto';
 import { CreateCourtDto } from './dto/create-court.dto';
+import { IsString, IsNotEmpty } from 'class-validator';
+
+class SubmitBackgroundDto {
+  @IsString()
+  @IsNotEmpty()
+  url: string;
+}
 
 @Controller('api/courts')
 export class CourtController {
@@ -24,28 +31,7 @@ export class CourtController {
     );
   }
 
-  @Get(':id')
-  async detail(@Param('id') id: string) {
-    return this.courtService.getDetail(parseInt(id));
-  }
-
-  @Post(':id/review')
-  async review(
-    @Param('id') id: string,
-    @CurrentUser('sub') userId: number,
-    @Body() body: ReviewCourtDto,
-  ) {
-    return this.courtService.review(userId, parseInt(id), body.rating, body.content, body.images);
-  }
-
-  @Post(':id/favorite')
-  async toggleFavorite(
-    @Param('id') id: string,
-    @CurrentUser('sub') userId: number,
-  ) {
-    return this.courtService.toggleFavorite(userId, parseInt(id));
-  }
-
+  /** Must be before :id to avoid being captured as id=user */
   @Get('user/favorites')
   async getFavorites(@CurrentUser('sub') userId: number) {
     return this.courtService.getFavorites(userId);
@@ -57,5 +43,41 @@ export class CourtController {
     @Body() body: CreateCourtDto,
   ) {
     return this.courtService.create({ ...body, userId });
+  }
+
+  @Get(':id/background-eligibility')
+  async backgroundEligibility(@Param('id') id: string) {
+    return this.courtService.getBackgroundEligibility(parseInt(id, 10));
+  }
+
+  @Post(':id/backgrounds')
+  async submitBackground(
+    @Param('id') id: string,
+    @CurrentUser('sub') userId: number,
+    @Body() body: SubmitBackgroundDto,
+  ) {
+    return this.courtService.submitBackground(userId, parseInt(id, 10), body.url);
+  }
+
+  @Get(':id')
+  async detail(@Param('id') id: string) {
+    return this.courtService.getDetail(parseInt(id, 10));
+  }
+
+  @Post(':id/review')
+  async review(
+    @Param('id') id: string,
+    @CurrentUser('sub') userId: number,
+    @Body() body: ReviewCourtDto,
+  ) {
+    return this.courtService.review(userId, parseInt(id, 10), body.rating, body.content, body.images);
+  }
+
+  @Post(':id/favorite')
+  async toggleFavorite(
+    @Param('id') id: string,
+    @CurrentUser('sub') userId: number,
+  ) {
+    return this.courtService.toggleFavorite(userId, parseInt(id, 10));
   }
 }

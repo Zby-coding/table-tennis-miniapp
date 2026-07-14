@@ -1,2 +1,24 @@
-node_modules
-.worktrees
+# Dependencies
+node_modules/
+**/node_modules/
+manage/node_modules/
+server/node_modules/
+
+# Build outputs
+dist/
+manage/dist/
+.swc/
+
+# Local runtime / media (keep on disk, do not commit)
+server/uploads/
+**/table-tennis-dev*.sqlite
+*.sqlite
+
+# Env & OS
+.env
+.env.local
+.DS_Store
+Thumbs.db
+
+# Local worktrees metadata (if present under repo)
+.worktrees/

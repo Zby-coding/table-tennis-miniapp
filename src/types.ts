@@ -43,12 +43,32 @@ export interface Court {
   openHours: string;
   photo: string;
   galleryImages: string[];
+  livePhotos?: string[];
+  facilityPhotos?: string[];
+  description?: string;
+  photoSource?: PhotoSource;
+  enrichmentMeta?: CourtEnrichmentMeta | null;
+  canContribute?: boolean;
+  showStockHint?: boolean;
+  approvedCount?: number;
   lat: number;
   lng: number;
   rating: number;
   address: string;
   features: string[];
   reviews: CourtReview[];
+  venueType?: string;
+  coordVerified?: boolean;
+}
+
+export type PhotoSource = 'platform' | 'stock' | 'mixed';
+
+export interface CourtEnrichmentMeta {
+  sources: string[];
+  enrichedAt: string;
+  searchQuery: string;
+  confidence: 'high' | 'medium' | 'low';
+  photoSource?: PhotoSource;
 }
 
 export interface Achievement {
@@ -56,19 +76,41 @@ export interface Achievement {
   name: string;
   desc: string;
   icon: string;
-  color: string;
+  iconUrl?: string | null;
+  color?: string;
   unlocked: boolean;
+  ruleValue?: number;
+  points?: number;
+}
+
+export interface UserPreferences {
+  remindMatch: boolean;
+  remindSignIn: boolean;
+  showActivity: boolean;
 }
 
 export interface UserProfile {
+  id?: number;
   username: string;
   nickname?: string;
   level: string;
+  levelValue?: number;
   levelBadge: string;
   avatarUrl: string;
+  city?: string;
+  style?: string;
+  role?: 'user' | 'admin';
+  status?: 'active' | 'disabled';
+  lastActiveAt?: string;
   hoursPlayed: number;
+  totalMatches?: number;
+  wins?: number;
   winRate: number;
   points: number;
+  checkinStreak?: number;
+  checkinCount?: number;
+  favoriteCount?: number;
+  preferences?: UserPreferences;
   achievements: Achievement[];
 }
 

@@ -55,6 +55,24 @@ export class MatchService {
     if (data.winnerId === data.loserId) {
       throw new BadRequestException('不能和自己比赛');
     }
+
+    const loser = await this.userRepo.findOne({ where: { id: data.loserId } });
+    if (!loser) throw new BadRequestException('对手不存在');
+
+    const dayStart = new Date();
+    dayStart.setHours(0, 0, 0, 0);
+    const dayPairCount = await this.matchRepo
+      .createQueryBuilder('m')
+      .where('m.createdAt >= :dayStart', { dayStart })
+      .andWhere(
+        '((m.winnerId = :a AND m.loserId = :b) OR (m.winnerId = :b AND m.loserId = :a))',
+        { a: data.winnerId, b: data.loserId },
+      )
+      .getCount();
+    if (dayPairCount >= 5) {
+      throw new BadRequestException('今日与该对手的战绩录入已达上限');
+    }
+
     const record = this.matchRepo.create(data);
 
     await this.dataSource.transaction(async (manager) => {

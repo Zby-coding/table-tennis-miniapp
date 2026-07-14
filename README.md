@@ -27,6 +27,7 @@
 | **语言** | TypeScript |
 | **样式** | SCSS |
 | **后端** | NestJS 10.x + TypeORM |
+| **管理端** | React 18 + Vite + Vitest |
 | **数据库** | SQLite (开发) / MySQL (生产) |
 | **认证** | JWT (JSON Web Token) |
 | **实时通信** | WebSocket (Socket.IO) |
@@ -53,6 +54,7 @@ table-tennis-miniapp/
 │   ├── data.ts                 ← Mock 数据 / Fallback
 │   ├── app.config.ts           ← 小程序全局配置
 │   └── app.scss                ← 全局样式 + 设计 Token
+├── manage/                     ← React/Vite 用户管理系统
 ├── server/                     ← NestJS 后端 API
 │   ├── src/
 │   │   ├── modules/
@@ -184,6 +186,20 @@ cd server && npm run start:dev
 npx taro build --type weapp --watch
 ```
 
+
+### 启动用户管理系统
+
+```bash
+cd manage
+npm install
+npm run dev
+# 默认运行在 http://localhost:5174
+# Vite 会将 /api 代理到 http://localhost:3017
+```
+
+管理系统代码独立放在 `manage/`。后端会以数据库中的 `role=admin` 和 `status=active` 作为管理权限依据；普通用户访问管理接口会返回无权限。
+
+本地开发管理端登录：在 `server/.env` 设置 `ENABLE_DEV_AUTH=true` 与 `DEV_ADMIN_CODE=你的码`，然后用该码登录（勿提交真实密钥到仓库）。
 ### 打开微信开发者工具
 
 1. 打开微信开发者工具

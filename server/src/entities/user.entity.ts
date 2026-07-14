@@ -24,6 +24,16 @@ export enum PlayStyle {
   BEGINNER = '初学',
 }
 
+export enum UserRole {
+  USER = 'user',
+  ADMIN = 'admin',
+}
+
+export enum UserStatus {
+  ACTIVE = 'active',
+  DISABLED = 'disabled',
+}
+
 @Entity('users')
 export class User {
   @PrimaryGeneratedColumn({ type: 'integer' })
@@ -33,30 +43,51 @@ export class User {
   openid: string;
 
   @Column({ type: 'varchar', length: 128, nullable: true })
-  unionid: string;
+  unionid: string | null;
 
   @Column({ type: 'varchar', length: 128, default: '球友' })
   nickname: string;
 
   @Column({ type: 'text', nullable: true })
-  avatarUrl: string;
+  avatarUrl: string | null;
 
   @Column({ type: 'int', default: UserLevel.L1 })
   level: number;
 
   @Column({ type: 'varchar', length: 32, nullable: true })
-  style: string;
+  style: string | null;
 
   @Column({ type: 'varchar', length: 64, nullable: true })
-  city: string;
+  city: string | null;
+
+  @Column({ type: 'varchar', length: 16, default: UserRole.USER })
+  role: UserRole;
+
+  @Column({ type: 'varchar', length: 16, default: UserStatus.ACTIVE })
+  status: UserStatus;
+
+  @Column({ type: 'datetime', nullable: true })
+  lastActiveAt: Date | null;
+
+  @Column({ type: 'text', nullable: true })
+  adminNote: string | null;
+
+  @Column({ type: 'boolean', default: true })
+  remindMatch: boolean;
+
+  @Column({ type: 'boolean', default: true })
+  remindSignIn: boolean;
+
+  @Column({ type: 'boolean', default: true })
+  showActivity: boolean;
 
   @Index()
   @Column({ type: 'decimal', precision: 10, scale: 7, nullable: true })
-  homeLat: number;
+  homeLat: number | null;
 
   @Index()
   @Column({ type: 'decimal', precision: 10, scale: 7, nullable: true })
-  homeLng: number;
+  homeLng: number | null;
 
   @Column({ type: 'int', default: 0 })
   totalHours: number;

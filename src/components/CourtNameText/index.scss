@@ -1,0 +1,38 @@
+.court-name-wrap {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  align-self: stretch;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+.court-name-inner {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: normal;
+  letter-spacing: 0.5px;
+  line-height: 1.45;
+  writing-mode: horizontal-tb;
+  text-orientation: mixed;
+  font-weight: 700;
+  color: #1A1A2E;
+
+  &--preview {
+    font-size: 17px;
+  }
+
+  &--detail {
+    font-size: 18px;
+  }
+}
+
+.court-name-text {
+  display: block;
+  width: 100%;
+  writing-mode: horizontal-tb;
+}

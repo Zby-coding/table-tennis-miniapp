@@ -5,6 +5,7 @@ import {
 import { User } from './user.entity';
 import { CourtReview } from './court-review.entity';
 import { Favorite } from './favorite.entity';
+import { CourtEnrichmentMeta } from './court-enrichment.types';
 
 @Entity('courts')
 @Index('idx_location', ['lat', 'lng'])
@@ -44,6 +45,15 @@ export class Court {
 
   @Column({ type: 'simple-json', nullable: true })
   photos: string[];
+
+  @Column({ type: 'text', nullable: true })
+  description: string;
+
+  @Column({ type: 'simple-json', nullable: true })
+  facilityPhotos: string[];
+
+  @Column({ type: 'simple-json', nullable: true })
+  enrichmentMeta: CourtEnrichmentMeta;
 
   @Column({ type: 'decimal', precision: 3, scale: 1, default: 5.0 })
   rating: number;
