@@ -22,3 +22,6 @@ Thumbs.db
 
 # Local worktrees metadata (if present under repo)
 .worktrees/
+
+*.tsbuildinfo
+
