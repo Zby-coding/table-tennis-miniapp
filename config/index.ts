@@ -1,4 +1,4 @@
-export default {
+﻿export default {
   projectName: 'table-tennis-miniapp',
   date: '2026-07-07',
   designWidth: 375,
@@ -13,6 +13,7 @@ export default {
   plugins: [
     '@tarojs/plugin-framework-react',
     '@tarojs/plugin-platform-weapp',
+    '@tarojs/plugin-platform-h5',
   ],
   defineConstants: {},
   copy: {
@@ -22,7 +23,12 @@ export default {
     options: {},
   },
   framework: 'react',
-  compiler: 'webpack5',
+  compiler: {
+    type: 'webpack5',
+    prebundle: {
+      enable: false,
+    },
+  },
   mini: {
     postcss: {
       pxtransform: {
@@ -62,3 +68,6 @@ export default {
     },
   },
 };
+
+
+

@@ -10,6 +10,10 @@ export default {
     'pages/settings/index',
     'pages/social/index',
   ],
+  // 按需注入: 仅注入当前页面所需的自定义组件和页面代码
+  // 未访问的页面、未声明的自定义组件不会被加载和初始化,降低启动时间和运行时内存
+  // 基础库 2.11.1+ 支持, 2.11.1 以下兼容但无优化效果
+  lazyCodeLoading: 'requiredComponents',
   window: {
     navigationBarBackgroundColor: '#FF6B35',
     navigationBarTextStyle: 'white',

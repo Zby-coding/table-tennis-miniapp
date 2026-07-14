@@ -59,9 +59,10 @@ export class AuthService {
     const appId = this.configService.get<string>('WECHAT_APP_ID');
     const appSecret = this.configService.get<string>('WECHAT_APP_SECRET');
     const devMode = this.configService.get<string>('ENABLE_DEV_AUTH', 'false') === 'true';
+    const environment = this.configService.get<string>('NODE_ENV') || process.env.NODE_ENV || 'development';
 
-    // Only bypass in explicitly enabled dev mode, and only in development environment
-    if (devMode && this.configService.get<string>('NODE_ENV') === 'development') {
+    // Development auth is allowed only when explicitly enabled and never in production.
+    if (devMode && environment !== 'production') {
       // Require explicit opt-in, never use hardcoded sentinel
       this.logger.warn('[DEV MODE] WeChat authentication bypassed — use only in development');
       return { openid: `dev_${code}`, session_key: 'dev_session' };

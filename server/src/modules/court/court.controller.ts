@@ -5,6 +5,7 @@ import { NearbyCourtsDto } from './dto/nearby-courts.dto';
 import { ReviewCourtDto } from './dto/review-court.dto';
 import { CreateCourtDto } from './dto/create-court.dto';
 import { IsString, IsNotEmpty } from 'class-validator';
+import { Public } from '../../common/decorators/public.decorator';
 
 class SubmitBackgroundDto {
   @IsString()
@@ -16,6 +17,7 @@ class SubmitBackgroundDto {
 export class CourtController {
   constructor(private courtService: CourtService) {}
 
+  @Public()
   @Get('nearby')
   async nearby(@Query() dto: NearbyCourtsDto) {
     return this.courtService.findNearby(
@@ -59,6 +61,7 @@ export class CourtController {
     return this.courtService.submitBackground(userId, parseInt(id, 10), body.url);
   }
 
+  @Public()
   @Get(':id')
   async detail(@Param('id') id: string) {
     return this.courtService.getDetail(parseInt(id, 10));
